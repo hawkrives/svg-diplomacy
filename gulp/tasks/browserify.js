@@ -32,9 +32,9 @@ gulp.task('browserify', function(callback) {
       extensions: config.extensions,
       // Enable source maps!
       debug: config.debug,
-      // And transform.
-      transforms: [to5Browserify]
     });
+
+    bundler.transform('6to5-browserify');
 
     var bundle = function() {
       // Log when bundling starts
