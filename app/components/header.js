@@ -1,6 +1,5 @@
 import * as React from 'react'
-import * as Router from 'react-router'
-let Link = Router.Link;
+import {Link} from 'react-router'
 
 let Header = React.createClass({
 	render() {

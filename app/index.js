@@ -1,8 +1,6 @@
 import * as React from 'react'
 import * as Router from 'react-router'
-let Route = Router.Route;
-let DefaultRoute = Router.DefaultRoute;
-// import {Route, DefaultRoute} from 'react-router'
+import {Route, DefaultRoute} from 'react-router'
 
 import App from './views/app'
 import Home from './views/home'
