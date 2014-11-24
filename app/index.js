@@ -22,6 +22,12 @@ let routes = (
 		React.createElement(Route, {handler: Help, name: 'help'}),
 		React.createElement(Route, {handler: Create, name: 'create'})))
 
+// var Game = Parse.Object.extend("Game");
+// var currentGame = new Game();
+// currentGame.save({users: ["bar", 'rives']}).then(function(object) {
+// 	console.log("yay! it worked");
+// });
+
 Router.run(routes, (Handler) => {
 	React.render(React.createElement(Handler, null), document.getElementById('container'))
 })
