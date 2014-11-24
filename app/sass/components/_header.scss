@@ -5,9 +5,13 @@
 	margin-bottom: 0.75em;
 	border-bottom: solid 1px currentColor;
 
-	a {
+	a[href^='#'] {
 		text-decoration: none;
 		color: inherit;
+
+		&:not(.active) h1::before {
+			content: '🏠 ';
+		}
 	}
 
 	h1 {
