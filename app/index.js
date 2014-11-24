@@ -1,3 +1,6 @@
+import * as keys from './data/parse-api-key.json'
+Parse.initialize(keys.app_id, keys.js_key);
+
 import * as React from 'react'
 import * as Router from 'react-router'
 import {Route, DefaultRoute} from 'react-router'
