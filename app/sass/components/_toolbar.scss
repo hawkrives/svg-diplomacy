@@ -1,0 +1,21 @@
+.toolbar {
+	@extend %list-inline;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+
+	padding: 0.25em 0.5em;
+
+	box-shadow: 0 0 3px currentColor;
+}
+
+.toolbar-item {
+	padding: 0 0.5em;
+	flex: 1;
+	text-align: center;
+}
