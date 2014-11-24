@@ -5,12 +5,12 @@ let Link = Router.Link;
 let Header = React.createClass({
 	render() {
 		return React.createElement("header", {id: 'header'},
-			React.createElement(Link, {to: "App"}, React.createElement("h1", null, "SVG Diplomacy")),
+			React.createElement(Link, {to: "home"}, React.createElement("h1", null, "SVG Diplomacy")),
 			React.createElement("ul", null,
-				React.createElement("li", null, React.createElement(Link, {to: "Profile"}, "Profile")),
-				React.createElement("li", null, React.createElement(Link, {to: "Search"}, "Search")),
-				React.createElement("li", null, React.createElement(Link, {to: "Help"}, "Help")),
-				React.createElement("li", null, React.createElement(Link, {to: "Create"}, "Create"))
+				React.createElement("li", null, React.createElement(Link, {to: "profile"}, "Profile")),
+				React.createElement("li", null, React.createElement(Link, {to: "search"}, "Search")),
+				React.createElement("li", null, React.createElement(Link, {to: "help"}, "Help")),
+				React.createElement("li", null, React.createElement(Link, {to: "create"}, "Create"))
 			)
 		)
 	}

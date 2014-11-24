@@ -14,13 +14,13 @@ import Create from './views/create'
 
 let routes = (
 	React.createElement(Route, {handler: App, name: 'App', path: "/"},
-		React.createElement(DefaultRoute, {handler: Home, name: 'Home'}),
-		React.createElement(Route, {handler: Game, name: 'Game'}),
-		React.createElement(Route, {handler: Profile, name: 'Profile'}),
-		React.createElement(Route, {handler: Search, name: 'Search'}),
-		React.createElement(Route, {handler: Help, name: 'Help'}),
-		React.createElement(Route, {handler: Create, name: 'Create'})))
+		React.createElement(DefaultRoute, {handler: Home, name: 'home'}),
+		React.createElement(Route, {handler: Game, name: 'game'}),
+		React.createElement(Route, {handler: Profile, name: 'profile'}),
+		React.createElement(Route, {handler: Search, name: 'search'}),
+		React.createElement(Route, {handler: Help, name: 'help'}),
+		React.createElement(Route, {handler: Create, name: 'create'})))
 
 Router.run(routes, (Handler) => {
-	React.render(React.createElement(Handler, null), document.getElementById('app'))
+	React.render(React.createElement(Handler, null), document.getElementById('container'))
 })

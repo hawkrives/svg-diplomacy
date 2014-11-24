@@ -1,3 +1,69 @@
-body {
-	color: rebeccapurple;
+*, *::before, *::after {
+	box-sizing: inherit;
 }
+
+.app {
+	box-sizing: border-box;
+
+	color: rebeccapurple;
+
+	font-family: sans-serif;
+
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+
+	max-width: 40em;
+	margin: 0 auto;
+}
+
+#header {
+	text-align: center;
+
+	padding-bottom: 1em;
+	margin-bottom: 0.75em;
+	border-bottom: solid 1px currentColor;
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	h1 {
+		margin-top: 0;
+		margin-bottom: 0.25em;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+
+			& + li {
+				margin-left: 1em;
+			}
+
+		}
+
+		a {
+
+			border: solid 1px;
+			border-color: #BBB #999 #777;
+			padding: 0.25em 0.5em;
+		}
+
+		.active {
+			background-color: rebeccapurple;
+			color: white;
+		}
+	}
+}
+
+main {
+	flex: 1;
+}
+
+
