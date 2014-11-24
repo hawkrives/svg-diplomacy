@@ -1,9 +1,19 @@
-svg-diplomacy
-=============
+# svg-diplomacy
 
 To set up:
 
 - Clone with `git clone git@github.com:hawkrives/svg-diplomacy.git`
 - `npm install -g gulp`
 - `npm install`
-- `gulp build`
+- `gulp build` (or `gulp watch`)
+
+
+## Random Notes
+If you feel like node_modules is getting really big, try this:
+
+- Go into the folder
+- Run `npm dedupe`
+- Install `dmn` (`npm i -g dmn`)
+- Run `dmn clean`
+
+`npm dedupe` runs through NPM's conflict resolution algorithm and takes extra time to de-duplicate packages inside node_modules. `dmn` looks through the packages that are installed and removes extraneous files; tests, docs, etc. I haven't experienced a problem with either of them yet, and they usually represent about a two-fold decrease in the size of my node_modules folder.
