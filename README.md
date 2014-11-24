@@ -5,8 +5,9 @@ To set up:
 - Clone with `git clone git@github.com:hawkrives/svg-diplomacy.git`
 - `npm install -g gulp`
 - `npm install`
+- Create `app/data/parse-api-key.json`
+	- It should look like `{"app_id": "", "js_key": ""}`, where `app_id` and `js_key` are the respective keys from Parse.
 - `gulp build` (or `gulp watch`)
-
 
 ## Random Notes
 If you feel like node_modules is getting really big, try this:
