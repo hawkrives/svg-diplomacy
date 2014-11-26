@@ -1,5 +1,5 @@
 .toolbar {
-	@extend %list-inline;
+	@include list-inline();
 	position: fixed;
 	bottom: 0;
 	left: 0;

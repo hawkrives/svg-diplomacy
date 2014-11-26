@@ -20,7 +20,7 @@
 	}
 
 	ul {
-		@extend %list-inline;
+		@include list-inline();
 
 		li + li {
 			margin-left: 1em;
