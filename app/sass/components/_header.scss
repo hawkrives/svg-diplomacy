@@ -8,10 +8,6 @@
 	a[href^='#'] {
 		text-decoration: none;
 		color: inherit;
-
-		&:not(.active) h1::before {
-			content: '🏠 ';
-		}
 	}
 
 	h1 {
