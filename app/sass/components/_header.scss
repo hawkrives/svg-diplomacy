@@ -36,6 +36,10 @@
 		a {
 			display: block;
 			padding: 0.25em 0.5em;
+
+			&:hover {
+				background-color: rgba(#663399, 0.15);
+			}
 		}
 
 		.octicon {
@@ -45,6 +49,10 @@
 		.active {
 			background-color: $appColor;
 			color: white;
+
+			&:hover {
+				background-color: $appColor;
+			}
 		}
 	}
 }
