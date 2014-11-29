@@ -28,21 +28,15 @@ let AuthView = React.createClass({
 
 		action({username: username, password: password, email: email})
 			.then((user) => {
-				if (Login.attemptedTransition) {
-					let transition = Login.attemptedTransition;
-					Login.attemptedTransition = null;
-					transition.retry();
-				} else {
-					this.replaceWith('/');
-				}
+				this.replaceWith('/');
 			}).catch((error) => {
 				return this.setState({ error: true, errorDetails: error });
 			})
 	},
 
 	render() {
-		if (isSignedIn() && !Login.attemptedTransition) {
-			this.replaceWith('/profile')
+		if (isSignedIn()) {
+			this.replaceWith('/');
 		}
 
 		let willSignIn = this.getPathname() === '/sign-in'

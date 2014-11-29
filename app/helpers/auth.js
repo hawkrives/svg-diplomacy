@@ -1,3 +1,5 @@
+import userActions from '../actions/userActions'
+
 let signUp = (userData) => {
 	return new Promise((resolve, reject) => {
 		console.log(userData)
@@ -10,14 +12,14 @@ let signUp = (userData) => {
 			success(user) {
 				// Hooray! Let them use the app now.
 				console.log('signup success!');
-				onUserStatusChangeonUserStatusChange(true);
+
+				userActions.didSignUp(user);
 				resolve(user);
 			}, 
 			error(user, error) {
 				// Show the error message somewhere and let the user try again.
 				console.error("Signup Error: " + error.code + " " + error.message);
-				onUserStatusChange(false);
-				reject(error)
+				reject(error);
 			}
 		});
 	})
@@ -29,13 +31,12 @@ let signIn = (userData) => {
 			success(user) {
 				// Hooray! Let them use the app now.
 				console.log('login success!');
-				onUserStatusChange(true);
+				userActions.didSignIn(user);
 				resolve(user);
 			}, 
 			error(user, error) {
 				// Show the error message somewhere and let the user try again.
 				console.error("Login Error: [" + error.code + "] " + error.message);
-				onUserStatusChange(false);
 				reject(error);
 			}
 		});
@@ -45,7 +46,7 @@ let signIn = (userData) => {
 let signOut = () => {
 	return new Promise((resolve, reject) => {
 		Parse.User.logOut();
-		onUserStatusChange(false);
+		userActions.didSignOut();
 		resolve(null);
 	})
 }
@@ -53,9 +54,7 @@ let signOut = () => {
 // Parse.User.current() either returns an object or null
 let isSignedIn = () => Boolean(Parse.User.current());
 
-let onUserStatusChange = () => {}
-
-let Authentication = {
+let AuthenticationMixin = {
 	statics: {
 		willTransitionTo(transition) {
 			if (!isSignedIn()) {
@@ -66,4 +65,4 @@ let Authentication = {
 	}
 };
 
-export {signUp, signIn, signOut, isSignedIn, onUserStatusChange, Authentication}
+export {signUp, signIn, signOut, isSignedIn, AuthenticationMixin}
