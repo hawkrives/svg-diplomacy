@@ -10,6 +10,7 @@ import * as Router from 'react-router'
 import {Route, DefaultRoute} from 'react-router'
 
 import App       from './views/app'
+import Auth      from './views/auth'
 import Home      from './views/home'
 import Game      from './views/game'
 import GamesList from './views/games-list'
@@ -22,6 +23,8 @@ let routes = (
 	React.createElement(Route, {handler: App, name: 'App', path: "/"},
 		React.createElement(DefaultRoute, {handler: Home, name: 'home'}),
 		React.createElement(Route, {handler: GamesList, name: 'games'}),
+		React.createElement(Route, {handler: Auth, name: 'sign-up'}),
+		React.createElement(Route, {handler: Auth, name: 'sign-in'}),
 		React.createElement(Route, {handler: Game, name: 'game', path: 'game/:gameId'}),
 		React.createElement(Route, {handler: Profile, name: 'profile'}),
 		React.createElement(Route, {handler: Search, name: 'search'}),
