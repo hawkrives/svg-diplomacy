@@ -17,6 +17,8 @@ import GamesList from './views/games-list'
 import Profile   from './views/profile'
 import Search    from './views/search'
 import Help      from './views/help'
+import Rules     from './views/rules'
+import Tutorial  from './views/tutorial'
 import Create    from './views/create'
 
 let routes = (
@@ -29,6 +31,8 @@ let routes = (
 		React.createElement(Route, {handler: Profile, name: 'profile'}),
 		React.createElement(Route, {handler: Search, name: 'search'}),
 		React.createElement(Route, {handler: Help, name: 'help'}),
+		React.createElement(Route, {handler: Rules, name: 'rules', path: 'help/rules'}),
+		React.createElement(Route, {handler: Tutorial, name: 'tutorial', path: 'help/tutorial'}),
 		React.createElement(Route, {handler: Create, name: 'create'})))
 
 // var Game = Parse.Object.extend("Game");

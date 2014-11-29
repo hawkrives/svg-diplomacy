@@ -4,7 +4,11 @@ import {State} from 'react-router'
 let Game = React.createClass({
 	mixins: [State],
 	render() {
-		return React.createElement('div', {id: 'game'}, "Active Game (id: " + this.getParams().gameId + ")")
+		let title = React.createElement('h1', {className: 'view-title'}, 'Active Game (id: ' + this.getParams().gameId + ')')
+
+		return React.createElement('div',
+			{id: 'game'},
+			title)
 	}
 })
 

@@ -3,9 +3,12 @@ import Toolbar from '../components/toolbar'
 
 let Create = React.createClass({
 	render() {
-		return React.createElement('div', {id: 'creation'},
-			"Creation Screen",
-			React.createElement(Toolbar, {tools: ['Hello', 'Goodbye']}))
+		let title = React.createElement('h1', {className: 'view-title'}, 'Create New ...')
+
+		return React.createElement('div',
+			{id: 'create'},
+			title,
+			React.createElement(Toolbar, {tools: ['Create new Game', 'Create new Map']}))
 	}
 })
 

@@ -4,17 +4,20 @@ let Link = React.createFactory(LinkElement)
 
 let Home = React.createClass({
 	render() {
-		return React.createElement('div', {id: 'home'},
+		let myGamesTitle = React.createElement('h2', {className: 'subtitle'}, 'My Games')
+		let allGamesTitle = React.createElement('h2', {className: 'subtitle'}, 'All Games')
+
+		return React.createElement('div',
+			{id: 'home'},
 			
-			React.createElement('h2', null, "My Games"),
+			myGamesTitle,
 			React.createElement('ul', null, 
 				React.createElement('li', null, 'None')),
 
-			React.createElement('h2', null, 'All Games'),
+			allGamesTitle,
 			React.createElement('ul', null, 
 				React.createElement('li', null, 
-						Link({to: 'games'}, 'See all games')
-					))
+						Link({to: 'games'}, 'See all games')))
 		)
 	}
 })
