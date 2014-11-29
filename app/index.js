@@ -11,15 +11,15 @@ import {Route, DefaultRoute} from 'react-router'
 
 import App       from './views/app'
 import Auth      from './views/auth'
-import Home      from './views/home'
+import Create    from './views/create'
 import Game      from './views/game'
 import GamesList from './views/games-list'
-import Profile   from './views/profile'
-import Search    from './views/search'
 import Help      from './views/help'
+import Home      from './views/home'
+import Profile   from './views/profile'
 import Rules     from './views/rules'
+import Search    from './views/search'
 import Tutorial  from './views/tutorial'
-import Create    from './views/create'
 
 let routes = (
 	React.createElement(Route, {handler: App, name: 'App', path: "/"},
