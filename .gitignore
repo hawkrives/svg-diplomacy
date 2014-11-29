@@ -1,5 +1,6 @@
 .sass-cache
 node_modules
+.DS_Store
 *.sublime-workspace
 build/
 parse-api-key.json
