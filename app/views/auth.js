@@ -43,8 +43,6 @@ let AuthView = React.createClass({
 		let englishVerb = willSignIn ? 'Sign In' : 'Sign Up'
 		let selector = willSignIn ? 'sign-in' : 'sign-up'
 
-		console.log(this.refs)
-
 		let usernameField = React.createElement('input', {
 			type: 'text', 
 			id: 'username', 
