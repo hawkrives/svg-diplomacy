@@ -1,5 +1,5 @@
 import * as keys from './data/parse-api-key.json'
-// Parse.initialize(keys.app_id, keys.js_key);
+Parse.initialize(keys.app_id, keys.js_key);
 
 import * as attachFastClick from 'fastclick'
 attachFastClick(document.body);
