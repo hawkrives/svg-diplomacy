@@ -5,7 +5,7 @@
 	margin-bottom: 0.75em;
 	border-bottom: solid 1px currentColor;
 
-	a[href^='#'] {
+	a {
 		text-decoration: none;
 		color: inherit;
 	}
@@ -21,16 +21,20 @@
 	}
 
 	ul {
-		@include list-inline();
+		@include list-inline;
+		border: solid 1px currentColor;
+		border-radius: 3px;
 
-		li + li {
-			margin-left: 1em;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+
+		li {
+			flex: 1;
 		}
 
 		a {
-
-			border: solid 1px;
-			border-color: #BBB #999 #777;
+			display: block;
 			padding: 0.25em 0.5em;
 		}
 
@@ -39,7 +43,7 @@
 		}
 
 		.active {
-			background-color: rebeccapurple;
+			background-color: $appColor;
 			color: white;
 		}
 	}
