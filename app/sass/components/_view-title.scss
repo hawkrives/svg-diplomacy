@@ -1,7 +1,16 @@
-.view-title {
+.view-title, .subtitle {
+	font-feature-settings: 'smcp', 'onum';
 	text-align: center;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 400;
 	margin-top: 0.25em;
+}
+
+.view-title {
 	font-size: 1.5em;
+}
+
+.subtitle {
+
+	font-size: 1.25em;
 }

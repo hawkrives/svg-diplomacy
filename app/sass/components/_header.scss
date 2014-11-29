@@ -17,7 +17,8 @@
 		font-size: 1.75em;
 		font-family: 'Josefin Sans', sans-serif;
 		font-weight: 600;
-		-webkit-font-feature-settings: 'smcp';
+
+		font-feature-settings: 'smcp', 'onum';
 	}
 
 	ul {
