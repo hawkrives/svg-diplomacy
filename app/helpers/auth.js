@@ -54,6 +54,8 @@ let signOut = () => {
 // Parse.User.current() either returns an object or null
 let isSignedIn = () => Boolean(Parse.User.current());
 
+let currentUser = () => Parse.User.current();
+
 let AuthenticationMixin = {
 	statics: {
 		willTransitionTo(transition) {
@@ -65,4 +67,4 @@ let AuthenticationMixin = {
 	}
 };
 
-export {signUp, signIn, signOut, isSignedIn, AuthenticationMixin}
+export {signUp, signIn, signOut, isSignedIn, currentUser, AuthenticationMixin}
