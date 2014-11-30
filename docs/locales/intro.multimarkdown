@@ -1,0 +1,75 @@
+Intro to webDiplomacy
+=====================
+
+*A quick and easy guide to get newcomers to webDiplomacy playing the game.*
+
+Diplomacy is a game which is easy to learn, but impossible to master. The rules are all very intuitive, lots of people pick them up just by playing, but this document will familiarize you more quickly.
+
+
+## Objective
+
+The objective of Diplomacy is to be the first to get 18 supply centers. For each supply center you occupy you get a new unit, and you lose a unit whenever a supply center you own gets occupied by someone else.
+
+You can recognize the supply centers with the markers which are placed on them.
+
+![Supply centers are marked (large map)](../images/intro/supply.png)
+![Supply centers are marked (small map)](../images/intro/supply2.png)
+
+
+## Units
+
+Army ![A land-based army unit icon](../images/army.png)
+: This unit can only move on land.
+
+Fleet ![A water-based fleet unit icon](../images/fleet.png)
+: This unit can only move in the sea, and in coastal territories. It
+can also convoy armies across sea territories using the convoy move.
+
+
+## Moves
+
+Hold
+: The unit will defend if its territory is attacked, but otherwise do nothing.
+: ![An army holds in Naples](../images/map-thumbnails/801-large.png)
+
+Move
+: The unit tries to move into(/attack) an adjacent territory.
+: ![An army in Naples moves to Rome](../images/map-thumbnails/802-large.png)
+
+Support hold, support move
+: Support is what Diplomacy is all about. As no one unit is stronger than another you need to combine the strength of multiple units to attack other territories. *(Try hovering your mouse over the more complex battles to get more explanation.)*
+: ![A yellow support-move lets the army in Venice overpower the army holding in Rome](../images/map-thumbnails/803-large.png)
+: ![A green support-hold from the fleet in Tyrrhenian Sea lets Rome hold against an equally well-supported Venice](../images/map-thumbnails/804-large.png)
+
+Convoy
+: You can use fleets to carry army units across sea territories; this is called a convoy. You can also string multiple convoys together to move an army unit large distances overseas in a single turn.
+: ![An army in Venice moves to Tunis, convoyed by the fleets in Adriatic Sea and Ionian Sea](../images/map-thumbnails/805-large.png)
+
+
+## Rules
+- In diplomacy, no army or fleet is stronger than another, and a **holding** unit will always beat a **moving** unit of equal support.
+	- ![An army in Naples attempts to move to Rome, but has no support, so the defending army is not dislodged](../images/map-thumbnails/806-large.png)
+	- ![The fleet and army are both equally matched in their attempt to move into Apulia, so neither succeeds](../images/map-thumbnails/807-large.png)
+
+
+- The only way to win a battle is by supporting a **moving** unit with another unit, using a yellow **support move** order.
+	- ![A yellow support-move lets the army in Venice overpower the army holding in Rome](../images/map-thumbnails/803-large.png)
+
+
+- And support can be given to **holding** units, with a green **support hold** order.
+	- ![A green support-hold from the fleet in Tyrrhenian Sea lets Rome hold against an equally well-supported Venice](../images/map-thumbnails/804-large.png)
+
+
+- If the number of **support moves** are greater than the number of **support holds** the move will succeed, otherwise it will fail.
+	- ![The fleet moving from Trieste to Venice has two support-moves, and the fleet in Venice has only one support-hold, so Trieste succeeds](../images/map-thumbnails/808-large.png)
+	- ![The fleet moving from Trieste to Venice has two support-moves, but the fleet in Venice has two support-holds, so Trieste and Venice are equally matched and the attacker is blocked](../images/map-thumbnails/809-large.png)
+
+- Also; if a unit is being attacked it has to defend itself by **holding**, and can't support another unit.
+	- ![No supporting units are being attacked, all of them count: Trieste 2 - Venice 1; Trieste moves](../images/map-thumbnails/808-large.png)
+	- ![An army from Munich attacks Tyrolia, preventing it from supporting Trieste: Trieste 1 - Venice 1; Trieste stays](../images/map-thumbnails/810-large.png)
+	- ![A fleet in the Tyrrhenian Sea attacks Rome, preventing it from supporting Venice: Trieste 1 - Venice 0; Trieste moves](../images/map-thumbnails/811-large.png)
+
+
+With these rules you know everything you need to start playing Diplomacy online! After you [register](register.php) a user account, you can [create a game](gamecreate.php) and [join existing games](gamelistings.php).
+
+![Because Prussia is support-holding the fleet in the Baltic Sea the equally supported move to the Baltic Sea from Livonia fails: This allows the fleet in the Baltic Sea to successfully convoy an army from Berlin to Sweden](../images/map-thumbnails/812-large.png)
