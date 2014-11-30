@@ -1,0 +1,36 @@
+@mixin table-view {
+	border: solid 1px $appColor;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.game-list {
+	& > ul {
+		@include table-view;
+	}
+
+	a {
+		min-height: 48px;
+		display: flex;
+		align-items: flex-start;
+		padding: 0.25em 0.5em;
+
+		text-decoration: none;
+	}
+
+	li + li {
+		border-top: solid 1px;
+	}
+
+	.game-title {
+		flex: 1;
+	}
+
+	.octicon {
+		align-self: center;
+		justify-self: flex-start;
+		font-size: 2em;
+		margin-left: 0.25em;
+	}
+}
