@@ -15,7 +15,7 @@ let signUp = (userData) => {
 
 				userActions.didSignUp(user);
 				resolve(user);
-			}, 
+			},
 			error(user, error) {
 				// Show the error message somewhere and let the user try again.
 				console.error("Signup Error: " + error.code + " " + error.message);
@@ -33,7 +33,7 @@ let signIn = (userData) => {
 				console.log('login success!');
 				userActions.didSignIn(user);
 				resolve(user);
-			}, 
+			},
 			error(user, error) {
 				// Show the error message somewhere and let the user try again.
 				console.error("Login Error: [" + error.code + "] " + error.message);
