@@ -1,24 +1,27 @@
 import * as React from 'react'
-import {Link as LinkElement} from 'react-router'
-let Link = React.createFactory(LinkElement)
+import {currentUser} from '../helpers/auth'
+import GameList from '../components/game-list'
+
+let gameObjects = [
+	{
+		id: 'sdywf9874ia8hos9290',
+		owner: '8WswhCVIse',
+		players: ['hawkrives', 'heroine', 'dominator'],
+		mapName: 'Europe',
+		mapId: '91nf8932',
+		title: 'STOLAF DOMINATES EUROPE!',
+		moves: [{user: '91nf8932', from: 'Paris', to: 'Burgandy'}],
+	}
+]
 
 let Home = React.createClass({
 	render() {
-		let myGamesTitle = React.createElement('h2', {className: 'subtitle'}, 'My Games')
-		let allGamesTitle = React.createElement('h2', {className: 'subtitle'}, 'All Games')
+		let allGames = React.createElement(GameList, {title: 'All Games', games: gameObjects})
+		let myGames = React.createElement(GameList, {title: 'My Games', games: gameObjects, filter: {owner: currentUser().id}})
 
-		return React.createElement('div',
-			{id: 'home'},
-			
-			myGamesTitle,
-			React.createElement('ul', null, 
-				React.createElement('li', null, 'None')),
-
-			allGamesTitle,
-			React.createElement('ul', null, 
-				React.createElement('li', null, 
-						Link({to: 'games'}, 'See all games')))
-		)
+		return React.createElement('div', {id: 'home'},
+			myGames,
+			allGames)
 	}
 })
 
