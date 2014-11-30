@@ -1,0 +1,9 @@
+This should be a short summary of the rules to Diplomacy. The title above is a link to the full rules.
+
+This section should be written using [markdown]. It is fetched by [github's `window.fetch` polyfill][fetch], then parsed by [chjj's marked parser][marked].
+
+You can also include images: ![Kitten!](http://placekitten.com/g/30/20)
+
+[markdown]: http://daringfireball.net/projects/markdown/
+[fetch]: https://github.com/github/fetch
+[marked]: https://github.com/chjj/marked
