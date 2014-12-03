@@ -38,9 +38,13 @@ let gameObjects = [
 
 let Home = React.createClass({
 	render() {
-		let myGameObjects = _.filter(gameObjects, (game) => _.contains(game.players, currentUser().id))
 		let allGames = React.createElement(GameList, {title: 'All Games', games: gameObjects})
-		let myGames = React.createElement(GameList, {title: 'My Games', games: myGameObjects})
+
+		let myGames, myGameObjects;
+		if (currentUser()) {
+			myGameObjects = _.filter(gameObjects, (game) => _.contains(game.players, currentUser().id))
+			myGames = React.createElement(GameList, {title: 'My Games', games: myGameObjects})
+		}
 
 		return React.createElement('div', {id: 'home'},
 			myGames,
