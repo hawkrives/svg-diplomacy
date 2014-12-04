@@ -13,6 +13,7 @@ let AuthView = React.createClass({
 
 	getInitialState() {
 		return {
+			user: null,
 			error: null,
 		}
 	},
@@ -43,7 +44,6 @@ let AuthView = React.createClass({
 			type: 'text',
 			id: 'username',
 			placeholder: 'Username',
-			value: this.state.username,
 			autoCorrect: 'none',
 			autoCapitalize: 'none',
 			ref: 'user',
@@ -52,14 +52,12 @@ let AuthView = React.createClass({
 			type: 'password',
 			id: 'password',
 			placeholder: 'Password',
-			value: this.state.password,
-			ref: "password",
+			ref: 'password',
 		})
 		let emailField = React.createElement('input', {
 			type: 'email',
 			id: 'email',
 			placeholder: 'Email, please',
-			value: this.state.email,
 			ref: 'email',
 		})
 		let submitButton = React.createElement('input', {
