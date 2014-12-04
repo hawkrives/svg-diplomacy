@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {Link} from 'react-router'
 import * as marked from 'marked'
-import 'fetch'
 
 let Help = React.createClass({
 	getInitialState() {
@@ -18,7 +17,7 @@ let Help = React.createClass({
 			.then((response) => {
 				this.setState({rulesHTML: marked(response._body)})
 			})
-		
+
 		fetch(pathToTutorial)
 			.then((response) => {
 				this.setState({tutorialHTML: marked(response._body)})

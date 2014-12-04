@@ -4,6 +4,7 @@ Parse.initialize(keys.app_id, keys.js_key);
 import * as attachFastClick from 'fastclick'
 attachFastClick(document.body);
 
+import 'fetch'
 import * as React from 'react'
 
 import * as Router from 'react-router'

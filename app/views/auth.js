@@ -44,50 +44,45 @@ let AuthView = React.createClass({
 		let selector = willSignIn ? 'sign-in' : 'sign-up'
 
 		let usernameField = React.createElement('input', {
-			type: 'text', 
-			id: 'username', 
-			placeholder: 'Username', 
-			value: this.state.username, 
-			autoCorrect: 'none', 
-			autoCapitalize: 'none', 
+			type: 'text',
+			id: 'username',
+			placeholder: 'Username',
+			value: this.state.username,
+			autoCorrect: 'none',
+			autoCapitalize: 'none',
 			ref: 'user',
 		})
 		let passwordField = React.createElement('input', {
-			type: 'password', 
-			id: 'password', 
-			placeholder: 'Password', 
-			value: this.state.password, 
+			type: 'password',
+			id: 'password',
+			placeholder: 'Password',
+			value: this.state.password,
 			ref: "password",
 		})
 		let emailField = React.createElement('input', {
-			type: 'email', 
-			id: 'email', 
-			placeholder: 'Email, please', 
-			value: this.state.email, 
+			type: 'email',
+			id: 'email',
+			placeholder: 'Email, please',
+			value: this.state.email,
 			ref: 'email',
 		})
 		let submitButton = React.createElement('input', {
-			type: 'submit', 
-			id: selector, 
+			type: 'submit',
+			id: selector,
 			value: englishVerb
 		})
 
 
-		let form = React.createElement('form', {onSubmit: this.submitForm}, 
-			usernameField, 
-			passwordField, 
+		let form = React.createElement('form', {onSubmit: this.submitForm},
+			usernameField,
+			passwordField,
 			willSignIn ? null : emailField,
 			submitButton)
 
-		let signInWords = React.createElement(Link, {to: 'sign-in'}, 'Sign In')
-		let signUpWords = React.createElement(Link, {to: 'sign-up'}, 'Sign Up')
-		let title = React.createElement('h1', {className: 'view-title'}, signInWords, ' | ', signUpWords)
-
 		return React.createElement('div',
 			{id: 'authentication'},
-			title,
 			form,
-			JSON.stringify(this.state.errorDetails))
+			this.state.errorDetails ? JSON.stringify(this.state.errorDetails) : null)
 	}
 })
 
