@@ -1,18 +1,20 @@
 import * as React from 'react'
+import * as Reflux from 'reflux'
 import {State, Link, Navigation} from 'react-router'
-import {signIn, signUp, isSignedIn} from '../helpers/auth'
+import userActions from '../actions/userActions'
+import userStore from '../stores/userStore'
 
 let AuthView = React.createClass({
-	mixins: [State, Navigation],
+	mixins: [State, Navigation, Reflux.listenTo(userStore, 'onUserChanged', 'onUserChanged')],
 
-	statics: {
-		attemptedTransition: null
+	onUserChanged(user, error) {
+		this.setState({user, error})
 	},
 
 	getInitialState() {
 		return {
-			error: false,
-			errorDetails: null,
+			user: null,
+			error: null,
 		}
 	},
 
@@ -20,22 +22,17 @@ let AuthView = React.createClass({
 		event.preventDefault();
 
 		let willSignIn = this.getPathname() === '/sign-in'
-		let action = willSignIn ? signIn : signUp
+		let action = willSignIn ? userActions.willSignIn : userActions.willSignUp
 
 		let email = this.refs.email && this.refs.email.getDOMNode().value;
 		let username = this.refs.user.getDOMNode().value;
 		let password = this.refs.password.getDOMNode().value;
 
 		action({username: username, password: password, email: email})
-			.then((user) => {
-				this.replaceWith('/');
-			}).catch((error) => {
-				return this.setState({ error: true, errorDetails: error });
-			})
 	},
 
 	render() {
-		if (isSignedIn()) {
+		if (this.state.user) {
 			this.replaceWith('/');
 		}
 
@@ -44,50 +41,51 @@ let AuthView = React.createClass({
 		let selector = willSignIn ? 'sign-in' : 'sign-up'
 
 		let usernameField = React.createElement('input', {
-			type: 'text', 
-			id: 'username', 
-			placeholder: 'Username', 
-			value: this.state.username, 
-			autoCorrect: 'none', 
-			autoCapitalize: 'none', 
+			type: 'text',
+			id: 'username',
+			placeholder: 'Username',
+			autoCorrect: 'none',
+			autoCapitalize: 'none',
 			ref: 'user',
 		})
 		let passwordField = React.createElement('input', {
-			type: 'password', 
-			id: 'password', 
-			placeholder: 'Password', 
-			value: this.state.password, 
-			ref: "password",
+			type: 'password',
+			id: 'password',
+			placeholder: 'Password',
+			ref: 'password',
 		})
 		let emailField = React.createElement('input', {
-			type: 'email', 
-			id: 'email', 
-			placeholder: 'Email, please', 
-			value: this.state.email, 
+			type: 'email',
+			id: 'email',
+			placeholder: 'Email, please',
 			ref: 'email',
 		})
 		let submitButton = React.createElement('input', {
-			type: 'submit', 
-			id: selector, 
+			type: 'submit',
+			id: selector,
 			value: englishVerb
 		})
 
 
-		let form = React.createElement('form', {onSubmit: this.submitForm}, 
-			usernameField, 
-			passwordField, 
+		let form = React.createElement('form', {onSubmit: this.submitForm},
+			usernameField,
+			passwordField,
 			willSignIn ? null : emailField,
 			submitButton)
 
-		let signInWords = React.createElement(Link, {to: 'sign-in'}, 'Sign In')
-		let signUpWords = React.createElement(Link, {to: 'sign-up'}, 'Sign Up')
-		let title = React.createElement('h1', {className: 'view-title'}, signInWords, ' | ', signUpWords)
+		let error;
+		if (this.state.error) {
+			error = React.createElement('div',
+				{className: 'message error-message'},
+				'Error ', this.state.error.code, ': ',
+				this.state.error.message)
+		}
 
 		return React.createElement('div',
 			{id: 'authentication'},
-			title,
-			form,
-			JSON.stringify(this.state.errorDetails))
+			error,
+			form
+		)
 	}
 })
 

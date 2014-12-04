@@ -1,7 +1,6 @@
 import * as React from 'react'
-import {ListenerMixin} from 'reflux'
+import * as Reflux from 'reflux'
 
-import {isSignedIn} from '../helpers/auth'
 import userStore from '../stores/userStore'
 
 import {Link as LinkClass} from 'react-router'
@@ -11,27 +10,22 @@ let Link = React.createFactory(LinkClass);
 let Octicon = React.createFactory(OcticonClass);
 
 let Header = React.createClass({
-	mixins: [ListenerMixin],
+	mixins: [Reflux.listenTo(userStore, 'onUserChange', 'onUserChange')],
 
-	onUserChange() {
-		console.log('user changed');
+	onUserChange(user) {
+		console.log('user changed', user);
 		this.setState({
-			isSignedIn: isSignedIn()
+			isSignedIn: Boolean(user)
 		});
 	},
 
-	componentDidMount: function() {
-		this.listenTo(userStore, this.onUserChange);
-    },
-
 	getInitialState() {
-		return {
-			isSignedIn: isSignedIn()
-		}
+		return { isSignedIn: undefined }
 	},
 
 	render() {
-		let home = [React.createElement('li', {key: 'home'}, Link({to: "home"}, Octicon({icon: 'home'})))]
+		let homeText = this.state.isSignedIn ? null : ' Home';
+		let home = [React.createElement('li', {key: 'home'}, Link({to: "home"}, Octicon({icon: 'home'}), homeText))]
 
 		let loggedInMenuItems = [
 			React.createElement('li', {key: 'profile'}, Link({to: "profile"}, Octicon({icon: 'person'}))),
