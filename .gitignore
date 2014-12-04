@@ -4,3 +4,4 @@ node_modules
 *.sublime-workspace
 build/
 parse-api-key.json
+global.json
