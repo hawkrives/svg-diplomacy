@@ -1,0 +1,31 @@
+// Specification of a Map Format, version 1.
+{
+	"name": "Classic",		// Title of the map
+	"width": ,				// Width in pixels
+	"height": ,				// Height in pixels
+	"players": ,			// Number of Players
+	"countries": [],		// Array of Country data. See Country Format below
+	"spaces": [],			// Array of Space data. See Space Format below
+}
+
+// Specification of a Country Format, version 1.
+{
+	"name": "Germany",
+	"vacantColor": ,
+	"occupiedColor": ,
+	"startSpaces": [],
+}
+
+// Specification of a Space Format, version 1.
+{
+	"id": ,
+	"name": ,
+	"abbrev": ,
+	"type": ,
+	"naval": ,
+	"moveTo": ,
+	"territory": ,
+	"path": ,
+	"supply": ,
+	"drawUnit": ,
+}
