@@ -9,6 +9,7 @@ To set up:
 	- It should look like `{"app_id": "", "js_key": ""}`, where `app_id` and `js_key` are the respective keys from Parse.
 - Create `backend/config/global.json`
 	- It should look like `{"applications":{"app_name":{"applicationId": "", "masterKey": ""},"_default": {"link": "app_name"}}}`, replacing `app_name` with the name of the parse app, and supplying the `applicationId` and `masterKey` from the parse app.
+- Run `parse deploy` from within the `backend/` directory to push the cloud code to the parse app.
 - `gulp build` (or `gulp watch`)
 
 ## Random Notes
