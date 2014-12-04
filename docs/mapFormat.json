@@ -1,9 +1,9 @@
 // Specification of a Map Format, version 1.
 {
 	"name": "Classic",		// Title of the map
-	"width": ,				// Width in pixels
-	"height": ,				// Height in pixels
-	"players": ,			// Number of Players
+	"width": 0,				// Width in pixels
+	"height": 0,			// Height in pixels
+	"players": 7,			// Number of Players
 	"countries": [],		// Array of Country data. See Country Format below
 	"spaces": [],			// Array of Space data. See Space Format below
 }
@@ -11,21 +11,21 @@
 // Specification of a Country Format, version 1.
 {
 	"name": "Germany",
-	"vacantColor": ,
-	"occupiedColor": ,
+	"vacantColor": "#123456",
+	"occupiedColor": "#987654",
 	"startSpaces": [],
 }
 
 // Specification of a Space Format, version 1.
 {
-	"id": ,
-	"name": ,
-	"abbrev": ,
-	"type": ,
-	"naval": ,
-	"moveTo": ,
-	"territory": ,
-	"path": ,
-	"supply": ,
-	"drawUnit": ,
+	"id": Number,
+	"name": String,
+	"abbrev": String,
+	"type": String,
+	"naval": Boolean,
+	"moveTo": [Number],
+	"territory": [Number] || null,
+	"path": String || Number(/*id of territory's path to render*/),
+	"supply": Object{x,y} || null,
+	"drawUnit": Object{x,y} || null,
 }
