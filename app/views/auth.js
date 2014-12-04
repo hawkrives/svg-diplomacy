@@ -1,18 +1,19 @@
 import * as React from 'react'
+import * as Reflux from 'reflux'
 import {State, Link, Navigation} from 'react-router'
-import {signIn, signUp, isSignedIn} from '../helpers/auth'
+import userActions from '../actions/userActions'
+import userStore from '../stores/userStore'
 
 let AuthView = React.createClass({
-	mixins: [State, Navigation],
+	mixins: [State, Navigation, Reflux.listenTo(userStore, 'onUserChanged', 'onUserChanged')],
 
-	statics: {
-		attemptedTransition: null
+	onUserChanged(user, error) {
+		this.setState({user, error})
 	},
 
 	getInitialState() {
 		return {
-			error: false,
-			errorDetails: null,
+			error: null,
 		}
 	},
 
@@ -20,22 +21,17 @@ let AuthView = React.createClass({
 		event.preventDefault();
 
 		let willSignIn = this.getPathname() === '/sign-in'
-		let action = willSignIn ? signIn : signUp
+		let action = willSignIn ? userActions.willSignIn : userActions.willSignUp
 
 		let email = this.refs.email && this.refs.email.getDOMNode().value;
 		let username = this.refs.user.getDOMNode().value;
 		let password = this.refs.password.getDOMNode().value;
 
 		action({username: username, password: password, email: email})
-			.then((user) => {
-				this.replaceWith('/');
-			}).catch((error) => {
-				return this.setState({ error: true, errorDetails: error });
-			})
 	},
 
 	render() {
-		if (isSignedIn()) {
+		if (this.state.user) {
 			this.replaceWith('/');
 		}
 
@@ -79,10 +75,19 @@ let AuthView = React.createClass({
 			willSignIn ? null : emailField,
 			submitButton)
 
+		let error;
+		if (this.state.error) {
+			error = React.createElement('div',
+				{className: 'message error-message'},
+				'Error ', this.state.error.code, ': ',
+				this.state.error.message)
+		}
+
 		return React.createElement('div',
 			{id: 'authentication'},
-			form,
-			this.state.errorDetails ? JSON.stringify(this.state.errorDetails) : null)
+			error,
+			form
+		)
 	}
 })
 

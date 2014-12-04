@@ -1,6 +1,8 @@
 import * as React from 'react'
+import * as Reflux from 'reflux'
 import * as _ from 'lodash'
-import {currentUser} from '../helpers/auth'
+import userStore from '../stores/userStore'
+
 import GameList from '../components/game-list'
 
 let gameObjects = [
@@ -37,12 +39,19 @@ let gameObjects = [
 ]
 
 let Home = React.createClass({
+	mixins: [Reflux.listenTo(userStore, 'onUserChanged', 'onUserChanged')],
+	onUserChanged(user) {
+		this.setState({user})
+	},
+	getInitialState() {
+		return { user: undefined }
+	},
 	render() {
 		let allGames = React.createElement(GameList, {title: 'All Games', games: gameObjects})
 
 		let myGames, myGameObjects;
-		if (currentUser()) {
-			myGameObjects = _.filter(gameObjects, (game) => _.contains(game.players, currentUser().id))
+		if (this.state.user) {
+			myGameObjects = _.filter(gameObjects, (game) => _.contains(game.players, this.state.user.id))
 			myGames = React.createElement(GameList, {title: 'My Games', games: myGameObjects})
 		}
 

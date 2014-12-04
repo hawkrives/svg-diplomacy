@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {signOut} from '../helpers/auth'
+import userActions from '../actions/userActions'
 
 let Profile = React.createClass({
 	render() {
@@ -8,7 +8,7 @@ let Profile = React.createClass({
 		return React.createElement('div',
 			{id: 'profile'},
 			title,
-			React.createElement('button', {onClick: signOut}, 'Sign Out'))
+			React.createElement('button', {onClick: userActions.willSignOut}, 'Sign Out'))
 	}
 })
 
