@@ -1,0 +1,12 @@
+// Game Format Style
+{
+	"id": Parse.game.id
+	"title": String,
+	"owner": Parse.user.id,
+	"players": [Parse.user.id],
+	"map": Parse.map.id,
+	"countryPlayerMatch": [Object{country: String, player: Parse.user.id}],
+	"currentMovePhase": Object{year: Number, season: Number},
+	"armies": [Object{armyId: Number, user: Parse.user.id, location: Number, type: String}]
+	"turnPhases": [Object{[Object{armyId: Number, type: String, at: Number, from: Number, to: Number}]}]
+}
