@@ -5,6 +5,9 @@ import * as attachFastClick from 'fastclick'
 attachFastClick(document.body);
 
 import 'fetch'
+import {status} from './helpers/fetch'
+window.rawfetch = window.fetch
+window.fetch = (url, opts) => window.rawfetch(url, opts).then(status)
 
 import * as React from 'react'
 import * as Router from 'react-router'
