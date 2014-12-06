@@ -26,11 +26,13 @@ let Help = React.createClass({
 	render() {
 		let rules = React.createElement('article', {className: 'short-rules'},
 			React.createElement(Link, {to: 'rules'}, React.createElement('h2', {className: 'subtitle'}, 'Rules')),
-			React.createElement('div', {dangerouslySetInnerHTML: {__html: this.state.rulesHTML}}))
+			React.createElement('div', {dangerouslySetInnerHTML: {__html: this.state.rulesHTML}}),
+			React.createElement(Link, {to: 'rules', className: 'block-link'}, 'Detailed Rules'))
 
 		let tutorial = React.createElement('article', {className: 'short-tutorial'},
 			React.createElement(Link, {to: 'tutorial'}, React.createElement('h2', {className: 'subtitle'}, 'Tutorial')),
-			React.createElement('div', {dangerouslySetInnerHTML: {__html: this.state.tutorialHTML}}))
+			React.createElement('div', {dangerouslySetInnerHTML: {__html: this.state.tutorialHTML}}),
+			React.createElement(Link, {to: 'tutorial', className: 'block-link'}, 'Complete Tutorial'))
 
 		let title = React.createElement('h1', {className: 'view-title'}, 'Help')
 
