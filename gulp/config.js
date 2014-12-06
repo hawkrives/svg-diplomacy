@@ -3,6 +3,7 @@ var src = './app/';
 
 module.exports = {
 	browserSync: {
+		open: false, // Stop it from automatically stopping the browser
 		server: {
 			baseDir: dest
 		},
