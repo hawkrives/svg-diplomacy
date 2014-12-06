@@ -17,7 +17,7 @@ let GameList = React.createClass({
 			React.createElement('li', {key: game.id},
 				React.createElement(Link, {to: 'game', params: {gameId: game.id}},
 					React.createElement('span', {className: 'game-title'}, game.title),
-					React.createElement('span', {className: 'map-name'}, game.map.name),
+					// React.createElement('span', {className: 'map-name'}, game.map.name),
 					React.createElement(Octicon, {icon: 'chevron-right'})))))
 
 		let noGamesMessage = "No games available."
