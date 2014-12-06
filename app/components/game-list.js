@@ -15,8 +15,9 @@ let GameList = React.createClass({
 
 		let listOfGames = React.createElement('ul', null, _.map(this.props.games, (game) =>
 			React.createElement('li', {key: game.id},
-				React.createElement(Link, {to: 'game', params: {gameId: game.id}},
-					React.createElement('span', {className: 'game-title'}, game.title),
+				React.createElement('svg', {className: 'game-background'}),
+				React.createElement(Link, {to: 'game', params: {gameId: game.id}, className: 'game-info'},
+					React.createElement('span', {className: 'game-title'}, game.get('title')),
 					// React.createElement('span', {className: 'map-name'}, game.map.name),
 					React.createElement(Octicon, {icon: 'chevron-right'})))))
 

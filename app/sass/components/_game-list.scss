@@ -13,10 +13,28 @@
 	a {
 		min-height: 48px;
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
 		padding: 0.25em 0.5em;
 
 		text-decoration: none;
+	}
+
+	li {
+		position: relative;
+	}
+
+	.game-background {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-position: 50% 50%;
+		background-image: url(http://www.diplom.org/Online/maps/map_c.gif);
+		filter: grayscale(50%) opacity(15%) blur(1px);
+	}
+
+	.game-info {
+		position: relative;
+		text-shadow: 0 0 1px white;
 	}
 
 	li + li {
@@ -25,11 +43,10 @@
 
 	.game-title {
 		flex: 1;
+		font-weight: bold;
 	}
 
 	.octicon {
-		align-self: center;
-		justify-self: flex-start;
 		font-size: 2em;
 		margin-left: 0.25em;
 	}
