@@ -1,10 +1,17 @@
 import * as Reflux from 'reflux'
 import gameActions from '../actions/gameActions'
+import userStore from './userStore'
 
 let gameStore = Reflux.createStore({
 	listenables: gameActions,
 
 	init() {
+		this.games = [];
+		this.listenTo(userStore, this._updateGameListFromParse, this._updateGameListFromParse);
+	},
+
+	_updateGameListFromParse(user) {
+		console.log(user)
 		this.games = [
 			{
 				id: 'kfj309fj20j0asdadas',
@@ -95,7 +102,10 @@ let gameStore = Reflux.createStore({
 					}
 				]
 			},
-		];
+		]
+		if (!user)
+			this.games = []
+		this.trigger(this.games)
 	},
 
 	getInitialState() {
