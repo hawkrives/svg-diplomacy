@@ -4,9 +4,7 @@ var src = './app/';
 module.exports = {
 	browserSync: {
 		server: {
-			// We're serving the src folder as well
-			// for sass sourcemap linking
-			baseDir: [dest, src]
+			baseDir: dest
 		},
 		files: [
 			dest + "**",
@@ -17,6 +15,10 @@ module.exports = {
 	sass: {
 		src: src + "sass/**/*.{sass,scss}",
 		dest: dest
+	},
+	icons: {
+		src: [src + "icons/*"],
+		dest: [dest + "icons"],
 	},
 	images: {
 		src: src + "images/**",
