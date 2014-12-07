@@ -10,6 +10,8 @@ let gameActions = Reflux.createActions([
 	'editGameMap',
 	'removePlayerFromGame',
 	'addPlayerToGame',
+	'endGame',
+	'destroyGame',
 ])
 
 export default gameActions
