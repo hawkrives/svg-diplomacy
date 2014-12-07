@@ -13,7 +13,7 @@ UGLIFY_OPTS       := $(DEST)app.js -o $(DEST)app.min.js --screw-ie8 --unsafe
 EXORCIST_OPTS     := $(DEST)app.js.map < $(DEST)app.js > $(DEST)app.js
 AUTOPREFIXER_OPTS := $(DEST)app.css --map
 CSSWRING_OPTS     := $(DEST)app.css $(DEST)app.min.css --sourcemap
-BROWSERSYNC_OPTS  := start --files $(DEST)**/* --server $(DEST) --no-open
+BROWSERSYNC_OPTS  := start --config ./bs-config.js
 
 
 # Because all of these make variables and functions are essentially string
