@@ -24,9 +24,9 @@ let Home = React.createClass({
 	render() {
 		let allGames = React.createElement(GameList, {title: 'All Games', games: this.state.games})
 
-		let myGames, myGameObjects;
+		let myGames;
 		if (this.state.user) {
-			myGameObjects = _.filter(this.state.games, (game) => _.contains(game.get('players'), this.state.user.id))
+			let myGameObjects = _.filter(this.state.games, (game) => _.contains(game.get('players'), this.state.user.id))
 			myGames = React.createElement(GameList, {title: 'My Games', games: myGameObjects})
 		}
 
