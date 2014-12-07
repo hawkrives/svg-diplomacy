@@ -63,7 +63,7 @@ let AuthView = React.createClass({
 		let submitButton = React.createElement('input', {
 			type: 'submit',
 			id: selector,
-			value: englishVerb
+			value: englishVerb,
 		})
 
 
@@ -86,7 +86,7 @@ let AuthView = React.createClass({
 			error,
 			form
 		)
-	}
+	},
 })
 
 export default AuthView

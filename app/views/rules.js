@@ -25,7 +25,7 @@ let Rules = React.createClass({
 			{id: 'rules'},
 			title,
 			rules)
-	}
+	},
 })
 
 export default Rules

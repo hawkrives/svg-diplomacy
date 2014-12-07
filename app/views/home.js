@@ -33,7 +33,7 @@ let Home = React.createClass({
 		return React.createElement('div', {id: 'home'},
 			myGames,
 			allGames)
-	}
+	},
 })
 
 export default Home

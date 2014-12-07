@@ -40,7 +40,7 @@ let Editable = React.createClass({
 				React.createElement('input', {type: 'submit', value: 'Submit', onClick: this.toggleEditing}))
 		}
 		return React.createElement('span', {onClick: this.toggleEditing}, this.state.content)
-	}
+	},
 })
 
 let Game = React.createClass({
@@ -86,7 +86,7 @@ let Game = React.createClass({
 			{id: 'game'},
 			title,
 			gameView)
-	}
+	},
 })
 
 export default Game

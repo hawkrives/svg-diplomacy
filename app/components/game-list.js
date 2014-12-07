@@ -21,12 +21,12 @@ let GameList = React.createClass({
 					// React.createElement('span', {className: 'map-name'}, game.map.name),
 					React.createElement(Octicon, {icon: 'chevron-right'})))))
 
-		let noGamesMessage = "No games available."
+		let noGamesMessage = 'No games available.'
 
 		return React.createElement('section', {className: 'game-list'},
 			title,
 			_.isEmpty(listOfGames) ? noGamesMessage : listOfGames)
-	}
+	},
 })
 
 export default GameList

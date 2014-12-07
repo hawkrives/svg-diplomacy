@@ -26,33 +26,15 @@ let gameStore = Reflux.createStore({
 		return this.games;
 	},
 
-	createGame() {
-
-	},
-	makeMove() {
-
-	},
-	editGame(gameId, key, value) {
-
-	},
-	editGameOwner(gameId, newOwner) {
-
-	},
-	editGameTitle(gameId, newTitle) {
-
-	},
-	editGamePlayers(gameId, newPlayers) {
-
-	},
-	removePlayerFromGame(gameId, playerId) {
-
-	},
-	addPlayerToGame(gameId, playerId) {
-
-	},
-	editGameMap(gameId, newMap) {
-
-	},
+	createGame() {},
+	makeMove() {},
+	editGame(gameId, key, value) {},
+	editGameOwner(gameId, newOwner) {},
+	editGameTitle(gameId, newTitle) {},
+	editGamePlayers(gameId, newPlayers) {},
+	removePlayerFromGame(gameId, playerId) {},
+	addPlayerToGame(gameId, playerId) {},
+	editGameMap(gameId, newMap) {},
 })
 
 export default gameStore

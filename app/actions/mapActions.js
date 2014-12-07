@@ -2,7 +2,7 @@ import * as Reflux from 'reflux'
 
 let mapActions = Reflux.createActions([
 	'createMap',
-	'fetchMaps'
+	'fetchMaps',
 ])
 
 export default mapActions

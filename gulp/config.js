@@ -1,4 +1,4 @@
-var dest = "./build/";
+var dest = './build/';
 var src = './app/';
 
 module.exports = {
@@ -8,10 +8,10 @@ module.exports = {
 			baseDir: dest
 		},
 		files: [
-			dest + "**",
+			dest + '**',
 			// Exclude Map files
-			"!" + dest + "**.map"
-		]
+			'!' + dest + '**.map',
+		],
 	},
 	lint: {
 		src: [
@@ -20,20 +20,20 @@ module.exports = {
 		],
 	},
 	sass: {
-		src: src + "sass/**/*.{sass,scss}",
-		dest: dest
+		src: src + 'sass/**/*.{sass,scss}',
+		dest: dest,
 	},
 	icons: {
-		src: [src + "icons/*"],
-		dest: [dest + "icons"],
+		src: [src + 'icons/*'],
+		dest: [dest + 'icons'],
 	},
 	images: {
-		src: src + "images/**",
-		dest: dest + "images"
+		src: src + 'images/**',
+		dest: dest + 'images',
 	},
 	markup: {
-		src: src + "htdocs/*",
-		dest: dest
+		src: src + 'htdocs/*',
+		dest: dest,
 	},
 	browserify: {
 		// Enable source maps
@@ -45,7 +45,7 @@ module.exports = {
 		bundleConfigs: [{
 			entries: src + 'index.js',
 			dest: dest,
-			outputName: 'app.js'
-		}]
-	}
+			outputName: 'app.js',
+		}],
+	},
 };

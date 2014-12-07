@@ -23,7 +23,7 @@ let userStore = Reflux.createStore({
 
 	userErrorSignIn(error) {
 		// Show the error message somewhere and let the user try again.
-		console.error("Login Error: [" + error.code + "] " + error.message);
+		console.error('Login Error: [' + error.code + '] ' + error.message);
 		this.trigger(null, error);
 	},
 

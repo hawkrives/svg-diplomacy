@@ -34,6 +34,7 @@
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireCommaBeforeLineBreak": true,
   "requireDotNotation": true,
+  "requireKeywordsOnNewLine": ["else"],
   "requireLineFeedAtFileEnd": true,
   "requireOperatorBeforeLineBreak": true,
   "requireParenthesesAroundIIFE": true,

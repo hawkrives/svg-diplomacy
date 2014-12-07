@@ -6,7 +6,7 @@ let Subtitle = React.createClass({
 	},
 	render() {
 		return React.createElement('h2', {className: 'subtitle'}, this.props.text)
-	}
+	},
 })
 
 export default Subtitle

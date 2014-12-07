@@ -25,7 +25,7 @@ let Tutorial = React.createClass({
 			{id: 'tutorial'},
 			title,
 			tutorial)
-	}
+	},
 })
 
 export default Tutorial

@@ -6,7 +6,7 @@ let Help = React.createClass({
 	getInitialState() {
 		return {
 			rulesHTML: '<p>Loading Rules&hellip;</p>',
-			tutorialHTML: '<p>Loading Tutorial&hellip;</p>'
+			tutorialHTML: '<p>Loading Tutorial&hellip;</p>',
 		}
 	},
 	componentWillMount() {
@@ -41,7 +41,7 @@ let Help = React.createClass({
 			title,
 			rules,
 			tutorial)
-	}
+	},
 })
 
 export default Help

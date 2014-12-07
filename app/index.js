@@ -1,5 +1,7 @@
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 import * as keys from './data/parse-api-key.json'
 Parse.initialize(keys.app_id, keys.js_key);
+// jscs:enable
 
 import * as attachFastClick from 'fastclick'
 attachFastClick(document.body);
@@ -25,7 +27,7 @@ import Search    from './views/search'
 import Tutorial  from './views/tutorial'
 
 let routes = (
-	React.createElement(Router.Route, {handler: App, name: 'App', path: "/"},
+	React.createElement(Router.Route, {handler: App, name: 'App', path: '/'},
 		React.createElement(Router.DefaultRoute, {handler: Home, name: 'home'}),
 		React.createElement(Router.Route, {handler: GamesList, name: 'games'}),
 		React.createElement(Router.Route, {handler: Auth, name: 'sign-up'}),

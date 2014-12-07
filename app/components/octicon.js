@@ -2,7 +2,7 @@ import * as React from 'react'
 
 let Octicon = React.createClass({
 	render() {
-		return React.createElement('span', {className: "octicon octicon-" + this.props.icon})
+		return React.createElement('span', {className: 'octicon octicon-' + this.props.icon})
 	}
 })
 
