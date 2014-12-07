@@ -50,11 +50,11 @@ BROWSERSYNC_OPTS  := start --config ./bs-config.js
 
 all: watch
 
-build: clean | javascript markup stylesheets lint
+build: clean | markup icons javascript stylesheets lint
 
 lint: lint-javascript lint-stylesheets
 
-watch: | browser-sync watch-everything
+watch: clean | markup icons browser-sync watch-everything
 	$(call run-module, nodemon) --watch $(DEST) ./noop.js
 
 clean:
