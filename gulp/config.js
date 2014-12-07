@@ -14,10 +14,8 @@ module.exports = {
 		],
 	},
 	lint: {
-		src: [
-			src + '**/*.js',
-			'./gulp/**/*.js',
-		],
+		// src: `{${src},gulp}**/*.js`, in es6 template syntax
+		src: '{' + src + ',gulp}' + '**/*.js',
 	},
 	sass: {
 		src: src + 'sass/**/*.{sass,scss}',
