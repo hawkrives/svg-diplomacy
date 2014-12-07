@@ -132,8 +132,8 @@ watch-stylesheets: prepare-directories
 
 # Lints javascript by way of jscs and jshint
 lint-javascript:
-	$(call run-module, jscs) $(SRC)**/*.js gulp/**/*.js
-	$(call run-module, jshint) --reporter node_modules/jshint-stylish/stylish.js $(SRC)**/*.js gulp/**/*.js
+	$(call run-module, jscs) $(SRC)**/*.js
+	$(call run-module, jshint) --reporter node_modules/jshint-stylish/stylish.js $(SRC)**/*.js
 
 # Will lint the scss by way of node-sass eventually
 lint-stylesheets:
