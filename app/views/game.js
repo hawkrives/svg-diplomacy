@@ -63,7 +63,7 @@ let Game = React.createClass({
 	saveGame() {
 		console.log('saving', this.state.game.id)
 		this.state.game.save()
-			.then((...args) => console.log('game saved', args))
+			.then((result) => console.log('game saved', result))
 	},
 	updateGame(ev) {
 		console.log(ev.target.value)
