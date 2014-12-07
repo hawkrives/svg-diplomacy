@@ -18,7 +18,6 @@ import App       from './views/app'
 import Auth      from './views/auth'
 import Create    from './views/create'
 import Game      from './views/game'
-import GamesList from './views/games-list'
 import Help      from './views/help'
 import Home      from './views/home'
 import Profile   from './views/profile'
@@ -29,7 +28,6 @@ import Tutorial  from './views/tutorial'
 let routes = (
 	React.createElement(Router.Route, {handler: App, name: 'App', path: '/'},
 		React.createElement(Router.DefaultRoute, {handler: Home, name: 'home'}),
-		React.createElement(Router.Route, {handler: GamesList, name: 'games'}),
 		React.createElement(Router.Route, {handler: Auth, name: 'sign-up'}),
 		React.createElement(Router.Route, {handler: Auth, name: 'sign-in'}),
 		React.createElement(Router.Route, {handler: Game, name: 'game', path: 'game/:gameId'}),
