@@ -1,0 +1,71 @@
+{
+  "esnext": true,
+  "fileExtensions": [
+    ".js"
+  ],
+  "excludeFiles": [
+    "node_modules/**"
+  ],
+  "requireTrailingComma": {
+    "ignoreSingleValue": true,
+    "ignoreSingleLine": true
+  },
+  "disallowEmptyBlocks": true,
+  "disallowImplicitTypeConversion": [
+    "numeric",
+    "boolean",
+    "binary",
+    "string"
+  ],
+  "disallowMixedSpacesAndTabs": "smart",
+  "disallowMultipleLineStrings": true,
+  "disallowMultipleVarDecl": true,
+  "disallowNewlineBeforeBlockStatements": true,
+  "disallowPaddingNewlinesInBlocks": true,
+  "disallowQuotedKeysInObjects": "allButReserved",
+  "disallowSpaceAfterObjectKeys": true,
+  "disallowSpaceAfterPrefixUnaryOperators": true,
+  "disallowSpaceBeforePostfixUnaryOperators": true,
+  "disallowSpacesInCallExpression": true,
+  "disallowSpacesInsideArrayBrackets": "nested",
+  "disallowTrailingWhitespace": true,
+  "disallowYodaConditions": true,
+  "requireBlocksOnNewline": 1,
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
+  "requireCommaBeforeLineBreak": true,
+  "requireDotNotation": true,
+  "requireLineFeedAtFileEnd": true,
+  "requireOperatorBeforeLineBreak": true,
+  "requireParenthesesAroundIIFE": true,
+  "requireSpaceAfterBinaryOperators": true,
+  "requireSpaceBeforeKeywords": true,
+  "requireSpaceAfterKeywords": [
+    "do",
+    "for",
+    "if",
+    "else",
+    "switch",
+    "case",
+    "try",
+    "catch",
+    "void",
+    "while",
+    "with",
+    "return",
+    "typeof"
+  ],
+  "requireSpaceAfterLineComment": true,
+  "requireSpaceBeforeBinaryOperators": true,
+  "requireSpaceBeforeBlockStatements": true,
+  "requireSpacesInConditionalExpression": true,
+  "safeContextKeyword": [
+    "self"
+  ],
+  "validateIndentation": "\t",
+  "validateLineBreaks": "LF",
+  "validateParameterSeparator": ", ",
+  "validateQuoteMarks": {
+    "mark": "'",
+    "escape": true
+  }
+}

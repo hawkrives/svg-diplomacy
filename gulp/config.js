@@ -13,6 +13,12 @@ module.exports = {
 			"!" + dest + "**.map"
 		]
 	},
+	lint: {
+		src: [
+			src + '**/*.js',
+			'./gulp/**/*.js',
+		],
+	},
 	sass: {
 		src: src + "sass/**/*.{sass,scss}",
 		dest: dest
