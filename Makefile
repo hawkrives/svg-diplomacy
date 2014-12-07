@@ -7,12 +7,12 @@ DEST := build/
 JS_ENTRY := $(SRC)index.js
 SCSS_ENTRY := $(SRC)sass/app.scss
 
-NODE_SASS_OPTS    := $(SRC)sass/app.scss -o $(DEST) --source-comments
 BROWSERIFY_OPTS   := -e $(JS_ENTRY) -o $(DEST)app.js -t 6to5-browserify --extension=es6 --full-paths --verbose --debug
 UGLIFY_OPTS       := $(DEST)app.js -o $(DEST)app.min.js --screw-ie8 --unsafe
 EXORCIST_OPTS     := $(DEST)app.js.map < $(DEST)app.js > $(DEST)app.js
-AUTOPREFIXER_OPTS := $(DEST)app.css --map
-CSSWRING_OPTS     := $(DEST)app.css $(DEST)app.min.css --sourcemap
+NODE_SASS_OPTS    := $(SRC)sass/app.scss --source-comments
+AUTOPREFIXER_OPTS :=
+CSSWRING_OPTS     := - $(DEST)app.min.css --sourcemap
 BROWSERSYNC_OPTS  := start --config ./bs-config.js
 
 
@@ -41,7 +41,7 @@ BROWSERSYNC_OPTS  := start --config ./bs-config.js
 
 
 # PHONY rules - used to tell Make that these are rules, not targets
-.PHONY: all build watch clean init browser-sync stylesheets javascript markup lint compile-stylesheets compile-javascript prepare-directories process-stylesheets process-javascript
+.PHONY: all build watch clean init browser-sync stylesheets javascript markup lint compile-javascript prepare-directories process-javascript
 
 
 #
@@ -80,16 +80,10 @@ icons: prepare-directories
 
 
 # `make stylesheets` compiles, then runs process-proccessors on the stylesheets.
-stylesheets: compile-stylesheets process-stylesheets
-
-# `make compile-stylesheets` compiles the stylesheets via node-sass
-compile-stylesheets: prepare-directories
-	$(call run-module, node-sass) $(NODE_SASS_OPTS)
-
-# `make process-stylesheets` runs process-proccessors on the compiled stylesheets
-process-stylesheets:
-	$(call run-module, autoprefixer) $(AUTOPREFIXER_OPTS)
-	$(call run-module, csswring) $(CSSWRING_OPTS)
+stylesheets: prepare-directories
+	$(call run-module, node-sass) $(NODE_SASS_OPTS); $(call run-module, autoprefixer) $(AUTOPREFIXER_OPTS) < ./app.css > $(DEST)app.css
+	rm ./app.css
+	# | $(call run-module, csswring) $(CSSWRING_OPTS)
 
 
 # `make javascript` compiles, then runs process-proccessors on the javascript.
@@ -122,8 +116,8 @@ watch-javascript: prepare-directories
 
 # Runs node-sass in the background, then runs nodemon to execute process-stylesheets and lint-stylesheets on changes
 watch-stylesheets: prepare-directories
-	$(call run-module, node-sass) $(NODE_SASS_OPTS) --watch
-	$(call run-module, nodemon) --watch $(SRC) -e scss --exec "$(MAKE) process-stylesheets lint-stylesheets"
+	# $(call run-module, node-sass) $(NODE_SASS_OPTS) --watch
+	$(call run-module, nodemon) --watch $(SRC) -e scss --exec "$(MAKE) stylesheets lint-stylesheets"
 
 
 #
