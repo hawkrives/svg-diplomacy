@@ -32,7 +32,7 @@ gulp.task('browserify', function(callback) {
 			debug: config.debug,
 		});
 
-		bundler.transform('6to5-browserify');
+		bundler.transform(to5Browserify);
 
 		var bundle = function() {
 			// Log when bundling starts
