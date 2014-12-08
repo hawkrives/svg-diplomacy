@@ -83,7 +83,7 @@ javascript: prepare-directories
 
 # Runs watchify in the background, then runs nodemon to execute `lint-javascript` on changes
 watch-javascript: prepare-directories
-	$(watchify) $(BROWSERIFY_OPTS) &
+	$(call run-module, watchify) $(BROWSERIFY_OPTS) &
 	$(call run-module, nodemon) --watch $(SRC) -e js --exec "$(MAKE) lint-javascript"
 
 # Runs node-sass in the background, then runs nodemon to execute `stylesheets` on changes
