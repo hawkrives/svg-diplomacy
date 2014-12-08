@@ -1,21 +1,22 @@
 import * as Reflux from 'reflux'
+import * as _ from 'lodash'
 import mapActions from '../actions/mapActions'
 import userStore from './userStore'
+import {PlayableMap} from '../models/map'
 
 let mapStore = Reflux.createStore({
 	listenables: mapActions,
 
 	init() {
 		this.maps = [];
-		this.listenTo(userStore, this._updateMapListFromParse, this._updateMapListFromParse);
+
+		this.listenTo(userStore, this._updateDataFromParse, this._updateDataFromParse);
 	},
 
-	_updateMapListFromParse(user) {
-		let PlayableMap = Parse.Object.extend('Map')
+	_updateDataFromParse() {
 		let allMaps = new Parse.Query(PlayableMap)
 		allMaps.find()
 			.then(results => {
-				console.log(results)
 				this.maps = results
 				this.trigger(this.maps)
 			})
@@ -25,7 +26,24 @@ let mapStore = Reflux.createStore({
 		return this.maps;
 	},
 
-	createMap() {},
+	createMap(options) {
+		let map = new PlayableMap()
+		map.set('name', options.name || 'Untitled Map')
+		map.set('players', parseInt(options.players, 10) || 2)
+		map.set('width', options.width || 'auto')
+		map.set('height', options.height || 'auto')
+		map.set('countries', options.countries || [])
+		map.set('spaces', options.spaces || [])
+
+		map.save()
+			.then(this._updateDataFromParse)
+	},
+
+	destroyMap(mapId) {
+		let mapToDestroy = _.find(this.maps, {id: mapId})
+		mapToDestroy.destroy()
+			.then(this._updateDataFromParse)
+	},
 })
 
 export default mapStore
