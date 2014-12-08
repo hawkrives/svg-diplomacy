@@ -7,12 +7,10 @@ DEST := build/
 JS_ENTRY := $(SRC)index.js
 SCSS_ENTRY := $(SRC)sass/app.scss
 
-BROWSERIFY_OPTS   := -e $(JS_ENTRY) -o $(DEST)app.js -t 6to5-browserify --extension=es6 --full-paths --verbose --debug
-UGLIFY_OPTS       := $(DEST)app.js -o $(DEST)app.min.js --screw-ie8 --unsafe
-EXORCIST_OPTS     := $(DEST)app.js.map < $(DEST)app.js > $(DEST)app.js
-NODE_SASS_OPTS    := $(SRC)sass/app.scss --source-comments
+BROWSERIFY_OPTS   := -e $(JS_ENTRY) -o $(DEST)app.js -t 6to5-browserify --extension=es6 --verbose --debug
+NODE_SASS_OPTS    := $(SRC)sass/app.scss --source-comments -o $(DEST)
 AUTOPREFIXER_OPTS :=
-CSSWRING_OPTS     := - $(DEST)app.min.css --sourcemap
+CSSWRING_OPTS     := $(DEST)app.css $(DEST)app.min.css --sourcemap
 BROWSERSYNC_OPTS  := start --config ./bs-config.js
 
 
@@ -81,9 +79,9 @@ icons: prepare-directories
 
 # `make stylesheets` compiles, then runs process-proccessors on the stylesheets.
 stylesheets: prepare-directories
-	$(call run-module, node-sass) $(NODE_SASS_OPTS); $(call run-module, autoprefixer) $(AUTOPREFIXER_OPTS) < ./app.css > $(DEST)app.css
-	rm ./app.css
-	# | $(call run-module, csswring) $(CSSWRING_OPTS)
+	$(call run-module, node-sass) $(NODE_SASS_OPTS)
+	$(call run-module, autoprefixer) $(AUTOPREFIXER_OPTS) $(DEST)app.css
+	$(call run-module, csswring) $(CSSWRING_OPTS)
 
 
 # `make javascript` compiles, then runs process-proccessors on the javascript.
@@ -93,10 +91,9 @@ javascript: compile-javascript process-javascript
 compile-javascript: prepare-directories $(SRC)**/*.js
 	$(call run-module, browserify) $(BROWSERIFY_OPTS)
 
-# `make process-javascript` uglifies (minifies) the javascript
+# `make process-javascript` {--uglifies (minifies) the javascript--} does nothing.
 process-javascript:
-	# $(call run-module, exorcist) $(EXORCIST_OPTS)
-	# $(call run-module, uglifyjs) $(UGLIFY_OPTS)
+	@echo "nothing to do here."
 
 
 #
@@ -110,7 +107,7 @@ watch-everything:
 	$(MAKE) watch-stylesheets &
 
 # Runs Watchify in the background, then runs nodemon to execute process-javascript and lint-javascript on changes
-watch-javascript: prepare-directories
+watch-javascript: prepare-directories compile-javascript
 	$(call run-module, watchify) $(BROWSERIFY_OPTS) &
 	$(call run-module, nodemon) --watch $(SRC) -e js --exec "$(MAKE) process-javascript lint-javascript"
 
