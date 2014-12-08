@@ -1,15 +1,14 @@
-# Variables
+# Functions
 NODE_PREFIX := node node_modules/.bin/
 run-module = $(addprefix $(NODE_PREFIX), $1)
 
-SRC := app/
+# Variables
+SRC  := app/
 DEST := build/
-JS_ENTRY := $(SRC)index.js
-SCSS_ENTRY := $(SRC)sass/app.scss
 
-BROWSERIFY_OPTS   := -e $(JS_ENTRY) -o $(DEST)app.js -t 6to5-browserify --extension=es6 --verbose --debug
+BROWSERIFY_OPTS   := -e $(SRC)index.js -o $(DEST)app.js -t 6to5-browserify --verbose --debug
 NODE_SASS_OPTS    := $(SRC)sass/app.scss --source-comments -o $(DEST)
-AUTOPREFIXER_OPTS :=
+AUTOPREFIXER_OPTS := $(DEST)app.css
 CSSWRING_OPTS     := $(DEST)app.css $(DEST)app.min.css --sourcemap
 BROWSERSYNC_OPTS  := start --config ./bs-config.js
 
@@ -24,22 +23,11 @@ BROWSERSYNC_OPTS  := start --config ./bs-config.js
 # can no longer find the source that taught me about it.
 
 # $(call fn, argument) is Makefile function syntax. It's used in here for
-# getting the path to a js command-line executable like browserify.
-
-# I broke the `stylesheets` and `javascript` tasks up into `compile-` and
-# `process-` tasks to be slighly DRYer. Very slightly. Anyway, because
-# browserify and watchify take the same arguments, and the only difference in
-# the node-sass invocation is the `--watch` flag, those are the only thing
-# that needs to go in the `compile-` command; the stuff that runs on the
-# generated file can be run without changes, so it gets put in the `process-`
-# task.
-
-# Some of these rules could possibly be replaced by their resultant filenames,
-# to take advantage of make's don't-rebuild-unless-i-need-to philosophy.
+# getting the path to a js command-line executable like browserify or node-sass.
 
 
 # PHONY rules - used to tell Make that these are rules, not targets
-.PHONY: all build watch clean init browser-sync stylesheets javascript markup lint compile-javascript prepare-directories process-javascript
+.PHONY: build lint watch clean init
 
 
 #
@@ -50,10 +38,11 @@ all: watch
 
 build: clean | markup icons javascript stylesheets lint
 
-lint: lint-javascript lint-stylesheets
+lint: lint-javascript
 
-watch: clean | markup icons browser-sync watch-everything
-	$(call run-module, nodemon) --watch $(DEST) ./noop.js
+watch: clean | markup icons browser-sync
+	$(MAKE) watch-javascript &
+	$(MAKE) watch-stylesheets &
 
 clean:
 	rm -rf $(DEST)
@@ -76,24 +65,15 @@ markup: prepare-directories
 icons: prepare-directories
 	cp -r $(SRC)icons $(DEST)icons
 
-
-# `make stylesheets` compiles, then runs process-proccessors on the stylesheets.
+# `make stylesheets` compiles, then runs post-proccessors on the stylesheets.
 stylesheets: prepare-directories
 	$(call run-module, node-sass) $(NODE_SASS_OPTS)
-	$(call run-module, autoprefixer) $(AUTOPREFIXER_OPTS) $(DEST)app.css
+	$(call run-module, autoprefixer) $(AUTOPREFIXER_OPTS)
 	$(call run-module, csswring) $(CSSWRING_OPTS)
 
-
-# `make javascript` compiles, then runs process-proccessors on the javascript.
-javascript: compile-javascript process-javascript
-
-# `make compile-javascript` compiles the javascript via browserify
-compile-javascript: prepare-directories $(SRC)**/*.js
+# `make javascript` compiles, then runs post-proccessors on the javascript.
+javascript: prepare-directories
 	$(call run-module, browserify) $(BROWSERIFY_OPTS)
-
-# `make process-javascript` {--uglifies (minifies) the javascript--} does nothing.
-process-javascript:
-	@echo "nothing to do here."
 
 
 #
@@ -101,20 +81,14 @@ process-javascript:
 #   automatically re-compile them, via nodemon.
 #
 
-# Invokes both watch-javascript and watch-stylesheets
-watch-everything:
-	$(MAKE) watch-javascript &
-	$(MAKE) watch-stylesheets &
+# Runs watchify in the background, then runs nodemon to execute `lint-javascript` on changes
+watch-javascript: prepare-directories
+	$(watchify) $(BROWSERIFY_OPTS) &
+	$(call run-module, nodemon) --watch $(SRC) -e js --exec "$(MAKE) lint-javascript"
 
-# Runs Watchify in the background, then runs nodemon to execute process-javascript and lint-javascript on changes
-watch-javascript: prepare-directories compile-javascript
-	$(call run-module, watchify) $(BROWSERIFY_OPTS) &
-	$(call run-module, nodemon) --watch $(SRC) -e js --exec "$(MAKE) process-javascript lint-javascript"
-
-# Runs node-sass in the background, then runs nodemon to execute process-stylesheets and lint-stylesheets on changes
+# Runs node-sass in the background, then runs nodemon to execute `stylesheets` on changes
 watch-stylesheets: prepare-directories
-	# $(call run-module, node-sass) $(NODE_SASS_OPTS) --watch
-	$(call run-module, nodemon) --watch $(SRC) -e scss --exec "$(MAKE) stylesheets lint-stylesheets"
+	$(call run-module, nodemon) --watch $(SRC) -e scss --exec "$(MAKE) stylesheets"
 
 
 #
@@ -125,10 +99,6 @@ watch-stylesheets: prepare-directories
 lint-javascript:
 	$(call run-module, jscs) $(SRC)**/*.js
 	$(call run-module, jshint) --reporter node_modules/jshint-stylish/stylish.js $(SRC)**/*.js
-
-# Will lint the scss by way of node-sass eventually
-lint-stylesheets:
-	# $(call run-module, node-sass) $(NODE_SASS_OPTS) --lint # unfortunately, the --lint argument doesn't exist right now.
 
 
 #
@@ -146,6 +116,7 @@ prepare-directories:
 
 # De-duplicates the node_modules folder; should shrink the thing slightly
 node-shrink:
+	npm prune
 	npm dedupe
 
 # Lists outdated dependencies
