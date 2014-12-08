@@ -43,6 +43,7 @@ lint: lint-javascript
 watch: clean | markup icons browser-sync
 	$(MAKE) watch-javascript &
 	$(MAKE) watch-stylesheets &
+	$(call run-module, nodemon) --watch $(DEST) ./noop.js
 
 clean:
 	rm -rf $(DEST)
