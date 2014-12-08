@@ -23,9 +23,10 @@
 	"abbrev": String,
 	"type": String,
 	"naval": Boolean,
-	"moveTo": [Number],
+	"moveTo": [Object{"land": [Number], "sea": [Number]},
 	"territory": [Number] || null,
 	"path": String || Number(/*id of territory's path to render*/),
 	"supply": Object{x,y} || null,
 	"drawUnit": Object{x,y} || null,
+	"label": String || Number(/*id of territory's label to render*/),
 }
