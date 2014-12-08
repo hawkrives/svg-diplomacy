@@ -1,15 +1,4 @@
-let obj = Parse.Object
-
-class Map extends obj {
-	constructor() {
-		this.name = ''
-		this.width = 0
-		this.height = 0
-		this.players = 0
-		this.countries = []
-		this.spaces = []
-	}
-}
+let PlayableMap = Parse.Object.extend('Map')
 
 class Country {
 	constructor() {
@@ -34,3 +23,5 @@ class Space {
 		this.drawUnit = {x:0, y:0}
 	}
 }
+
+export {PlayableMap}
