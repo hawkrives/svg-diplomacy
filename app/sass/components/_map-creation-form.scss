@@ -4,6 +4,11 @@
 	}
 }
 
-.raw-map-list .key {
-	font-weight: bold;
+.raw-map-list {
+	.one-map {
+		margin-bottom: 1em;
+	}
+	.key {
+		font-weight: bold;
+	}
 }

@@ -18,7 +18,7 @@ let MapListItem = React.createClass({
 		components.unshift(React.createElement('div', {className: 'map-part-id', key: 'id'},
 			React.createElement('span', {className: 'key'}, 'id: '), this.props.map.id))
 		components.push(React.createElement('button', {onClick: this.destroyMap, key: 'deleteButton'}, 'Delete Map'))
-		return React.createElement('div', null,
+		return React.createElement('div', {className: 'one-map'},
 			components)
 	},
 })
