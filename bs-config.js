@@ -3,6 +3,6 @@ module.exports = {
 	server: {
 		baseDir: 'build/'
 	},
-	// reloadDelay: 500,
+	reloadDelay: 500,
 	open: false,
 }
