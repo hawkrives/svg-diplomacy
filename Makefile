@@ -69,7 +69,7 @@ icons: prepare-directories
 stylesheets: prepare-directories
 	$(call run-module, node-sass) $(NODE_SASS_OPTS)
 	$(call run-module, autoprefixer) $(AUTOPREFIXER_OPTS)
-	$(call run-module, csswring) $(CSSWRING_OPTS)
+	@#$(call run-module, csswring) $(CSSWRING_OPTS)
 
 # `make javascript` compiles, then runs post-proccessors on the javascript.
 javascript: prepare-directories
