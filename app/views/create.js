@@ -12,10 +12,12 @@ let MapListItem = React.createClass({
 	},
 	render() {
 		let components = _.map(this.props.map.attributes, (value, key) => {
-			return React.createElement('div', {className: `map-part-${key}`}, key, ': ', value)
+			return React.createElement('div', {className: `map-part-${key}`, key: key},
+				React.createElement('span', {className: 'key'}, key, ': '), JSON.stringify(value, null, 2))
 		})
-		components.unshift(React.createElement('div', {className: 'map-part-id'}, 'id: ', this.props.map.id))
-		components.push(React.createElement('button', {onClick: this.destroyMap}, 'Delete Map'))
+		components.unshift(React.createElement('div', {className: 'map-part-id', key: 'id'},
+			React.createElement('span', {className: 'key'}, 'id: '), this.props.map.id))
+		components.push(React.createElement('button', {onClick: this.destroyMap, key: 'deleteButton'}, 'Delete Map'))
 		return React.createElement('div', null,
 			components)
 	},
