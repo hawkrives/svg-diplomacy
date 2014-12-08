@@ -6,7 +6,7 @@
 	"players": [
 		Parse.User.id
 	],
-	"mapId": Parse.map.id,
+	"mapId": Parse.Object.Map.id,
 	"countriesToPlayers": [
 		Object({
 			country: String,
