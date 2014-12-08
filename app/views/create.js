@@ -35,9 +35,9 @@ let Create = React.createClass({
 		ev.preventDefault()
 		mapActions.createMap({
 			name: this.refs.name.getDOMNode().value,
-			players: this.refs.players.getDOMNode().value,
-			width: this.refs.width.getDOMNode().value,
-			height: this.refs.height.getDOMNode().value,
+			players: parseInt(this.refs.players.getDOMNode().value, 10),
+			width: parseInt(this.refs.width.getDOMNode().value, 10),
+			height: parseInt(this.refs.height.getDOMNode().value, 10),
 			countries: this.refs.countries.getDOMNode().value,
 			spaces: this.refs.spaces.getDOMNode().value,
 		})

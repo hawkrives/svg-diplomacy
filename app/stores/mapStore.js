@@ -29,7 +29,7 @@ let mapStore = Reflux.createStore({
 	createMap(options) {
 		let map = new PlayableMap()
 		map.set('name', options.name || 'Untitled Map')
-		map.set('players', parseInt(options.players, 10) || 2)
+		map.set('players', options.players || 2)
 		map.set('width', options.width || 'auto')
 		map.set('height', options.height || 'auto')
 		map.set('countries', options.countries || [])
