@@ -5,4 +5,7 @@ let mapActions = Reflux.createActions([
 	'destroyMap',
 ])
 
+window.actions = window.actions || {}
+window.actions.mapActions = mapActions
+
 export default mapActions
