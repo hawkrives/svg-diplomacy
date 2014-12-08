@@ -6,7 +6,7 @@ run-module = $(addprefix $(NODE_PREFIX), $1)
 SRC  := app/
 DEST := build/
 
-BROWSERIFY_OPTS   := -e $(SRC)index.js -o $(DEST)app.js -t 6to5-browserify --verbose --debug
+BROWSERIFY_OPTS   := -e $(SRC)index.js -o $(DEST)app.js -t 6to5-browserify --verbose #--debug
 NODE_SASS_OPTS    := $(SRC)sass/app.scss --source-comments -o $(DEST)
 AUTOPREFIXER_OPTS := $(DEST)app.css
 CSSWRING_OPTS     := $(DEST)app.css $(DEST)app.min.css --sourcemap
