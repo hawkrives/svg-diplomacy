@@ -50,10 +50,10 @@ gulp.task('browserify', function(callback) {
 				// desired output filename here.
 				.pipe(source(bundleConfig.outputName))
 				// Turn on sourcemaps
-				.pipe(buffer())
-				.pipe(sourcemaps.init({loadMaps: true}))
-				.pipe(uglify())
-				.pipe(sourcemaps.write('.'))
+				// .pipe(buffer())
+				// .pipe(sourcemaps.init({loadMaps: true}))
+				// .pipe(uglify())
+				// .pipe(sourcemaps.write('.'))
 				// Specify the output destination
 				.pipe(gulp.dest(bundleConfig.dest))
 				.on('end', reportFinished);
