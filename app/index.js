@@ -14,6 +14,10 @@ window.fetch = (url, opts) => window.rawfetch(url, opts).then(status)
 import * as React from 'react'
 import * as Router from 'react-router'
 
+import * as userStore from './stores/userStore'
+import * as gameStore from './stores/gameStore'
+import * as mapStore from './stores/mapStore'
+
 import App       from './views/app'
 import Auth      from './views/auth'
 import Create    from './views/create'

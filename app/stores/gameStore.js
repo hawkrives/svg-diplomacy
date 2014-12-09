@@ -18,6 +18,7 @@ let gameStore = Reflux.createStore({
 		allGames.find()
 			.then(results => {
 				this.games = _.sortBy(results, (game) => game.get('updatedAt'))
+				console.log('games', this.games)
 				this.trigger(this.games)
 			})
 	},
