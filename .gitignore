@@ -5,4 +5,4 @@ node_modules
 build/
 parse-api-key.json
 global.json
-npm-debug.log
+*.log
