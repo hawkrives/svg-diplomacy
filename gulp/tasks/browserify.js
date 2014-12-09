@@ -9,12 +9,15 @@
 */
 
 var browserify   = require('browserify');
-var watchify     = require('watchify');
+var buffer       = require('vinyl-buffer');
 var bundleLogger = require('../util/bundleLogger');
+var config       = require('../config').browserify;
 var gulp         = require('gulp');
 var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
-var config       = require('../config').browserify;
+var sourcemaps   = require('gulp-sourcemaps');
+var uglify       = require('gulp-uglify');
+var watchify     = require('watchify');
 var to5Browserify = require('6to5-browserify');
 
 gulp.task('browserify', function(callback) {
@@ -46,6 +49,11 @@ gulp.task('browserify', function(callback) {
 				// stream gulp compatible. Specifiy the
 				// desired output filename here.
 				.pipe(source(bundleConfig.outputName))
+				// Turn on sourcemaps
+				.pipe(buffer())
+				.pipe(sourcemaps.init({loadMaps: true}))
+				.pipe(uglify())
+				.pipe(sourcemaps.write('.'))
 				// Specify the output destination
 				.pipe(gulp.dest(bundleConfig.dest))
 				.on('end', reportFinished);
