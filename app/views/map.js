@@ -48,9 +48,9 @@ let RenderedMap = React.createClass({
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible
 				let vectorPath = space.path;
-				let cantUsePath = typeof vectorPath === 'number'
-				let path = cantUsePath ? null : React.createElement('path', {d: vectorPath})
 
+				let paths = [];
+				let cantUsePath = false;
 				let args = {
 					className: React.addons.classSet({
 						space: true,
@@ -60,11 +60,22 @@ let RenderedMap = React.createClass({
 					space: space,
 					key: space.id,
 				}
-				if (cantUsePath) {
+
+				if ( typeof vectorPath === 'number') {
+					// it's referencing another path, so we use a <use>.
+					cantUsePath = true;
 					args.dangerouslySetInnerHTML = {__html: `<use xlink:href="#space-${vectorPath}" />`}
 				}
+				else if (vectorPath instanceof Array) {
+					// it has multiple paths; probably islands.
+					paths = _.map(vectorPath, (path, index) => React.createElement('path', {d: path, key: index}))
+				}
+				else {
+					// it has only a single path
+					paths = [React.createElement('path', {d: vectorPath, key: 0})]
+				}
 
-				return React.createElement('g', args, cantUsePath ? null : path)
+				return React.createElement('g', args, cantUsePath ? null : paths)
 			}))
 
 		let countries = _.map(this.state.map.countries, (country) =>
