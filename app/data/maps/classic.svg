@@ -259,7 +259,7 @@
 			<path d=""></path>
 		</g>
 	</defs>
-	<g class="country" id="england">
+	<g class="country" fill="#f96ac0" id="england">
 		<g>
 			<use xlink:href="#space-20"></use>
 		</g>
@@ -279,7 +279,7 @@
 			<use xlink:href="#space-25"></use>
 		</g>
 	</g>
-	<g class="country" id="france">
+	<g class="country" fill="#36aedc" id="france">
 		<g>
 			<use xlink:href="#space-26"></use>
 		</g>
@@ -299,7 +299,7 @@
 			<use xlink:href="#space-31"></use>
 		</g>
 	</g>
-	<g class="country" id="germany">
+	<g class="country" fill="#787679" id="germany">
 		<g>
 			<use xlink:href="#space-32"></use>
 		</g>
@@ -319,7 +319,7 @@
 			<use xlink:href="#space-37"></use>
 		</g>
 	</g>
-	<g class="country" id="italy">
+	<g class="country" fill="#a5e86e" id="italy">
 		<g>
 			<use xlink:href="#space-38"></use>
 		</g>
@@ -339,7 +339,7 @@
 			<use xlink:href="#space-43"></use>
 		</g>
 	</g>
-	<g class="country" id="austria">
+	<g class="country" fill="#f93c52" id="austria">
 		<g>
 			<use xlink:href="#space-44"></use>
 		</g>
@@ -359,7 +359,7 @@
 			<use xlink:href="#space-49"></use>
 		</g>
 	</g>
-	<g class="country" id="turkey">
+	<g class="country" fill="#ffe95d" id="turkey">
 		<g>
 			<use xlink:href="#space-50"></use>
 		</g>
@@ -376,7 +376,7 @@
 			<use xlink:href="#space-54"></use>
 		</g>
 	</g>
-	<g class="country" id="russia">
+	<g class="country" fill="#a892e3" id="russia">
 		<g>
 			<use xlink:href="#space-55"></use>
 		</g>
