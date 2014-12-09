@@ -12,9 +12,9 @@ let mapStore = Reflux.createStore({
 	init() {
 		this.maps = [];
 
-		let classic = new LocalMap(classicMap);
-		this.localMaps = [classic];
-		console.log(this.localMaps)
+		this.localMaps = [
+			new LocalMap(classicMap),
+		];
 
 		this.listenTo(userStore, this._updateDataFromParse, this._updateDataFromParse);
 	},
