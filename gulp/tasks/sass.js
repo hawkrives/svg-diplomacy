@@ -10,7 +10,7 @@ var config = require('../config').sass;
 gulp.task('sass', function() {
 	var processors = [
         autoprefixer({browsers: config.browsers}),
-        csswring
+        // csswring
     ]
 
 	return gulp.src(config.src)
