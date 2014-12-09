@@ -102,6 +102,7 @@ let RenderedMap = React.createClass({
 				style: {
 					width: this.state.map.width + 'px',
 					height: this.state.map.height + 'px',
+					backgroundColor: 'lightblue',
 				},
 			},
 			spaces,
