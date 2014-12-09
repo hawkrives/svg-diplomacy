@@ -2,13 +2,19 @@ import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import mapActions from '../actions/mapActions'
 import userStore from './userStore'
-import {PlayableMap} from '../models/map'
+import {PlayableMap, LocalMap} from '../models/map'
+
+import * as classicMap from '../data/maps/classic.json'
 
 let mapStore = Reflux.createStore({
 	listenables: mapActions,
 
 	init() {
 		this.maps = [];
+
+		let classic = new LocalMap(classicMap);
+		this.localMaps = [classic];
+		console.log(this.localMaps)
 
 		this.listenTo(userStore, this._updateDataFromParse, this._updateDataFromParse);
 	},
@@ -17,7 +23,7 @@ let mapStore = Reflux.createStore({
 		let allMaps = new Parse.Query(PlayableMap)
 		allMaps.find()
 			.then(results => {
-				this.maps = results
+				this.maps = _.uniq(this.localMaps.concat(results), (map) => map.id)
 				console.log('maps', this.maps)
 				this.trigger(this.maps)
 			})

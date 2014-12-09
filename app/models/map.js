@@ -1,4 +1,8 @@
 let PlayableMap = Parse.Object.extend('Map')
+let LocalMap = (map) => {
+	map.get = (key) => map[key];
+	return map;
+}
 
 class Country {
 	constructor() {
@@ -24,4 +28,4 @@ class Space {
 	}
 }
 
-export {PlayableMap}
+export {PlayableMap, LocalMap}
