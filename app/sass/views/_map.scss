@@ -1,0 +1,18 @@
+.map {
+	fill: blue;
+	-webkit-transform-origin-x: 0px;
+	-webkit-transform-origin-y: 0px;
+	-webkit-transform-origin-z: initial;
+	transform-origin: 0 0;
+	transform: scale(0.5);
+}
+
+.map {
+	.country {
+		filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+	}
+	.country > g {
+		stroke-width: 1px;
+		stroke: black;
+	}
+}

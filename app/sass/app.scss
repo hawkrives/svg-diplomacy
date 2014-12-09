@@ -15,11 +15,4 @@
 @import "components/view-title";
 
 @import "views/auth";
-
-.map {
-	fill: blue;
-	-webkit-transform-origin-x: 0px;
-	-webkit-transform-origin-y: 0px;
-	-webkit-transform-origin-z: initial;
-	transform: scale(0.5);
-}
+@import "views/map";
