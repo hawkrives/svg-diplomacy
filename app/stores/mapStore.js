@@ -18,6 +18,7 @@ let mapStore = Reflux.createStore({
 		allMaps.find()
 			.then(results => {
 				this.maps = results
+				console.log('maps', this.maps)
 				this.trigger(this.maps)
 			})
 	},

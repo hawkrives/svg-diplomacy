@@ -4,6 +4,8 @@ import * as _ from 'lodash'
 import {State} from 'react-router'
 import userStore from '../stores/userStore'
 import gameStore from '../stores/gameStore'
+import mapStore from '../stores/mapStore'
+import RenderedMap from './map'
 
 let Editable = React.createClass({
 	getInitialState() {
@@ -54,7 +56,7 @@ let Game = React.createClass({
 	},
 	onGameChanged(games) {
 		let gameId = this.getParams().gameId
-		let game = _.find(games, game => game.id === gameId)
+		let game = _.find(games, (game) => game.id === gameId)
 		this.setState({game})
 	},
 	getInitialState() {
@@ -79,7 +81,10 @@ let Game = React.createClass({
 				onChange: this.updateGame,
 				onSave: this.saveGame,
 			})
-			gameView = React.createElement('div', {className: 'game-view'}, gameTitle)
+			gameView = React.createElement('div',
+				{className: 'game-view'},
+				gameTitle,
+				React.createElement(RenderedMap, {mapId: this.state.game.get('mapId')}))
 		}
 
 		return React.createElement('div',
