@@ -99,12 +99,10 @@ let RenderedMap = React.createClass({
 		// todo: perhaps find a better way to render the spaces
 		let occupiedSpaces = _.union(
 			_.flatten(this.state.map.countries, 'startSpaces'),
-			_.compact(
-				_.flatten(
-					_.map(this.state.map.countries, (country) => {
-						return _.map(country.startSpaces, (spaceId) => {
-							return _.find(this.state.map.spaces, { 'id': spaceId }).territory
-						})
+			_.compact(_.flatten(_.map(this.state.map.countries, (country) => {
+				return _.map(country.startSpaces, (spaceId) => {
+					return _.find(this.state.map.spaces, { 'id': spaceId }).territory
+				})
 		}))))
 
 		let emptySpaces = _.filter(this.state.map.spaces, (space) => {
