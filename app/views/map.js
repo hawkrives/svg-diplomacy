@@ -105,9 +105,7 @@ let RenderedMap = React.createClass({
 				})
 		}))))
 
-		let emptySpaces = _.filter(this.state.map.spaces, (space) => {
-			return !_.contains(occupiedSpaces, space.id)
-		})
+		let emptySpaces = _.reject(this.state.map.spaces, (space) => _.contains(occupiedSpaces, space.id))
 
 		let otherSpaces = React.createElement('g', 
 			{
