@@ -113,7 +113,7 @@ let RenderedMap = React.createClass({
 			{
 				className: 'empty country',
 				id: 'vacant',
-				key: 'Vacant',
+				key: 'vacant',
 				country: null,
 			},
 			_.map(emptySpaces, (space) => {
