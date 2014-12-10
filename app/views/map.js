@@ -79,6 +79,27 @@ let RenderedMap = React.createClass({
 				return React.createElement('g', args, cantUsePath ? null : paths)
 			}))
 
+		let patterns = React.createElement('defs', null,
+			React.createElement('pattern',
+				{
+					className: 'pattern',
+					id: 'diagonalHatch',
+					key: 'diagonalHatch',
+					patternUnits: 'userSpaceOnUse',
+					width: '32',
+					height: '32',
+				},
+				React.createElement('path',
+				{
+					className: 'fill',
+					d: 'M 0,0 l 32,0 0,32 -32,0 0,-32',
+				}),
+				React.createElement('path',
+				{
+					className: 'stripes',
+					d: 'M -8,8 l 16,-16 M 0,32 l 32,-32 M 24,40 l 16,-16',
+				})))
+
 		let countries = _.map(this.state.map.countries, (country) =>
 			React.createElement('g',
 				{
@@ -117,10 +138,13 @@ let RenderedMap = React.createClass({
 				country: null,
 			},
 			_.map(emptySpaces, (space) => {
+				let isTraversable = (space.moveTo.land.length > 0 || space.moveTo.sea.length > 0)
+
 				return React.createElement('g',
 					{
 						id: `empty-${space.id}`,
 						key: `empty-${space.id}`,
+						fill: isTraversable ? 'bisque' : 'url(#diagonalHatch)',
 						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${space.id}" />`},
 					}
 				)
@@ -133,6 +157,7 @@ let RenderedMap = React.createClass({
 				height: this.state.map.height,
 			},
 			spaces,
+			patterns,
 			countries,
 			otherSpaces)
 	},

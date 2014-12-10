@@ -9,12 +9,20 @@
 }
 
 .map {
+	defs > pattern > .stripes {
+		stroke-width: 8px;
+		stroke: darkgray;
+	}
+	defs > pattern > .fill {
+		fill: bisque;
+	}
 	.empty-country {
-		fill: cornsilk;
+		fill: bisque;
 	}
 	.country {
 		filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
 	}
+
 	.country > g {
 		stroke-width: 1px;
 		stroke: black;
