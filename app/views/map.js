@@ -97,13 +97,14 @@ let RenderedMap = React.createClass({
 		)
 
 		// todo: perhaps find a better way to render the spaces
-		let occupiedSpaces = _.union(
-			_.flatten(this.state.map.countries, 'startSpaces'),
-			_.compact(_.flatten(_.map(this.state.map.countries, (country) => {
-				return _.map(country.startSpaces, (spaceId) => {
-					return _.find(this.state.map.spaces, { 'id': spaceId }).territory
-				})
-		}))))
+		let occupiedSpaces = _(this.state.map.countries)
+			.pluck('startSpaces')
+			.flatten()
+			.map((spaceId) => _.find(this.state.map.spaces, {id: spaceId}).territory)
+			.flatten()
+			.compact()
+			.union(_.flatten(this.state.map.countries, 'startSpaces'))
+			.value()
 
 		let emptySpaces = _.reject(this.state.map.spaces, (space) => _.contains(occupiedSpaces, space.id))
 
