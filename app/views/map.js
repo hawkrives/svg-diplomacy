@@ -128,10 +128,8 @@ let RenderedMap = React.createClass({
 		return React.createElement('svg',
 			{
 				className: 'map',
-				style: {
-					width: this.state.map.width + 'px',
-					height: this.state.map.height + 'px',
-				},
+				width: this.state.map.width,
+				height: this.state.map.height,
 			},
 			spaces,
 			countries,
