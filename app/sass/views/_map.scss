@@ -1,5 +1,6 @@
 .map {
-	fill: blue;
+	background-color: lightblue;
+	fill: white;
 	-webkit-transform-origin-x: 0px;
 	-webkit-transform-origin-y: 0px;
 	-webkit-transform-origin-z: initial;
@@ -8,6 +9,9 @@
 }
 
 .map {
+	.country.empty {
+		fill: cornsilk;
+	}
 	.country {
 		filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
 	}
