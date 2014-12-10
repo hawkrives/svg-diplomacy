@@ -55,8 +55,8 @@ let RenderedMap = React.createClass({
 					className: React.addons.classSet({
 						space: true,
 						'supply-center': Boolean(space.supply),
-					}) + ' space-type-' + space.type,
-					id: 'space-' + space.id,
+					}) + ` space-type-${space.type}`,
+					id: `space-${space.id}`,
 					space: space,
 					key: space.id,
 				}
@@ -89,8 +89,8 @@ let RenderedMap = React.createClass({
 				},
 				_.map(country.startSpaces, (spaceId) => {
 					return React.createElement('g', {
-						key: country.name + '-' + spaceId,
-						id: country.name + '-' + spaceId,
+						key: `${country.name}-${spaceId}`,
+						id: `${country.name}-${spaceId}`,
 						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${spaceId}" />`},
 					})
 				}))
@@ -118,8 +118,8 @@ let RenderedMap = React.createClass({
 			_.map(emptySpaces, (space) => {
 				return React.createElement('g',
 					{
-						id: 'empty-' + space.id,
-						key: 'empty-' + space.id,
+						id: `empty-${space.id}`,
+						key: `empty-${space.id}`,
 						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${space.id}" />`},
 					}
 				)
