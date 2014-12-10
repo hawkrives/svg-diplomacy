@@ -1,124 +1,81 @@
-## Rights
-- Mods and admins take a relaxed approach to rule enforcement based on mutual respect for other players.
-- Mods and admins keep an objective view when they have to enforce rules.
-- Mods and admins give the benefit of the doubt to a reasonable degree.
-- Mod and admin actions are logged, and can be checked over if requested.
+## Order format
 
-## Responsibilities
-- Use common sense and respect other players.
-- Help the mods and admins keep our server fun.
-- Don't abuse the software to gain an edge in online games that isn't possible in a real-life.
-- Keep up to date with the rules and <a href="faq.php" class="light">FAQ</a> to make things easier for us.
-- Protect your account with a strong password and a secure account e-mail address.
+**This section should probably be done once we've finished the game play.**
 
-## Rules
-### 1. No multi-accounting.
-You may only have *one account*, second accounts are not allowed under *any circumstances*, and will be banned. This may also lead to your first account also being banned. If you forget your password, use the lost password finder <a class="light" href="logon.php?forgotPassword=1">here</a>. If you are still unable to log in, contact the mods.
+## Types of Orders
 
-### 2. No meta-gaming.
-You can't make alliances *for reasons outside a game*, such as because you are friends, relatives or in return for a favour in another game. This is known as metagaming and is against the rules because it gives an unfair advantage to those involved. If you are worried that you can't stab someone because you want to stay friends, then that's fair enough but you can't join a game with them.
+On each turn, each player can order all, some, or none of its units to do one of the following:
+- Hold
+- Move
+- Support
+- Convoy
 
-### 3. Don't work around game messaging/press rules.
+## Movement
 
-If you enter a game with limited press/messaging (such as global-only) then *you can't use other methods* such as email or PM to bypass this.
+### Move Order
+Move orders move units to provinces that are occupied.
 
-If you are playing in a gunboat (no press/anon game) do not post anything about your game in the forum and refrain from posting in any threads you feel might be referencing your game. 
+### How to Write a Move Order
+**Insert explanation here once the game play is up and running.**
 
-Using the Pause or Cancel buttons as signals to other players is violating the press rules. For example, voting pause to signal the desire for a smaller draw is not allowed. If you need a pause in a gunboat game contact the moderators (see below for the contact details) and explain why. 
+### Army Movement
+An Army can be ordered to move into an adjacent inland or coastal province. They cannot be ordered to move into a water province. If a unit is ordered to move into a province where there is already another unit, the move will not occur. Armies can move across water provinces in a convoy, which is explained later.
 
-Posting in the forum about an ongoing gunboat (no press) game is not allowed for anyone. This includes offering advice to game participants or predicting the outcome of a game. All questions about a gunboat game must wait until the game is completed. 
+### Fleet Movement
+A Fleet can be ordered to move to an adjacent water or coastal province. Fleets cannot move into an inland province. A fleet can move to an adjacent coastal province only if it is adjacent along the coastline (as if the fleet was moving down to the coast).
 
-### 4. Do not use the software or moderators as a diplomacy tactic.
-Lying is fine in Diplomacy *except when it gives mods/admins unnecessary work to do!*
-Falsely accusing someone of being a multi-accounter/meta-gaming to rally others against them in a game, or claiming that your orders didn't come out the way you entered them to cover up your motives, means mods/admins spend time looking for cheaters/bugs which were made up.
+### Restricted Movement
+If a location of the map does not have a name cannot be occupied.
 
-All accusations against other players must be made directly to the mod/admin team directly as specified below, *in private*, for this reason, and software bug claims *must be genuine*, even if only told to another player.
+In the classic game, Switzerland, Siberia, and Ireland cannot be occupied. Additionally, all islands with the exception of England cannot be occupied.
 
-### 5. The Pause/Unpause feature is not a diplomatic tool.
-The pause is there to stop players missing their orders, but is *not part of the game*. As such pausing or unpausing should not be used for diplomatic gain, such as refusing to unpause unless other players will draw the game. If it is being abused staff may step in to sort it out.
- 
-The pause button cannot be used as a diplomatic tool and should not be used for anything other than indicating the need for a pause. If you need a pause in a gunboat game that was not agreed upon before the game, email the moderators before voting to pause. The moderators will post in the global press asking for a pause. The other players are not obligated to pause in this situation, and force pauses will not be granted except in emergency situations until the moderators can find someone to watch your account. Please try to plan ahead and avoid the need for pauses if possible.
+### Some Movement Clarifications in the Classic Game
+Bulgaria, Spain, and St. Petersburg each have two distinct coasts. A Fleet enters one of these provinces along one coast and can move to provinces adjacent to that coast only. The Fleet is still considered to be occupying the entire province.
 
-### 6. You may not access another player's account without permission.
-In general, account sitting (getting someone you trust to log on as you and issue orders when you are unable to) is encouraged. However, you must not get a sitter or sit for somebody you share games with. Also, anything done by the sitter whilst on your account is your responsibility, so make sure you're happy with that before you give them your password.
-It is also *your responsibility* to change your password after allowing someone to use your account.
+If a Fleet is ordered to one of these provinces and it is possible for the Fleet to move to either coast, the order must specify which coast.
 
-### 7. Do not spam the forum or private messaging system.
-You are welcome and indeed encouraged to join in with the community but be sensible. Try to keep replies relevant to the conversation and don't start too many threads at once. Before posting a question relating to the software please read the <a href="faq.php" class="light">FAQ</a>.
+Kiel and Constantinople each have one coast.
 
-### 8. Follow common sense.
-The rules above are mainly ones which might not be obvious; just because a specific rule isn't given here doesn't mean moderators can't stop people ruining the server for others!
+An Army or Fleet can move from Sweden to Denmark (or vice versa) in one turn.
 
-## Mod Policies
-### Canceling Games
-We will consider canceling games when there are 2 or more multis in the same game and they had a considerable effect on the game as a whole. We will encourage the remaining players to cancel on their own. If they do not, we will ask for an explanation. We will determine if the explanation is warranted and either leave it alone or force cancel with an explanation. If no players have been eliminated the remaining players may choose to draw the game before it is cancelled.
+The common border with Denmark does not separate the coast of Sweden into two coastlines.
 
-### Pausing/Unpausing
-The players should take care of this themselves as much as they can. If they have agreed to pause, then they should have agreed when to unpause. If the unpause doesn't happen by said date, then they can email us and we will look into it. 
+Denmark does not border Berlin.
 
-### Cheating Accusations/Repercussions
-If you make cheating accusations in the forum, we will give you a stern warning and/or "small" point dock (10% of your total points or 20 to 100 <img src="images/icons/points.png" alt="D" />, whichever is smaller) for the first offense depending on the severity of the accusation and how well-acquainted you are with the site. For the second offense, we will levy a heavier fine, which will be at least 10% of your total points, and we will consider more serious actions depending on the specifics of the offense.
+### Standoffs
+The situations and outcomes described below involve forces of equal strength attempting to occupy the same province at the same time. There a few exceptions to these rules, which are described later.
 
-### Appealing Decisions
-Mod decisions can be appealed, either by another mod or by the admin. See below for the mod and admin contact details.
+- All the units remain in their original province.
+- A unit already in the province is not disloged.
+- One unit moving can stop a unit or series of units from moving.
+- Units cannot trade places without the use of a convoy.
+- Three or more units can rotate provinces during a turn, provided that none of them directly trade places.
 
-## Tournaments and Feature Games
-There are two types of special games on the site. If you're interested in starting or running either type please email the mod team (see the contact details below) and explain your idea to the moderator team.
+## Support
 
-### 1. Feature Games
-These are special rule games like Chainsaw diplomacy, Pacifist diplomacy, or School of War games. They may involve violating some site rules so a predefined set of rules must be agreed upon by every participant. 
+All of the units in Diplomacy have equal strength, so the only way a unit can attack is if it receives support.
 
-- No more then 14 players (exception being a world game).
-- May require shuffling players by the moderator team.
-- Must email webdipmod@gmail.com for quick approval, this email should include participants, pause agreements (if any), end game requirements (if any), and alteration to press rules (if any). 
+An Army or Fleet can provide support to another Army or Fleet.
 
-### 2. Tournaments
-These are larger series of games with unique scoring rules to determine a winner. These games will have a Tournament Director (TD), who will oversee all aspects of the tournament. This person will be responsible for making decisions relating to the scoring, pauses, and anything affecting game play. 
+There are two types of support.
+- Offensive: supporting an attacking move order
+- Defensive: supporting a hold, support, or convoy order
 
-- Must request approval *before* advertising. The moderator team reserves the right to deny tournaments or tournament directors. 
-- Must include a set of rules for potential participants to agree upon, that all participants must agree too.
-- In the case of cheating less severe then multi accounting the Tournament Director will be informed and given the choice of removing this player from the tournament. Participants agree to honor the TD's decision in these matters and send all complaints privately to the TD or moderator team. 
-- The moderator team will enforce site-wide rules in touraments as they do other games.
-- Players within tournaments have to accept that the TD moderates their own tournament decisions. Please choose which tournaments to join carefully!
-- TD's may request the list and position of players in their tournament even in anonymous games expect for games they are participating in. 
-- TD's may request the moderator team pm or email any player with questions or warnings regarding the tournament. 
-- TD's may request a message be posted in every games public messaging, including anon games, to remind participants of tournament rules or for tournament scoring updates.
-- If a TD is given control of country assignments, force pause, draw, and so forth, he/she cannot moderate their own game. Either a second designated TD or a mod may moderate the game instead, but the TD will still have final say on any decisions.
-- As with all mod / admin decisions if you disagree with a decision you can appeal it. See below for the mod / admin contact details.
+Support can be provided to a fellow unit or to another player's unit.
 
-Please e-mail the mod / admin team if you want to start a tournament (see contact details below), and you will be asked some queries that will help us set the tournament up.
+**Note: Support can be given without consent and cannot be refused.**
 
-## Forum moderation
+If the attacking unit plus its support is stronger than the unit opposing it, the attacking unit can complete its move to the province it was ordered to. If the attacking unit and the defending unit have equal strength, the attacking unit cannot move. If the attacking unit is weaker than the defending unit, the attacking unit cannot complete its move.
 
-### Self-moderation
-A user-driven approach is generally taken to forum moderation:
+### How to Write a Support Order
+**This section will need to be finalized after the game play has been created.**
 
-- You can *mute any other user* which you don't want to see in the forum or get PMs from.
-- You can *mute any forum thread* you aren't interested in.
-- You can *mute any country* playing in a game with you.
+The support order must match the move the supported unit is trying to make.
 
-This allows you to block out anyone or any discussion you find offensive, and be as open or restrictive in what you see as you like!
 
-### Site-moderation
-Rarely self-moderation isn't enough; e.g. threads which share information on a 
-*private / anonymous / gunboat game*, or threads about 
-*suspected multi-accounters / meta-gamers / bugs*.
 
-These have a negative impact on games which self-moderation can't prevent, so the 
-mod team can *lock/silence* these threads:
 
-- Silences can apply to a *user or a thread*.
-- The details can be viewed on the forum page, when the "New thread" button is pressed.
-- Thread silences last indefinitely, but user silences expire after a brief *cool-off period*.
-- Silenced threads / users can *still be viewed*, however no more messages may be posted.
-- Silenced users can *still play in games*; it affects the forum only.
 
-Remember that mods will only silence users / threads when there has been a *clear rule violation*, as a *last resort*.
-If it's a *first time mistake*, and you inform the mods that you won't repeat it, they will probably be happy to *reduce your cool-off period*!
-
-Don't create new accounts to work around user silences, or post threads to continue on from ones which have been silenced! This may result in bans etc, which would be worse than simply keeping off the forum for a few days.
-
-Thanks for helping keep the forum from negatively impacting peoples' games!
 
 Thanks for reading,
 - The mod/admin team
