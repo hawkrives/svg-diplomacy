@@ -96,6 +96,39 @@ let RenderedMap = React.createClass({
 				}))
 		)
 
+		// todo: perhaps find a better way to render the spaces
+		let occupiedSpaces = _.union(
+			_.flatten(this.state.map.countries, 'startSpaces'),
+			_.compact(
+				_.flatten(
+					_.map(this.state.map.countries, (country) => {
+						return _.map(country.startSpaces, (spaceId) => {
+							return _.find(this.state.map.spaces, { 'id': spaceId }).territory
+						})
+		}))))
+
+		let emptySpaces = _.filter(this.state.map.spaces, (space) => {
+			return !_.contains(occupiedSpaces, space.id)
+		})
+
+		let otherSpaces = React.createElement('g', 
+			{
+				className: 'empty country',
+				id: 'vacant',
+				key: 'Vacant',
+				fill: 'cornsilk',
+				country: null,
+			},
+			_.map(emptySpaces, (space) => {
+				return React.createElement('g',
+					{
+						id: 'empty-' + space.id,
+						key: 'empty-' + space.id,
+						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${space.id}" />`}
+					}
+				)
+			}))
+
 		return React.createElement('svg',
 			{
 				className: 'map',
@@ -106,7 +139,8 @@ let RenderedMap = React.createClass({
 				},
 			},
 			spaces,
-			countries)
+			countries,
+			otherSpaces)
 	},
 })
 
