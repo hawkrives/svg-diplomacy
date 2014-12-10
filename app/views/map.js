@@ -107,7 +107,7 @@ let RenderedMap = React.createClass({
 
 		let emptySpaces = _.reject(this.state.map.spaces, (space) => _.contains(occupiedSpaces, space.id))
 
-		let otherSpaces = React.createElement('g', 
+		let otherSpaces = React.createElement('g',
 			{
 				className: 'empty country',
 				id: 'vacant',
