@@ -68,7 +68,8 @@ let RenderedMap = React.createClass({
 				}
 				else if (vectorPath instanceof Array) {
 					// it has multiple paths; probably islands.
-					paths = _.map(vectorPath, (path, index) => React.createElement('path', {d: path, key: index}))
+					paths = _.map(vectorPath, (path, index) =>
+						React.createElement('path', {d: path, key: index}))
 				}
 				else {
 					// it has only a single path
