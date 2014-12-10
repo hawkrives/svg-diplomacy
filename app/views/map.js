@@ -121,7 +121,7 @@ let RenderedMap = React.createClass({
 					{
 						id: 'empty-' + space.id,
 						key: 'empty-' + space.id,
-						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${space.id}" />`}
+						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${space.id}" />`},
 					}
 				)
 			}))
