@@ -1,6 +1,7 @@
 import * as Reflux from 'reflux'
 
 let gameActions = Reflux.createActions([
+	'updateGameList',
 	'createGame',
 	'makeMove',
 	'editGame',
@@ -13,5 +14,8 @@ let gameActions = Reflux.createActions([
 	'endGame',
 	'destroyGame',
 ])
+
+window.actions = window.actions || {}
+window.actions.gameActions = gameActions
 
 export default gameActions

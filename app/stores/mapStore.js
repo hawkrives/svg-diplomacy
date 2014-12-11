@@ -33,6 +33,11 @@ let mapStore = Reflux.createStore({
 		return this.maps;
 	},
 
+	updateMapList() {
+		console.log('updateMapList')
+		this._updateDataFromParse()
+	},
+
 	createMap(options) {
 		let map = new PlayableMap()
 		map.set('name', options.name || 'Untitled Map')

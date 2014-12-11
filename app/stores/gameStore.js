@@ -27,6 +27,11 @@ let gameStore = Reflux.createStore({
 		return this.games;
 	},
 
+	updateGameList() {
+		console.log('updateGameList')
+		this._updateDataFromParse()
+	},
+
 	createGame(title, owner, players, mapId, countriesToPlayers) {
 		let game = new Game()
 		game.set('title', title || 'Untitled Game')
