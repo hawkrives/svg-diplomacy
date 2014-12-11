@@ -62,12 +62,12 @@ let RenderedMap = React.createClass({
 					key: space.id,
 				}
 
-				if ( typeof vectorPath === 'number') {
+				if (_.isNumber(vectorPath)) {
 					// it's referencing another path, so we use a <use>.
 					cantUsePath = true;
 					args.dangerouslySetInnerHTML = {__html: `<use xlink:href="#space-${vectorPath}" />`}
 				}
-				else if (vectorPath instanceof Array) {
+				else if (_.isArray(vectorPath)) {
 					// it has multiple paths; probably islands.
 					paths = _.map(vectorPath, (path, index) =>
 						React.createElement('path', {d: path, key: index}))
