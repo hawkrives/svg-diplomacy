@@ -1,16 +1,9 @@
 import * as React from 'react/addons'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
-import mapStore from '../stores/mapStore'
 let cx = React.addons.classSet
 
 let RenderedMap = React.createClass({
-	mixins: [Reflux.listenTo(mapStore, 'onMapChanged', 'onMapChanged')],
-	onMapChanged(maps) {
-		console.log('renderedMap onMapChanged')
-		this.setState({maps})
-		this.findMap(this.props.mapId)
-	},
 	findMap(mapId) {
 		let map = this.props.map;
 		console.log('renderedMap', this.props.map)

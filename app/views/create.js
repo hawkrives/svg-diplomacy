@@ -2,7 +2,6 @@ import * as React from 'react'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import Toolbar from '../components/toolbar'
-import mapStore from '../stores/mapStore'
 import mapActions from '../actions/mapActions'
 
 let MapListItem = React.createClass({
@@ -24,15 +23,6 @@ let MapListItem = React.createClass({
 })
 
 let Create = React.createClass({
-	mixins: [Reflux.listenTo(mapStore, 'onMapsChanged', 'onMapsChanged')],
-	getInitialState() {
-		return {
-			maps: []
-		}
-	},
-	onMapsChanged(newMaps) {
-		this.setState({maps: newMaps})
-	},
 	createMap(ev) {
 		ev.preventDefault()
 		mapActions.createMap({
@@ -47,7 +37,7 @@ let Create = React.createClass({
 	render() {
 		let title = React.createElement('h1', {className: 'view-title'}, 'Create New ...')
 
-		let listOfMaps = React.createElement('ul', {className: 'raw-map-list'}, _.map(this.state.maps, map =>
+		let listOfMaps = React.createElement('ul', {className: 'raw-map-list'}, _.map(this.props.maps, map =>
 			React.createElement('li', {key: map.id}, React.createElement(MapListItem, {map: map}))))
 
 		let mapCreationForm = React.createElement('form', {className: 'map-creation-form', onSubmit: this.createMap},

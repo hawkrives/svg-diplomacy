@@ -2,32 +2,33 @@ import * as React from 'react'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 
-import userStore from '../stores/userStore'
-import gameStore from '../stores/gameStore'
-
 import GameList from '../components/game-list'
 
 let Home = React.createClass({
-	mixins: [
-		Reflux.listenTo(userStore, 'onUserChanged', 'onUserChanged'),
-		Reflux.listenTo(gameStore, 'onGameChanged', 'onGameChanged'),
-	],
-	onUserChanged(user) {
-		this.setState({user})
+	componentWillReceiveProps: function(nextProps) {
+		if (this.props.games && this.props.user) {
+			this.setState({loading: false})
+		}
 	},
-	onGameChanged(games) {
-		this.setState({games})
+	componentWillMount: function() {
+		this.componentWillReceiveProps(this.props)
 	},
 	getInitialState() {
-		return { user: undefined, games: [] }
+		return {
+			loading: true
+		}
 	},
 	render() {
 		console.log('homeProps', this.props)
-		let allGames = React.createElement(GameList, {title: 'All Games', games: this.state.games})
+
+		if (this.state.loading)
+			return React.createElement('div', {id: 'home'}, 'Loading...')
+
+		let allGames = React.createElement(GameList, {title: 'All Games', games: this.props.games})
 
 		let myGames;
-		if (this.state.user) {
-			let myGameObjects = _.filter(this.state.games, (game) => _.contains(game.get('players'), this.state.user.id))
+		if (this.props.user) {
+			let myGameObjects = _.filter(this.props.games, (game) => _.contains(game.get('players'), this.props.user.id))
 			myGames = React.createElement(GameList, {title: 'My Games', games: myGameObjects})
 		}
 
