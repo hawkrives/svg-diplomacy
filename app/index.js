@@ -45,9 +45,6 @@ let routes = (
 		React.createElement(Router.Route, {handler: Tutorial, name: 'tutorial', path: 'help/tutorial'}),
 		React.createElement(Router.Route, {handler: Create, name: 'create'})))
 
-let promise = Promise.all([gameActions.updateGameList(), mapActions.updateMapList()])
 Router.run(routes, (Handler, state) => {
-	promise.then(() => {
-		React.render(React.createElement(Handler), document.getElementById('container'))
-	})
+	React.render(React.createElement(Handler), document.getElementById('container'))
 })
