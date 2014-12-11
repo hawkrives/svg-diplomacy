@@ -25,18 +25,21 @@
 			type: String
 		})
 	]
-	"turnPhases": [
-		Object([{
-			player: Parse.User.id,
-			orders: [
-				Object{
+	"turnPhases": {
+		"Spring 1901": [
+			{
+				player: Parse.User.id, 
+				orders: [
 					armyId: Number,
 					type: String,
 					at: Number,
 					from: Number,
 					to: Number
-				}
-			]
-		}])
-	]
+				],
+			},
+			{ player: Parse.User.id, orders: [...] },
+			"..."
+		],
+		"Fall 1901": ["..."],
+	}
 }
