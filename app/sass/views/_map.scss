@@ -6,15 +6,15 @@
 	border: solid;
 }
 
-.map {
-	pattern > .stripes {
-		stroke-width: 8px;
-		stroke: darkgray;
-	}
-	pattern > .fill {
-		fill: bisque;
-	}
+.map pattern .stripes {
+	stroke-width: 8px;
+	stroke: darkgray;
+}
+.map pattern .fill {
+	fill: bisque;
+}
 
+.map {
 	.empty-country {
 		fill: bisque;
 	}
