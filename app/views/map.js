@@ -2,6 +2,7 @@ import * as React from 'react/addons'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import mapStore from '../stores/mapStore'
+let cx = React.addons.classSet
 
 let RenderedMap = React.createClass({
 	mixins: [Reflux.listenTo(mapStore, 'onMapChanged', 'onMapChanged')],
@@ -44,7 +45,7 @@ let RenderedMap = React.createClass({
 		}
 	},
 	render() {
-		let spaces = React.createElement('defs', null,
+		let spaces = React.createElement('defs', {id: 'all-spaces'},
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible
 				let vectorPath = space.path;
@@ -52,10 +53,11 @@ let RenderedMap = React.createClass({
 				let paths = [];
 				let cantUsePath = false;
 				let args = {
-					className: React.addons.classSet({
+					className: cx({
 						space: true,
 						'supply-center': Boolean(space.supply),
-					}) + ` space-type-${space.type}`,
+						['space-type-' + space.type]: true,
+					}),
 					id: `space-${space.id}`,
 					space: space,
 					key: space.id,
@@ -113,6 +115,7 @@ let RenderedMap = React.createClass({
 					return React.createElement('g', {
 						key: `${country.name}-${spaceId}`,
 						id: `${country.name}-${spaceId}`,
+						className: 'territory accessible-territory',
 						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${spaceId}" />`},
 					})
 				}))
@@ -134,7 +137,7 @@ let RenderedMap = React.createClass({
 			{
 				className: 'country empty-country',
 				id: 'vacant',
-				key: 'vacant',
+				key: 'Vacant',
 				country: null,
 			},
 			_.map(emptySpaces, (space) => {
@@ -144,7 +147,8 @@ let RenderedMap = React.createClass({
 					{
 						id: `empty-${space.id}`,
 						key: `empty-${space.id}`,
-						fill: isTraversable ? 'bisque' : 'url(#diagonalHatch)',
+						className: 'territory ' + (isTraversable ? 'accessible-territory' : 'inaccessible-territory'),
+						fill: isTraversable ? undefined : 'url(#diagonalHatch)',
 						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${space.id}" />`},
 					}
 				)
@@ -158,8 +162,7 @@ let RenderedMap = React.createClass({
 			},
 			spaces,
 			patterns,
-			countries,
-			otherSpaces)
+			React.createElement('g', {className: 'countries'}, countries, otherSpaces))
 	},
 })
 
