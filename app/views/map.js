@@ -128,13 +128,13 @@ let RenderedMap = React.createClass({
 			.pluck('id')
 			.value()
 
-		let seaSpaces = React.createElement('g', 
+		let seaSpaces = React.createElement('g',
 			{
 				className: 'ocean',
 				id: 'ocean',
 				key: 'Ocean',
 			},
-			_.map(seaSpaceIds, (spaceId) => React.createElement('g', 
+			_.map(seaSpaceIds, (spaceId) => React.createElement('g',
 				{
 					id: `sea-${spaceId}`,
 					key: `sea-${spaceId}`,
@@ -177,9 +177,9 @@ let RenderedMap = React.createClass({
 			},
 			spaces,
 			patterns,
-			React.createElement('g', 
-				{className: 'countries'}, 
-				countries, 
+			React.createElement('g',
+				{className: 'countries'},
+				countries,
 				otherSpaces),
 			seaSpaces)
 	},
