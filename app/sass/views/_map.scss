@@ -10,16 +10,18 @@
 }
 
 .map {
-	defs > pattern > .stripes {
+	pattern > .stripes {
 		stroke-width: 8px;
 		stroke: darkgray;
 	}
-	defs > pattern > .fill {
+	pattern > .fill {
 		fill: bisque;
 	}
+
 	.empty-country {
 		fill: bisque;
 	}
+
 	.countries {
 		filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
 	}
