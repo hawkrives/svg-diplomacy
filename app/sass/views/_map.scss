@@ -30,11 +30,10 @@
 	}
 
 	.supply-center {
-		// filter: opacity(50%);
 		opacity: 0.5;
 	}
 
 	.accessible-territory:hover,  {
-		filter: sepia(100%);
+		fill: white;
 	}
 }
