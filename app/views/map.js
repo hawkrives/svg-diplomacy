@@ -34,8 +34,10 @@ let RenderedMap = React.createClass({
 			},
 		}
 	},
+	onClickTerritory(ev) {
+		console.log(ev.target.attributes['data-id'].value);
+	},
 	render() {
-		console.log('RenderedMap', this.props, this.state)
 		let spaces = React.createElement('defs', {id: 'all-spaces'},
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible
@@ -47,10 +49,9 @@ let RenderedMap = React.createClass({
 					className: cx({
 						space: true,
 						'supply-center': Boolean(space.supply),
-						['space-type-' + space.type]: true,
+						[`space-type-${space.type}`]: true,
 					}),
 					id: `space-${space.id}`,
-					space: space,
 					key: space.id,
 				}
 
@@ -75,23 +76,14 @@ let RenderedMap = React.createClass({
 		let patterns = React.createElement('defs', null,
 			React.createElement('pattern',
 				{
-					className: 'pattern',
 					id: 'diagonalHatch',
 					key: 'diagonalHatch',
 					patternUnits: 'userSpaceOnUse',
 					width: '32',
 					height: '32',
 				},
-				React.createElement('path',
-				{
-					className: 'fill',
-					d: 'M 0,0 l 32,0 0,32 -32,0 0,-32',
-				}),
-				React.createElement('path',
-				{
-					className: 'stripes',
-					d: 'M -8,8 l 16,-16 M 0,32 l 32,-32 M 24,40 l 16,-16',
-				})))
+				React.createElement('path', {className: 'fill', d: 'M 0,0 l 32,0 0,32 -32,0 0,-32'}),
+				React.createElement('path', {className: 'stripes', d: 'M -8,8 l 16,-16 M 0,32 l 32,-32 M 24,40 l 16,-16'})))
 
 		let countries = _.map(this.state.map.countries, (country) =>
 			React.createElement('g',
@@ -100,14 +92,14 @@ let RenderedMap = React.createClass({
 					id: country.name.toLowerCase(),
 					key: country.name,
 					fill: country.vacantColor,
-					country: country,
 				},
 				_.map(country.startSpaces, (spaceId) => {
 					return React.createElement('g', {
 						key: `${country.name}-${spaceId}`,
 						id: `${country.name}-${spaceId}`,
+						onClick: this.onClickTerritory,
 						className: 'territory accessible-territory',
-						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${spaceId}" />`},
+						dangerouslySetInnerHTML: {__html: `<use data-id='${spaceId}' xlink:href="#space-${spaceId}" />`},
 					})
 				}))
 		)
@@ -130,17 +122,16 @@ let RenderedMap = React.createClass({
 		let seaSpaces = React.createElement('g',
 			{
 				className: 'ocean',
-				id: 'ocean',
 				key: 'Ocean',
 			},
 			_.map(seaSpaceIds, (spaceId) => React.createElement('g',
 				{
 					id: `sea-${spaceId}`,
 					key: `sea-${spaceId}`,
+					onClick: this.onClickTerritory,
 					className: 'territory accessible-territory sea-territory',
-					dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${spaceId}" />`},
-				})
-				)
+					dangerouslySetInnerHTML: {__html: `<use data-id='${spaceId}' xlink:href="#space-${spaceId}" />`},
+				}))
 			)
 
 		console.log('sea', seaSpaces)
@@ -165,9 +156,15 @@ let RenderedMap = React.createClass({
 					{
 						id: `empty-${space.id}`,
 						key: `empty-${space.id}`,
-						className: 'territory ' + (isTraversable ? 'accessible-territory' : 'inaccessible-territory') + (space.type === 'sea' ? ' sea-territory' : ''),
+						onClick: this.onClickTerritory,
+						className: cx({
+							territory: true,
+							'accessible-territory': isTraversable,
+							'inaccessible-territory': !isTraversable,
+							'sea-territory': (space.type === 'sea'),
+						}),
 						fill: isTraversable ? undefined : 'url(#diagonalHatch)',
-						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${space.id}" />`},
+						dangerouslySetInnerHTML: {__html: `<use data-id='${space.id}' xlink:href="#space-${space.id}" />`},
 					}
 				)
 			}))
