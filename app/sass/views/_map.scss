@@ -1,11 +1,8 @@
 .map {
 	background-color: lightblue;
 	fill: white;
-	-webkit-transform-origin-x: 0px;
-	-webkit-transform-origin-y: 0px;
-	-webkit-transform-origin-z: initial;
-	transform-origin: 0 0;
-	transform: scale(0.5);
+
+	// transform: perspective(1500px) rotateX(45deg) scale(1.35);
 	border: solid;
 }
 
