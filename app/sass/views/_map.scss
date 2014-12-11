@@ -19,7 +19,7 @@
 	.empty-country {
 		fill: bisque;
 	}
-	.country {
+	.countries {
 		filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
 	}
 
@@ -27,5 +27,15 @@
 		stroke-width: 1px;
 		stroke: black;
 		fill-rule: evenodd;
+	}
+
+	.supply-center {
+		// filter: opacity(50%);
+		opacity: 0.5;
+	}
+
+	.accessible-territory:hover,  {
+		stroke-width: 2px;
+		filter: sepia(100%);
 	}
 }
