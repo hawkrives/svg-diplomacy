@@ -143,14 +143,14 @@ let RenderedMap = React.createClass({
 				)
 			)
 
-		console.log("sea", seaSpaces)
+		console.log('sea', seaSpaces)
 
 		let emptySpaces = _(this.state.map.spaces)
 			.reject((space) => _.contains(occupiedSpaces, space.id))
 			.reject((space) => _.contains(seaSpaceIds, space.id))
 			.value()
 
-		console.log("empty", emptySpaces)
+		console.log('empty', emptySpaces)
 
 		let otherSpaces = React.createElement('g',
 			{
