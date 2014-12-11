@@ -15,7 +15,7 @@ let RenderedMap = React.createClass({
 			mapId = mapId.id
 
 		let map = _.find(this.state.maps, (map) => map.id === mapId)
-		console.log(this.state.maps, mapId, map)
+		// console.log(this.state.maps, mapId, map)
 		if (map) {
 			this.setState({
 				map: {
