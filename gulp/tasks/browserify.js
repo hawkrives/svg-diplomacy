@@ -11,14 +11,16 @@
 var browserify   = require('browserify');
 var buffer       = require('vinyl-buffer');
 var bundleLogger = require('../util/bundleLogger');
-var config       = require('../config').browserify;
+var exorcist     = require('exorcist');
 var gulp         = require('gulp');
 var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 var watchify     = require('watchify');
-var to5Browserify = require('6to5-browserify');
+var to5          = require('6to5-browserify');
+
+var config = require('../config').browserify;
 
 gulp.task('browserify', function(callback) {
 	var bundleQueue = config.bundleConfigs.length;
@@ -35,7 +37,7 @@ gulp.task('browserify', function(callback) {
 			debug: config.debug,
 		});
 
-		bundler.transform(to5Browserify);
+		bundler.transform(to5);
 
 		var bundle = function() {
 			// Log when bundling starts
@@ -45,6 +47,7 @@ gulp.task('browserify', function(callback) {
 				.bundle()
 				// Report compile errors
 				.on('error', handleErrors)
+				.pipe(exorcist(bundleConfig.dest + bundleConfig.outputName + '.map'))
 				// Use vinyl-source-stream to make the
 				// stream gulp compatible. Specifiy the
 				// desired output filename here.
