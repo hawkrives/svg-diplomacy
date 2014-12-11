@@ -7,16 +7,14 @@ let cx = React.addons.classSet
 let RenderedMap = React.createClass({
 	mixins: [Reflux.listenTo(mapStore, 'onMapChanged', 'onMapChanged')],
 	onMapChanged(maps) {
+		console.log('renderedMap onMapChanged')
 		this.setState({maps})
 		this.findMap(this.props.mapId)
 	},
 	findMap(mapId) {
-		if (mapId instanceof Parse.Object)
-			mapId = mapId.id
-
-		let map = _.find(this.state.maps, (map) => map.id === mapId)
-		// console.log(this.state.maps, mapId, map)
-		if (map) {
+		let map = this.props.map;
+		console.log('renderedMap', this.props.map)
+		if (this.props.map) {
 			this.setState({
 				map: {
 					width: map.get('width'),
@@ -45,6 +43,7 @@ let RenderedMap = React.createClass({
 		}
 	},
 	render() {
+		console.log('RenderedMap', this.props, this.state)
 		let spaces = React.createElement('defs', {id: 'all-spaces'},
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible

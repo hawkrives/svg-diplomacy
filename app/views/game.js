@@ -2,95 +2,82 @@ import * as React from 'react'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import {State} from 'react-router'
-import userStore from '../stores/userStore'
-import gameStore from '../stores/gameStore'
-import mapStore from '../stores/mapStore'
 import RenderedMap from './map'
-
-let Editable = React.createClass({
-	getInitialState() {
-		return {
-			content: '',
-			editing: false,
-		}
-	},
-	componentWillRecieveProps(nextProps) {
-		this.setState({content: nextProps.content})
-	},
-	componentWillMount() {
-		this.componentWillRecieveProps(this.props)
-	},
-	toggleEditing() {
-		let isStillEditing = !this.state.editing
-		this.setState({editing: isStillEditing})
-
-		if (!isStillEditing)
-			this.props.onSave()
-	},
-	onChange(ev) {
-		this.setState({content: ev.target.value})
-		this.props.onChange(ev)
-	},
-	onKeyDown(ev) {
-		if (ev.keyCode === 13)
-			this.toggleEditing()
-	},
-	render() {
-		if (this.state.editing) {
-			return React.createElement('span', null,
-				React.createElement('input', {ref: 'content', type: 'text', onChange: this.onChange, onKeyDown: this.onKeyDown, defaultValue: this.state.content}),
-				React.createElement('input', {type: 'submit', value: 'Submit', onClick: this.toggleEditing}))
-		}
-		return React.createElement('span', {onClick: this.toggleEditing}, this.state.content)
-	},
-})
+import gameActions from '../actions/gameActions'
+import ContentEditable from '../components/content-editable'
 
 let Game = React.createClass({
-	mixins: [
-		State,
-		Reflux.listenTo(userStore, 'onUserChanged', 'onUserChanged'),
-		Reflux.listenTo(gameStore, 'onGameChanged', 'onGameChanged'),
-	],
-	onUserChanged(user) {
-		this.setState({user})
-	},
-	onGameChanged(games) {
+	mixins: [State],
+	componentWillReceiveProps(nextProps) {
 		let gameId = this.getParams().gameId
-		let game = _.find(games, (game) => game.id === gameId)
-		this.setState({game})
+		let game = _.find(nextProps.games, {id: gameId})
+		if (game) {
+			let mapId = game.get('mapId')
+			if (mapId) {
+				console.log('map', nextProps.maps)
+				let map = _.find(nextProps.maps, (map) => {
+					return map.id === mapId.id
+				})
+				this.setState({game, map, loading: false, error: ''})
+			}
+			else {
+				this.setState({error: `couldn't find map ${mapId}`})
+			}
+		}
+		else {
+			this.setState({error: `couldn't find game ${gameId}`})
+		}
+	},
+	componentWillMount() {
+		this.componentWillReceiveProps(this.props)
 	},
 	getInitialState() {
-		return { user: null, game: null }
+		return {
+			game: null,
+			map: null,
+			error: null,
+			loading: true,
+		}
 	},
 	saveGame() {
 		console.log('saving', this.state.game.id)
 		this.state.game.save()
 			.then((result) => console.log('game saved', result))
+			.then(gameActions.updateGameList)
 	},
-	updateGame(ev) {
-		console.log(ev.target.value)
-		this.state.game.set('title', ev.target.value)
+	updateGameTitle(ev) {
+		// console.log(ev.target.textContent)
+		this.state.game.set('title', ev.target.textContent)
 	},
 	render() {
-		let title = React.createElement('h1', {className: 'view-title'}, 'Active Game (id: ' + this.getParams().gameId + ')')
-		let gameView = null;
+		let gameTitle;
+		if (this.state.loading)
+			gameTitle = 'Loading...'
+		if (this.state.game)
+			gameTitle = this.state.game.get('title')
 
-		if (this.state.game) {
-			let gameTitle = React.createElement(Editable, {
-				content: this.state.game.get('title'),
-				onChange: this.updateGame,
-				onSave: this.saveGame,
-			})
-			gameView = React.createElement('div',
-				{className: 'game-view'},
-				gameTitle,
-				React.createElement(RenderedMap, {mapId: this.state.game.get('mapId')}))
-		}
+		let gameTitleComponent = React.createElement(ContentEditable, {
+			className: 'game-title',
+			text: gameTitle,
+			onInput: this.updateGameTitle,
+			onEnter: this.saveGame,
+		})
+
+		let title = React.createElement('h1', {className: 'view-title'}, 'Active Game: ', gameTitleComponent)
+
+		let map;
+		if (this.state.map)
+			map = React.createElement(RenderedMap, {map: this.state.map})
+
+		let errorView = React.createElement('div',
+			{className: 'error'},
+			this.state.error)
 
 		return React.createElement('div',
 			{id: 'game'},
 			title,
-			gameView)
+			errorView,
+			map)
 	},
 })
 

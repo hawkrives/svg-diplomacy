@@ -22,6 +22,7 @@ let Home = React.createClass({
 		return { user: undefined, games: [] }
 	},
 	render() {
+		console.log('homeProps', this.props)
 		let allGames = React.createElement(GameList, {title: 'All Games', games: this.state.games})
 
 		let myGames;
