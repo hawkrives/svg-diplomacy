@@ -6,8 +6,7 @@ let cx = React.addons.classSet
 let RenderedMap = React.createClass({
 	findMap(mapId) {
 		let map = this.props.map;
-		console.log('renderedMap', this.props.map)
-		if (this.props.map) {
+		if (map) {
 			this.setState({
 				map: {
 					width: map.get('width'),
