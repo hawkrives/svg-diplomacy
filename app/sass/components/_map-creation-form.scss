@@ -1,22 +1,32 @@
 .map-creation-form {
-	label {
-		display: block;
-		margin-top: 0.25em;
-	}
+	border: solid 1px;
+	padding: 0.25em 0.5em;
 
-	input:not([type='submit']) {
-		border: 0;
-		border-bottom: solid 1px;
+	label {
+		display: flex;
+		margin-top: 0.25em;
+		align-items: center;
+
+		span {
+			flex-basis: 7em;
+		}
+		input {
+			flex: 1;
+		}
 	}
 
 	input[type='submit'] {
-		margin-top: 0.5em;
+		display: block;
+		margin: 0.5em auto 0.25em;
 	}
 }
 
 .raw-map-list {
 	.one-map {
 		margin-bottom: 1em;
+	}
+	button {
+		margin-top: 0.5em;
 	}
 	span:first-child {
 		font-weight: bold;

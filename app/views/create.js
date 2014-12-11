@@ -50,7 +50,7 @@ let Create = React.createClass({
 			React.createElement('label', null, 'Name: ', React.createElement('input', {type: 'text', ref: 'name', placeholder: 'Map Name'})),
 			React.createElement('label', null, 'Width: ', React.createElement('input', {type: 'text', ref: 'width', placeholder: 'Map Width (in pixels)'})),
 			React.createElement('label', null, 'Height: ', React.createElement('input', {type: 'text', ref: 'height', placeholder: 'Map Height (in pixels)'})),
-			React.createElement('label', null, 'Number of Players: ', React.createElement('input', {type: 'number', ref: 'players', placeholder: '2'})),
+			React.createElement('label', null, 'Player Count: ', React.createElement('input', {type: 'number', ref: 'players', placeholder: '2'})),
 			React.createElement('label', null, 'Countries: ', React.createElement('input', {type: 'text', ref: 'countries', placeholder: '[{/*CountryObjects*/}]'})),
 			React.createElement('label', null, 'Spaces: ', React.createElement('input', {type: 'text', ref: 'spaces', placeholder: '[{/*SpaceObjects*/}]'})),
 			React.createElement('input', {type: 'submit', value: 'Create new map'}))
