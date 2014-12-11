@@ -1,5 +1,6 @@
 var dest = './build/';
 var src = './app/';
+var lib = './lib/';
 
 module.exports = {
 	browserSync: {
@@ -29,6 +30,10 @@ module.exports = {
 	images: {
 		src: src + 'images/**',
 		dest: dest + 'images',
+	},
+	parse: {
+		src: lib + '*',
+		dest: dest,
 	},
 	markup: {
 		src: src + 'htdocs/*',
