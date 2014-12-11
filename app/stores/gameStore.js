@@ -11,9 +11,11 @@ let gameStore = Reflux.createStore({
 		this.games = [];
 
 		this.listenTo(userStore, this._updateDataFromParse, this._updateDataFromParse);
+		this.user = null;
 	},
 
 	_updateDataFromParse(user) {
+		this.user = _.isUndefined(user) ? this.user : user;
 		let allGames = new Parse.Query(Game)
 		allGames.find()
 			.then(results => {
