@@ -5,6 +5,7 @@ import userStore from './userStore'
 import {PlayableMap, LocalMap} from '../models/map'
 
 import * as classicMap from '../data/maps/classic.json'
+import * as northfieldMap from '../data/maps/northfield.json'
 
 let mapStore = Reflux.createStore({
 	listenables: mapActions,
@@ -14,6 +15,7 @@ let mapStore = Reflux.createStore({
 
 		this.localMaps = [
 			new LocalMap(classicMap),
+			new LocalMap(northfieldMap),
 		];
 
 		this.listenTo(userStore, this._updateDataFromParse, this._updateDataFromParse);
