@@ -122,14 +122,41 @@ let RenderedMap = React.createClass({
 			.union(_.flatten(this.state.map.countries, 'startSpaces'))
 			.value()
 
-		let emptySpaces = _.reject(this.state.map.spaces, (space) => _.contains(occupiedSpaces, space.id))
+		let seaSpaceIds = _(this.state.map.spaces)
+			.filter({type: 'sea'})
+			.pluck('id')
+			.value()
+
+		let seaSpaces = React.createElement('g',
+			{
+				className: 'ocean',
+				id: 'ocean',
+				key: 'Ocean',
+			},
+			_.map(seaSpaceIds, (spaceId) => React.createElement('g',
+				{
+					id: `sea-${spaceId}`,
+					key: `sea-${spaceId}`,
+					className: 'territory accessible-territory sea-territory',
+					dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${spaceId}" />`},
+				})
+				)
+			)
+
+		console.log("sea", seaSpaces)
+
+		let emptySpaces = _(this.state.map.spaces)
+			.reject((space) => _.contains(occupiedSpaces, space.id))
+			.reject((space) => _.contains(seaSpaceIds, space.id))
+			.value()
+
+		console.log("empty", emptySpaces)
 
 		let otherSpaces = React.createElement('g',
 			{
 				className: 'country empty-country',
 				id: 'vacant',
 				key: 'Vacant',
-				country: null,
 			},
 			_.map(emptySpaces, (space) => {
 				let isTraversable = (space.moveTo.land.length > 0 || space.moveTo.sea.length > 0)
@@ -138,7 +165,7 @@ let RenderedMap = React.createClass({
 					{
 						id: `empty-${space.id}`,
 						key: `empty-${space.id}`,
-						className: 'territory ' + (isTraversable ? 'accessible-territory' : 'inaccessible-territory'),
+						className: 'territory ' + (isTraversable ? 'accessible-territory' : 'inaccessible-territory') + (space.type === 'sea' ? ' sea-territory' : ''),
 						fill: isTraversable ? undefined : 'url(#diagonalHatch)',
 						dangerouslySetInnerHTML: {__html: `<use xlink:href="#space-${space.id}" />`},
 					}
@@ -153,7 +180,12 @@ let RenderedMap = React.createClass({
 			},
 			spaces,
 			patterns,
-			React.createElement('g', {className: 'countries'}, countries, otherSpaces))
+			seaSpaces,
+			React.createElement('g',
+				{className: 'countries'},
+				countries,
+				otherSpaces
+			))
 	},
 })
 
