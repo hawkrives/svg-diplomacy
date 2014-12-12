@@ -4,8 +4,12 @@ import * as _ from 'lodash'
 let cx = React.addons.classSet
 
 let RenderedMap = React.createClass({
-	findMap(mapId) {
-		let map = this.props.map;
+	findMap(props) {
+		let map = props.map;
+		if (!map && props.mapId && props.maps) {
+			let mapId = _.isObject(props.mapId) ? props.mapId.id : props.mapId;
+			map = _.find(props.maps, (map) => map.id === mapId)
+		}
 		if (map) {
 			this.setState({
 				map: {
@@ -18,7 +22,7 @@ let RenderedMap = React.createClass({
 		}
 	},
 	componentWillReceiveProps(nextProps) {
-		this.findMap(nextProps.mapId)
+		this.findMap(nextProps)
 	},
 	componentWillMount() {
 		this.componentWillReceiveProps(this.props)
