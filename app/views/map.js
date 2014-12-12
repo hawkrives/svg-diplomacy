@@ -172,7 +172,7 @@ let RenderedMap = React.createClass({
 
 		return React.createElement('svg',
 			{
-				className: 'map',
+				className: 'map ' + (this.props.className || ''),
 				viewBox: `0 0 ${this.state.map.width} ${this.state.map.height}`,
 			},
 			spaces,
