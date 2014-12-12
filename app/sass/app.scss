@@ -1,10 +1,15 @@
+@charset "UTF-8";
+
+// Normalize
 @import "normalize";
+
+// Include reusable stuff
 @import "variables";
-@import "base";
 @import "mixins";
 
-@import "icons/octicons.css";
+@import "base";
 
+// Import components
 @import "components/block-link";
 @import "components/game";
 @import "components/game-list";
@@ -14,6 +19,7 @@
 @import "components/search-box";
 @import "components/toolbar";
 @import "components/view-title";
+@import "components/octicons";
 
 @import "views/auth";
 @import "views/map";

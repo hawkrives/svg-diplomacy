@@ -4,8 +4,12 @@ import * as _ from 'lodash'
 let cx = React.addons.classSet
 
 let RenderedMap = React.createClass({
-	findMap(mapId) {
-		let map = this.props.map;
+	findMap(props) {
+		let map = props.map;
+		if (!map && props.mapId && props.maps) {
+			let mapId = _.isObject(props.mapId) ? props.mapId.id : props.mapId;
+			map = _.find(props.maps, (map) => map.id === mapId)
+		}
 		if (map) {
 			this.setState({
 				map: {
@@ -18,7 +22,7 @@ let RenderedMap = React.createClass({
 		}
 	},
 	componentWillReceiveProps(nextProps) {
-		this.findMap(nextProps.mapId)
+		this.findMap(nextProps)
 	},
 	componentWillMount() {
 		this.componentWillReceiveProps(this.props)
@@ -38,6 +42,7 @@ let RenderedMap = React.createClass({
 		console.log(ev.target.attributes['data-id'].value);
 	},
 	render() {
+		console.log('RenderedMap.props', this.props)
 		let spaces = React.createElement('defs', {id: 'all-spaces'},
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible
@@ -134,14 +139,10 @@ let RenderedMap = React.createClass({
 				}))
 			)
 
-		console.log('sea', seaSpaces)
-
 		let emptySpaces = _(this.state.map.spaces)
 			.reject((space) => _.contains(occupiedSpaces, space.id))
 			.reject((space) => _.contains(seaSpaceIds, space.id))
 			.value()
-
-		console.log('empty', emptySpaces)
 
 		let otherSpaces = React.createElement('g',
 			{
@@ -171,8 +172,9 @@ let RenderedMap = React.createClass({
 
 		return React.createElement('svg',
 			{
-				className: 'map',
+				className: 'map ' + (this.props.className || ''),
 				viewBox: `0 0 ${this.state.map.width} ${this.state.map.height}`,
+				preserveAspectRatio: 'xMidYMid slice',
 			},
 			spaces,
 			patterns,

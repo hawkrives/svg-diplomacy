@@ -32,6 +32,11 @@ let userStore = Reflux.createStore({
 			.then(this.userDidSignIn, this.userErrorSignIn)
 	},
 
+	onWillResetPassword(userData) {
+		Parse.User.requestPasswordReset(userData.email)
+			.then(this.userDidSignIn, this.userErrorSignIn)
+	},
+
 	onWillSignUp(userData) {
 		let user = new Parse.User();
 		user.setUsername(userData.username);

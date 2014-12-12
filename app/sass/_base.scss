@@ -2,26 +2,28 @@
 	box-sizing: inherit;
 }
 
+* + * {
+	margin-top: 1.5em;
+}
+
 .app {
 	box-sizing: border-box;
 
-	color: rebeccapurple;
-
+	color: $app-color;
 	font-family: sans-serif;
 
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: space-between;
 
-	max-width: 40em;
+	max-width: $app-width;
 	margin: 0 auto;
 }
 
-main {
-	padding-left: $app-edge-padding;
-	padding-right: $app-edge-padding;
-}
-
 a {
-	color: rebeccapurple;
+	color: $blue;
+}
+a:active,
+a:visited {
+	color: $maroon;
 }

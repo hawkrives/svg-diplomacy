@@ -1,58 +1,61 @@
 #header {
 	text-align: center;
 
-	padding: 0 $app-edge-padding 1em;
-	border-bottom: solid 1px currentColor;
+	padding: 0 $app-edge-padding;
+	margin-bottom: 0.35em;
+}
+
+#header a {
+	text-decoration: none;
+	color: inherit;
+}
+
+#header h1 {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+
+	font-size: 1.75em;
+	font-weight: 600;
+
+	font-feature-settings: 'smcp', 'onum';
+}
+
+#header .menu {
+	@include list-inline;
+
+	color: white;
+	border: solid 2px $app-color;
+	background-color: $app-color;
+	border-radius: 3px;
+
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+
+	li {
+		flex: 1;
+		margin: 0;
+	}
 
 	a {
-		text-decoration: none;
-		color: inherit;
+		display: block;
+		padding: 0.5em 0.5em;
+		transition: background-color 0.25s;
+
+		&:hover {
+			background-color: lighten($app-color, 10%);
+		}
 	}
 
-	h1 {
-		margin-top: 0.25em;
-		margin-bottom: 0.25em;
-
-		font-size: 1.75em;
-		font-family: 'Josefin Sans', sans-serif;
-		font-weight: 600;
-
-		font-feature-settings: 'smcp', 'onum';
+	.octicon {
+		width: 16px;
 	}
 
-	ul {
-		@include list-inline;
-		border: solid 1px currentColor;
-		border-radius: 3px;
-
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
-
-		li {
-			flex: 1;
-		}
-
-		a {
-			display: block;
-			padding: 0.25em 0.5em;
-
-			&:hover {
-				background-color: rgba(#663399, 0.15);
-			}
-		}
-
-		.octicon {
-			width: 16px;
-		}
-
-		.active {
-			background-color: $appColor;
-			color: white;
-
-			&:hover {
-				background-color: $appColor;
-			}
+	.active {
+		background-color: white;
+		color: $app-color;
+		&:hover {
+			background-color: white;
 		}
 	}
 }
