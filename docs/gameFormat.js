@@ -3,6 +3,7 @@
 	"id": Parse.Object.Game.id
 	"title": String,
 	"owner": Parse.User.id,
+	"status": String,		// "Pre-game", "Active", "Completed"
 	"players": [
 		Parse.User.id
 	],
@@ -15,7 +16,8 @@
 	],
 	"currentMovePhase": Object({
 		year: Number,
-		season: Number
+		season: Number,
+		phase: String,		// "Submit Orders", "Retreat", "Build"
 	}),
 	"armies": [
 		Object({
@@ -28,7 +30,8 @@
 	"turnPhases": {
 		"Spring 1901": [
 			{
-				player: Parse.User.id, 
+				player: Parse.User.id,
+				spaces: [Number],
 				orders: [
 					armyId: Number,
 					type: String,
