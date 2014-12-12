@@ -14,10 +14,7 @@ let Game = React.createClass({
 		if (game) {
 			let mapId = game.get('mapId')
 			if (mapId) {
-				console.log('map', nextProps.maps)
-				let map = _.find(nextProps.maps, (map) => {
-					return map.id === mapId.id
-				})
+				let map = _.find(nextProps.maps, (map) => map.id === mapId.id)
 				this.setState({game, map, loading: false, error: ''})
 			}
 			else {
