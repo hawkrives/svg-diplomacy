@@ -1,8 +1,7 @@
 #header {
 	text-align: center;
 
-	padding: 0 0.25em 1em;
-	// margin-bottom: 0.75em;
+	padding: 0 $app-edge-padding 1em;
 	border-bottom: solid 1px currentColor;
 
 	a {

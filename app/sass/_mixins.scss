@@ -1,8 +1,21 @@
-@mixin list-inline {
+@mixin list-unstyled {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+@mixin list-inline {
+	@include list-unstyled;
+
 	li {
 		display: inline-block;
+	}
+}
+
+@mixin list-block {
+	@include list-unstyled;
+
+	li {
+		display: block;
 	}
 }

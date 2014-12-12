@@ -1,15 +1,21 @@
-.block-link {
+@mixin block-link {
 	display: flex;
+	align-items: center;
+
+	min-height: 48px;
+	padding: 0.25em 0.5em;
+
 	border: solid 1px $appColor;
 	text-decoration: none;
-	min-height: 48px;
-	align-items: center;
-	padding: 0.25em 0.5em;
 
 	&::after {
 		content: '\f078';
 		font-family: octicons;
-		margin-left: 0.5em;
 		justify-self: flex-end;
+		margin-left: 0.5em;
 	}
+}
+
+.block-link {
+	@include block-link;
 }

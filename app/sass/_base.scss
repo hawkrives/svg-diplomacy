@@ -16,7 +16,12 @@
 	max-width: 40em;
 	margin: 0 auto;
 
-	margin-bottom: 10vh;
+	// margin-bottom: 10vh;
+}
+
+main {
+	padding-left: $app-edge-padding;
+	padding-right: $app-edge-padding;
 }
 
 a {
