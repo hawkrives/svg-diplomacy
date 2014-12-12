@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as Reflux from 'reflux'
-import {RouteHandler} from 'react-router'
+import {RouteHandler, State, Link, Navigation} from 'react-router'
 
 import userStore from '../stores/userStore'
 import gameStore from '../stores/gameStore'
@@ -10,6 +10,8 @@ import Header from '../components/header'
 
 let App = React.createClass({
 	mixins: [
+		State,
+		Navigation,
 		Reflux.listenTo(userStore, 'onUserChanged', 'onUserChanged'),
 		Reflux.listenTo(gameStore, 'onGameChanged', 'onGameChanged'),
 		Reflux.listenTo(mapStore,  'onMapChanged',  'onMapChanged'),
@@ -34,6 +36,10 @@ let App = React.createClass({
 		}
 	},
 	render() {
+		let isOnSignPage = (this.getPathname() === '/sign-in' || this.getPathname() === '/sign-up' || this.getPathname() === '/sign-in/reset-password')
+		if (!this.state.user && !isOnSignPage) {
+			this.replaceWith('/sign-in');
+		}
 		return React.createElement('div', {className: 'app'},
 			React.createElement(Header, null),
 			React.createElement('main', null,
