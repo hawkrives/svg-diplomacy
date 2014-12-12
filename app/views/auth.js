@@ -76,7 +76,7 @@ let AuthView = React.createClass({
 			key: 'email',
 		})
 
-		let passwordResetLink = React.createElement(Link, {to: '/sign-in/reset-password', key: 'pw-reset'}, 'Reset Password')
+		let passwordResetLink = React.createElement(Link, {to: '/sign-in/reset-password', key: 'pw-reset', className: 'reset-password'}, 'Reset Password')
 
 		let submitButton = React.createElement('input', {
 			type: 'submit',
