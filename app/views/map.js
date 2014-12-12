@@ -174,6 +174,7 @@ let RenderedMap = React.createClass({
 			{
 				className: 'map ' + (this.props.className || ''),
 				viewBox: `0 0 ${this.state.map.width} ${this.state.map.height}`,
+				preserveAspectRatio: 'xMidYMid slice',
 			},
 			spaces,
 			patterns,
