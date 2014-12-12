@@ -38,6 +38,7 @@ let RenderedMap = React.createClass({
 		console.log(ev.target.attributes['data-id'].value);
 	},
 	render() {
+		console.log('RenderedMap.props', this.props)
 		let spaces = React.createElement('defs', {id: 'all-spaces'},
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible
