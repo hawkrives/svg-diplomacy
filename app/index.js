@@ -22,16 +22,18 @@ import mapStore from './stores/mapStore'
 import gameActions from './actions/gameActions'
 import mapActions from './actions/mapActions'
 
-import App       from './views/app'
-import Auth      from './views/auth'
-import Create    from './views/create'
-import Game      from './views/game'
-import Help      from './views/help'
-import Home      from './views/home'
-import Profile   from './views/profile'
-import Rules     from './views/rules'
-import Search    from './views/search'
-import Tutorial  from './views/tutorial'
+import App        from './views/app'
+import Auth       from './views/auth'
+import Create     from './views/create'
+import CreateGame from './views/createGame'
+import CreateMap  from './views/createMap'
+import Game       from './views/game'
+import Help       from './views/help'
+import Home       from './views/home'
+import Profile    from './views/profile'
+import Rules      from './views/rules'
+import Search     from './views/search'
+import Tutorial   from './views/tutorial'
 
 let routes = (
 	React.createElement(Router.Route, {handler: App, name: 'App', path: '/'},
@@ -44,7 +46,9 @@ let routes = (
 		React.createElement(Router.Route, {handler: Help, name: 'help'}),
 		React.createElement(Router.Route, {handler: Rules, name: 'rules', path: 'help/rules'}),
 		React.createElement(Router.Route, {handler: Tutorial, name: 'tutorial', path: 'help/tutorial'}),
-		React.createElement(Router.Route, {handler: Create, name: 'create'})))
+		React.createElement(Router.Route, {handler: Create, name: 'create'}),
+		React.createElement(Router.Route, {handler: CreateMap, name: 'create-map', path: 'create/map'}),
+		React.createElement(Router.Route, {handler: CreateGame, name: 'create-game', path: 'create/game'})))
 
 Router.run(routes, (Handler, state) => {
 	React.render(React.createElement(Handler), document.getElementById('container'))
