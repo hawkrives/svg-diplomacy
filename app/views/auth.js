@@ -90,7 +90,7 @@ let AuthView = React.createClass({
 			formElements = [usernameField, passwordField, passwordResetLink, submitButton]
 		}
 		else if (this.getPathname() === '/sign-up') {
-			formElements = [usernameField, emailField, passwordField, submitButton]
+			formElements = [usernameField, passwordField, emailField, submitButton]
 		}
 		else if (this.getPathname() === '/sign-in/reset-password') {
 			formElements = [emailField, submitButton]
