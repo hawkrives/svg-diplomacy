@@ -40,6 +40,7 @@ let routes = (
 		React.createElement(Router.DefaultRoute, {handler: Home, name: 'home'}),
 		React.createElement(Router.Route, {handler: Auth, name: 'sign-up'}),
 		React.createElement(Router.Route, {handler: Auth, name: 'sign-in'}),
+		React.createElement(Router.Route, {handler: Auth, name: 'sign-in/reset-password'}),
 		React.createElement(Router.Route, {handler: Game, name: 'game', path: 'game/:gameId'}),
 		React.createElement(Router.Route, {handler: Profile, name: 'profile'}),
 		React.createElement(Router.Route, {handler: Search, name: 'search'}),
