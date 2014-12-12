@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
+import {Link} from 'react-router'
 import Toolbar from '../components/toolbar'
 import mapActions from '../actions/mapActions'
 
@@ -12,39 +13,49 @@ let MapListItem = React.createClass({
 	render() {
 		let components = _.map(this.props.map.attributes || this.props.map, (value, key) => {
 			let val = JSON.stringify(value, null, 2);
+			val = val ? val.substring(0, 50) : val;
+
 			if (key === 'id' || key === 'get')
 				return null
-			return React.createElement('div', {key: key},
-				 key, ': ', val ? val.substring(0, 50) : val)
+
+			return React.createElement('div', {key: key}, key, ': ', val)
 		})
-		components.unshift(React.createElement('div', {key: 'id'},
-			'id', ': ', this.props.map.id))
+
+		components.unshift(React.createElement('div', {key: 'id'}, 'id', ': ', this.props.map.id))
+
 		components.push(React.createElement('button', {onClick: this.destroyMap, key: 'deleteButton'}, 'Delete Map'))
-		return React.createElement('div', {className: 'one-map'},
-			components)
+
+		return React.createElement('li', {className: 'one-map'}, components)
 	},
 })
 
 let Create = React.createClass({
 	createMap(ev) {
 		ev.preventDefault()
-		mapActions.createMap({
-			name: this.refs.name.getDOMNode().value,
-			players: parseInt(this.refs.players.getDOMNode().value, 10),
-			width: parseInt(this.refs.width.getDOMNode().value, 10),
-			height: parseInt(this.refs.height.getDOMNode().value, 10),
-			countries: this.refs.countries.getDOMNode().value,
-			spaces: this.refs.spaces.getDOMNode().value,
-		})
+
+		let name = this.refs.name.getDOMNode().value
+		let players = this.refs.players.getDOMNode().value
+		let width = this.refs.width.getDOMNode().value
+		let height = this.refs.height.getDOMNode().value
+		let countries = this.refs.countries.getDOMNode().value
+		let spaces = this.refs.spaces.getDOMNode().value
+
+		let pixelReplace = /(\d*?) *px$/;
+		width = width.replace(pixelReplace, '$1')
+		height = height.replace(pixelReplace, '$1')
+
+		width = parseInt(width, 10)
+		height = parseInt(height, 10)
+		players = parseInt(players, 10)
+
+		mapActions.createMap({name, players, width, height, countries, spaces})
 	},
 	render() {
 		let title = React.createElement('h1', {className: 'view-title'}, 'Create New ...')
 
 		let listOfMaps = React.createElement('ul',
 			{className: 'raw-map-list'},
-			_.map(this.props.maps, (map) =>
-				React.createElement('li', {key: map.id},
-					React.createElement(MapListItem, {map: map}))))
+			_.map(this.props.maps, (map) => React.createElement(MapListItem, {key: map.id, map: map})))
 
 		let mapCreationForm = React.createElement('form', {className: 'map-creation-form', onSubmit: this.createMap},
 			React.createElement('label', null, 'Name: ', React.createElement('input', {type: 'text', ref: 'name', placeholder: 'Map Name'})),
@@ -60,7 +71,7 @@ let Create = React.createClass({
 			title,
 			listOfMaps,
 			mapCreationForm,
-			React.createElement(Toolbar, {tools: ['Create new Game', 'Create new Map']}))
+			React.createElement(Toolbar, {tools: ['Start Game', 'Make Map']}))
 	},
 })
 
