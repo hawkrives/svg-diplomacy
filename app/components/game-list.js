@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as _ from 'lodash'
 import {Link} from 'react-router'
+import RenderedMap from '../views/map'
 import Subtitle from './subtitle'
 import Octicon from './octicon'
 
@@ -14,12 +15,9 @@ let GameList = React.createClass({
 		let title = React.createElement(Subtitle, {text: this.props.title});
 
 		let listOfGames = React.createElement('ul', null, _.map(this.props.games, (game) =>
-			React.createElement('li', {key: game.id},
-				React.createElement('svg', {className: 'game-background'}),
-				React.createElement(Link, {to: 'game', params: {gameId: game.id}, className: 'game-info'},
-					React.createElement('span', {className: 'game-title'}, game.get('title')),
-					// React.createElement('span', {className: 'map-name'}, game.map.name),
-					React.createElement(Octicon, {icon: 'chevron-right'})))))
+			React.createElement('li', {className: 'game-item', key: game.id},
+				React.createElement(RenderedMap, {className: 'game-background', mapId: game.get('mapId'), maps: this.props.maps}),
+				React.createElement(Link, {to: 'game', params: {gameId: game.id}, className: 'game-info'}, game.get('title')))))
 
 		let noGamesMessage = 'No games available.'
 
