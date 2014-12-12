@@ -6,6 +6,7 @@ Parse.initialize(keys.app_id, keys.js_key);
 import * as attachFastClick from 'fastclick'
 attachFastClick(document.body);
 
+import 'es6-shim'
 import 'fetch'
 import {status} from './helpers/fetch'
 window.rawfetch = window.fetch
