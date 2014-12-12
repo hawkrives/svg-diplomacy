@@ -38,7 +38,8 @@ let Profile = React.createClass({
 		this.setState({saving: 'saving'})
 		this.props.user.set('username', this.state.username)
 		this.props.user.set('name', this.state.name)
-		this.props.user.set('password', this.refs.password.getDOMNode().value)
+		if (this.refs.password.getDOMNode().value)
+			this.props.user.set('password', this.refs.password.getDOMNode().value)
 		this.props.user.save()
 			.then(this.saveComplete)
 	},
@@ -56,8 +57,12 @@ let Profile = React.createClass({
 				{type: 'username', placeholder: 'anne', value: this.state.username, onChange: this.onUsernameChange})),
 
 			React.createElement('label', {key: 'password'}, 'Password: ', React.createElement('input',
-				{type: 'password', placeholder: ':::::::', defaultValue: '', ref: 'password'})),
+				{type: 'password', placeholder: '·······', defaultValue: '', ref: 'password'})),
 		]
+
+		let buttons = React.createElement('div', {className: 'buttons'},
+			React.createElement('input', {type: 'submit', value: 'Save'}),
+			React.createElement('button', {onClick: userActions.willSignOut}, 'Sign Out'))
 
 		let profile = JSON.stringify(this.props.user, null, 2);
 
@@ -67,8 +72,7 @@ let Profile = React.createClass({
 			profile,
 			React.createElement('form', {className: 'edit-profile', onSubmit: this.update},
 				fields,
-				React.createElement('input', {type: 'submit', value: 'Save'}),
-				React.createElement('button', {onClick: userActions.willSignOut}, 'Sign Out')))
+				buttons))
 	},
 })
 
