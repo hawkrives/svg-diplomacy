@@ -1,28 +1,32 @@
-@mixin block-link {
+@mixin block-link($color: false, $border: false) {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 
-	min-height: 48px;
+	min-height: 3em;
 	padding: 0.25em 0.5em;
 
-	& + & {
-		border-top: solid 1px $app-color;
-	}
-
 	text-decoration: none;
+
+	@if $border {
+		border: solid 1px;
+	}
 
 	&::after {
 		content: '\f078';
 		font-family: octicons;
 		font-size: 1.5em;
 
+		min-width: 1.15em;
+		text-align: center;
+
 		text-shadow: none;
-		background-color: rgba(black, 0.15);
+		@if $color {
+			background-color: rgba($color, 0.15);
+		}
 
-		padding: 0 0.3em 0 0.4em;
+		padding-left: 0.1em;
 		border-radius: 2em;
-
-		margin-left: 0.5em;
 	}
 }
 

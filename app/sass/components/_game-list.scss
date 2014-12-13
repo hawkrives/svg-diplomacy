@@ -26,7 +26,7 @@
 	}
 
 	.game-info {
-		@include block-link;
+		@include block-link($color: gray);
 		margin-top: 0;
 		position: relative;
 		text-shadow: 0 0 15px #efefef;
