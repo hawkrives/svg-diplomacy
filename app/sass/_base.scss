@@ -21,11 +21,11 @@
 }
 
 a {
-	color: $blue;
+	color: inherit;
 }
-a:active,
-a:visited {
-	color: $maroon;
+
+strong {
+	font-weight: 500;
 }
 
 input[type="search"] {
