@@ -10,10 +10,17 @@ let Rules = React.createClass({
 	componentWillMount() {
 		let pathToRules = 'detailed-rules.text';
 
-		fetch(pathToRules)
-			.then((response) => {
-				this.setState({rulesHTML: marked(response._body)})
-			})
+		window.htmlCache = window.htmlCache || {}
+
+		if (!window.htmlCache.rulesDetails) {
+			fetch(pathToRules)
+				.then((response) => response._body)
+				.then((response) => window.htmlCache.rulesDetails = response)
+				.then((response) => this.setState({rulesHTML: marked(response)}))
+		}
+		else {
+			this.setState({rulesHTML: marked(window.htmlCache.rulesDetails)})
+		}
 	},
 	render() {
 		let rules = React.createElement('article', {className: 'detailed-rules'},

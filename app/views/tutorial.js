@@ -10,10 +10,17 @@ let Tutorial = React.createClass({
 	componentWillMount() {
 		let pathToTutorial = 'detailed-tutorial.text';
 
-		fetch(pathToTutorial)
-			.then((response) => {
-				this.setState({tutorialHTML: marked(response._body)})
-			})
+		window.htmlCache = window.htmlCache || {}
+
+		if (!window.htmlCache.tutorialDetails) {
+			fetch(pathToTutorial)
+				.then((response) => response._body)
+				.then((response) => window.htmlCache.tutorialDetails = response)
+				.then((response) => this.setState({tutorialHTML: marked(response)}))
+		}
+		else {
+			this.setState({tutorialHTML: marked(window.htmlCache.tutorialDetails)})
+		}
 	},
 	render() {
 		let tutorial = React.createElement('article', {className: 'detailed-tutorial'},

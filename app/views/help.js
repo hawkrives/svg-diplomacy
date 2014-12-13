@@ -13,15 +13,27 @@ let Help = React.createClass({
 		let pathToRules = 'rules.text';
 		let pathToTutorial = 'tutorial.text';
 
-		fetch(pathToRules)
-			.then((response) => {
-				this.setState({rulesHTML: marked(response._body)})
-			})
+		window.htmlCache = window.htmlCache || {}
 
-		fetch(pathToTutorial)
-			.then((response) => {
-				this.setState({tutorialHTML: marked(response._body)})
-			})
+		if (!window.htmlCache.rulesSummary) {
+			fetch(pathToRules)
+				.then((response) => response._body)
+				.then((response) => window.htmlCache.rulesSummary = response)
+				.then((response) => this.setState({rulesHTML: marked(response)}))
+		}
+		else {
+			this.setState({rulesHTML: marked(window.htmlCache.rulesSummary)})
+		}
+
+		if (!window.htmlCache.tutorialSummary) {
+			fetch(pathToTutorial)
+				.then((response) => response._body)
+				.then((response) => window.htmlCache.tutorialSummary = response)
+				.then((response) => this.setState({tutorialHTML: marked(response)}))
+		}
+		else {
+			this.setState({tutorialHTML: marked(window.htmlCache.tutorialSummary)})
+		}
 	},
 	render() {
 		let rules = React.createElement('article', {className: 'short-rules'},
