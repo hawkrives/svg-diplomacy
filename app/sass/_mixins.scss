@@ -19,3 +19,33 @@
 		display: block;
 	}
 }
+
+@mixin button {
+	display: block;
+	width: 100%;
+	font-weight: 300;
+	font-size: 1.25em;
+	border-radius: 0;
+	padding: 0.5em 0.3em;
+	border: 0;
+}
+
+@mixin button-filled {
+	@include button;
+
+	background: $app-color;
+	color: #fff;
+}
+
+@mixin button-outline {
+	@include button;
+
+	border: solid 1px;
+	color: $app-color;
+	background: #fff;
+	&:hover {
+		background: rgba($app-color, 0.05);
+	}
+
+	text-decoration: underline
+}
