@@ -18,7 +18,7 @@ let App = React.createClass({
 	],
 	onUserChanged(user) {
 		console.log('app.onUserChanged')
-		this.setState({user})
+		this.setState({user, userInitialized: true})
 	},
 	onGameChanged(games) {
 		console.log('app.onGameChanged')
@@ -31,13 +31,15 @@ let App = React.createClass({
 	getInitialState() {
 		return {
 			user: null,
+			userInitialized: false,
 			maps: [],
 			games: [],
 		}
 	},
 	render() {
 		let isOnSignPage = (this.getPathname() === '/sign-in' || this.getPathname() === '/sign-up' || this.getPathname() === '/sign-in/reset-password')
-		if (!this.state.user && !isOnSignPage) {
+		if (!this.state.user && this.state.userInitialized && !isOnSignPage) {
+			console.log('redirecting to sign-in');
 			this.replaceWith('/sign-in');
 		}
 		return React.createElement('div', {className: 'app'},
