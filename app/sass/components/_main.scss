@@ -2,6 +2,11 @@
 	margin-top: 0;
 }
 
+main {
+	margin-left: $app-edge-padding;
+	margin-right: $app-edge-padding;
+}
+
 // main {
 // 	flex: 1;
 // }
