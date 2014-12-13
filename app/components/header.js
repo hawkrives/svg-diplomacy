@@ -1,8 +1,6 @@
 import * as React from 'react'
 import * as Reflux from 'reflux'
 
-import userStore from '../stores/userStore'
-
 import {Link as LinkClass} from 'react-router'
 import {Octicon as OcticonClass} from './octicon'
 
@@ -10,19 +8,6 @@ let Link = React.createFactory(LinkClass);
 let Octicon = React.createFactory(OcticonClass);
 
 let Header = React.createClass({
-	mixins: [Reflux.listenTo(userStore, 'onUserChange', 'onUserChange')],
-
-	onUserChange(user) {
-		console.log('user changed', user);
-		this.setState({
-			isSignedIn: Boolean(user)
-		});
-	},
-
-	getInitialState() {
-		return { isSignedIn: undefined }
-	},
-
 	render() {
 		let loggedInMenuItems = [
 			React.createElement('li', {key: 'home'},    Link({to: 'home'},    Octicon({icon: 'home'}))),
@@ -37,7 +22,7 @@ let Header = React.createClass({
 			React.createElement('li', {key: 'sign-up'}, Link({to: 'sign-up'}, Octicon({icon: 'squirrel'}), ' Sign Up')),
 		]
 
-		let menuItems = this.state.isSignedIn ? loggedInMenuItems : loggedOutMenuItems
+		let menuItems = this.props.user ? loggedInMenuItems : loggedOutMenuItems
 
 		return React.createElement('header', {id: 'header'},
 			React.createElement('h1', null, 'SVG Diplomacy'),

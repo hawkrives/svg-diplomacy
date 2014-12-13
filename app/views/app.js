@@ -43,7 +43,7 @@ let App = React.createClass({
 			this.replaceWith('/sign-in');
 		}
 		return React.createElement('div', {className: 'app'},
-			React.createElement(Header, null),
+			React.createElement(Header, {user: this.state.user}),
 			React.createElement('main', null,
 				React.createElement(RouteHandler,
 					{maps: this.state.maps, user: this.state.user, games: this.state.games})))
