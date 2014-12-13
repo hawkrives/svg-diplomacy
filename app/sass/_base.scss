@@ -27,3 +27,7 @@ a:active,
 a:visited {
 	color: $maroon;
 }
+
+input[type="search"] {
+	box-sizing: border-box;
+}
