@@ -29,8 +29,8 @@
 		fill-rule: evenodd;
 	}
 
-	.supply-center {
-		opacity: 0.5;
+	.supply-center > .supply-symbol {
+		fill: black;
 	}
 
 	.accessible-territory:hover,  {
