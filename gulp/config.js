@@ -24,8 +24,8 @@ module.exports = {
 		browsers: ['last 1 version'],
 	},
 	icons: {
-		src: [src + 'icons/*'],
-		dest: [dest + 'icons'],
+		src: src + 'icons/*',
+		dest: dest + 'icons',
 	},
 	fonts: {
 		src: src + 'fonts/*',

@@ -1,15 +1,9 @@
-var _ = require('lodash');
 var gulp = require('gulp');
+var changed = require('gulp-changed');
 var config = require('../config').icons
 
 gulp.task('icons', function() {
-	var copy = function(paths) {
-		var sourcePath = paths[0];
-		var destPath = paths[1];
-
-		return gulp.src(sourcePath)
-			.pipe(gulp.dest(destPath))
-	};
-
-	_.zip(config.src, config.dest).forEach(copy);
+	return gulp.src(config.src)
+		.pipe(changed(config.dest)) // Ignore unchanged files
+		.pipe(gulp.dest(config.dest));
 });
