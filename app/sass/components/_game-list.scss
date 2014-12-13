@@ -31,7 +31,8 @@
 		position: relative;
 		text-shadow: 0 0 15px #efefef;
 		color: $app-color;
-		font-weight: bold;
+		font-weight: 500;
+		font-feature-settings: 'smcp';
 	}
 
 	.game-title {
