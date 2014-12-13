@@ -31,5 +31,5 @@
 }
 
 .block-link {
-	@include block-link;
+	@include block-link($border: true);
 }
