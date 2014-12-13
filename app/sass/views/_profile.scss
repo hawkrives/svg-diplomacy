@@ -1,0 +1,34 @@
+#profile {
+	label {
+		text-transform: lowercase;
+		font-feature-settings: 'smcp';
+		font-weight: 500;
+		margin-top: 1em;
+	}
+	label, label + input {
+		width: 75%;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.buttons {
+		align-self: stretch;
+		display: flex;
+		flex-flow: row wrap;
+		.save-profile, .sign-out {
+			// width: auto;
+			flex: 1;
+		}
+	}
+
+	.save-profile {
+		@include button-filled;
+	}
+	.sign-out {
+		@include button-outline;
+	}
+}
