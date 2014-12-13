@@ -27,6 +27,10 @@ module.exports = {
 		src: [src + 'icons/*'],
 		dest: [dest + 'icons'],
 	},
+	fonts: {
+		src: src + 'fonts/*',
+		dest: dest + 'fonts',
+	},
 	images: {
 		src: src + 'images/**',
 		dest: dest + 'images',
