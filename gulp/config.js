@@ -23,6 +23,9 @@ module.exports = {
 		dest: dest,
 		browsers: ['last 1 version'],
 	},
+	clean: {
+		delete: [dest],
+	},
 	icons: {
 		src: src + 'icons/*',
 		dest: dest + 'icons',
