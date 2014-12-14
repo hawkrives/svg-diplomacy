@@ -35,21 +35,38 @@ import Rules      from './views/rules'
 import Search     from './views/search'
 import Tutorial   from './views/tutorial'
 
+let Route = React.createFactory(Router.Route);
+let DefaultRoute = React.createFactory(Router.DefaultRoute);
+
 let routes = (
-	React.createElement(Router.Route, {handler: App, name: 'App', path: '/'},
-		React.createElement(Router.DefaultRoute, {handler: Home, name: 'home'}),
-		React.createElement(Router.Route, {handler: Auth, name: 'sign-up'}),
-		React.createElement(Router.Route, {handler: Auth, name: 'sign-in'}),
-		React.createElement(Router.Route, {handler: Auth, name: 'sign-in/reset-password'}),
-		React.createElement(Router.Route, {handler: Game, name: 'game', path: 'game/:gameId'}),
-		React.createElement(Router.Route, {handler: Profile, name: 'profile'}),
-		React.createElement(Router.Route, {handler: Search, name: 'search'}),
-		React.createElement(Router.Route, {handler: Help, name: 'help'}),
-		React.createElement(Router.Route, {handler: Rules, name: 'rules', path: 'help/rules'}),
-		React.createElement(Router.Route, {handler: Tutorial, name: 'tutorial', path: 'help/tutorial'}),
-		React.createElement(Router.Route, {handler: Create, name: 'create'}),
-		React.createElement(Router.Route, {handler: CreateMap, name: 'create-map', path: 'create/map'}),
-		React.createElement(Router.Route, {handler: CreateGame, name: 'create-game', path: 'create/game'})))
+	Route({handler: App, name: 'App', path: '/'},
+		Route({handler: Auth, name: 'sign-up'}),
+		Route({handler: Auth, name: 'sign-in'},
+			Route({handler: Auth, name: 'reset-password'}),
+			DefaultRoute({handler: Auth})),
+
+		Route({handler: Game, name: 'game', path:'game/:gameId'},
+			Route({handler: Game, name: 'board'}),
+			Route({handler: Game, name: 'chat'}),
+			Route({handler: Game, name: 'history'}),
+			Route({handler: Game, name: 'info'}),
+			DefaultRoute({handler: Game})),
+
+		Route({handler: Profile, name: 'profile'}),
+
+		Route({handler: Search, name: 'search'}),
+
+		Route({handler: Help, name: 'help'}),
+		Route({handler: Rules, name: 'rules', path: 'help/rules'}),
+		Route({handler: Tutorial, name: 'tutorial', path: 'help/tutorial'}),
+
+		Route({handler: Create, name: 'create'}),
+		Route({handler: CreateMap, name: 'create-map', path: 'create/map'}),
+		Route({handler: CreateGame, name: 'create-game', path: 'create/game'}),
+
+		DefaultRoute({handler: Home, name: 'home'})
+	)
+)
 
 Router.run(routes, (Handler, state) => {
 	React.render(React.createElement(Handler), document.getElementById('container'))
