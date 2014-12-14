@@ -13,6 +13,7 @@ let RenderedMap = React.createClass({
 		if (map) {
 			this.setState({
 				map: {
+					name: map.get('name'),
 					width: map.get('width'),
 					height: map.get('height'),
 					countries: map.get('countries'),
