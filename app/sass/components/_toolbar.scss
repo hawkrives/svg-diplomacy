@@ -1,29 +1,13 @@
 .toolbar {
 	@include list-block;
 
-	margin-top: 1em;
-
-	li {
-		@include block-link($border: true);
-		border-color: currentColor;
-	}
-
 	li + li {
 		margin-top: 0.5em;
-	}
-
-	.tool {
-		@include block-link;
-		margin-top: 0;
-		position: relative;
-		text-shadow: 0 0 15px #efefef;
-		color: $app-color;
-		font-weight: 500;
-		font-feature-settings: 'smcp';
 	}
 }
 
 .toolbar-item {
+	@include block-link($border: true);
 	padding: 0 0.5em;
 	flex: 1;
 	text-align: center;
