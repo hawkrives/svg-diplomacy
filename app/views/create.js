@@ -5,30 +5,6 @@ import {Link} from 'react-router'
 import Toolbar from '../components/toolbar'
 import mapActions from '../actions/mapActions'
 
-let MapListItem = React.createClass({
-	destroyMap(ev) {
-		ev.preventDefault()
-		mapActions.destroyMap(this.props.map.id)
-	},
-	render() {
-		let components = _.map(this.props.map.attributes || this.props.map, (value, key) => {
-			let val = JSON.stringify(value, null, 2);
-			val = val ? val.substring(0, 50) : val;
-
-			if (key === 'id' || key === 'get')
-				return null
-
-			return React.createElement('div', {key: key}, key, ': ', val)
-		})
-
-		components.unshift(React.createElement('div', {key: 'id'}, 'id', ': ', this.props.map.id))
-
-		components.push(React.createElement('button', {onClick: this.destroyMap, key: 'deleteButton'}, 'Delete Map'))
-
-		return React.createElement('li', {className: 'one-map'}, components)
-	},
-})
-
 let Create = React.createClass({
 	createMap(ev) {
 		ev.preventDefault()
@@ -53,10 +29,6 @@ let Create = React.createClass({
 	render() {
 		let title = React.createElement('h1', {className: 'view-title'}, 'Create New ...')
 
-		let listOfMaps = React.createElement('ul',
-			{className: 'raw-map-list'},
-			_.map(this.props.maps, (map) => React.createElement(MapListItem, {key: map.id, map: map})))
-
 		let mapCreationForm = React.createElement('form', {className: 'map-creation-form', onSubmit: this.createMap},
 			React.createElement('label', null, 'Name: ', React.createElement('input', {type: 'text', ref: 'name', placeholder: 'Map Name'})),
 			React.createElement('label', null, 'Width: ', React.createElement('input', {type: 'text', ref: 'width', placeholder: 'Map Width (in pixels)'})),
@@ -69,9 +41,7 @@ let Create = React.createClass({
 		return React.createElement('div',
 			{id: 'create'},
 			title,
-			listOfMaps,
-			mapCreationForm,
-			React.createElement(Toolbar, {tools: ['Start Game', 'Make Map']}))
+			React.createElement(Toolbar, {tools: ['create-game', 'create-map']}))
 	},
 })
 
