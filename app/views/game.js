@@ -10,14 +10,16 @@ import ContentEditable from '../components/content-editable'
 let Link = React.createFactory(LinkClass);
 let Octicon = React.createFactory(OcticonClass);
 
-// Right Now this toolbar has separate links to the items, but it should be more like tabs than links in the future
+// Right now this toolbar has separate links to the items, but it should be more like tabs than links in the future
 let GameNavbar = React.createClass({
+	mixins: [State],
 	render() {
+		console.log('query', this.getQuery().section)
 		return React.createElement('ul', {id: 'game-nav', className: 'menu'},
-			React.createElement('li', {key: 'board'},	Octicon({icon: 'globe'})),
-			React.createElement('li', {key: 'chat'},	Octicon({icon: 'comment-discussion'})),
-			React.createElement('li', {key: 'history'},	Octicon({icon: 'clock'})),
-			React.createElement('li', {key: 'info'},	Octicon({icon: 'gear'}))
+			Link({to: `game`, params: {gameId: this.getParams().gameId}, query: {section: 'board'}}, React.createElement('li', {key: 'board'},	Octicon({icon: 'globe'}))),
+			Link({to: `game`, params: {gameId: this.getParams().gameId}, query: {section: 'chat'}}, React.createElement('li', {key: 'chat'},	Octicon({icon: 'comment-discussion'}))),
+			Link({to: `game`, params: {gameId: this.getParams().gameId}, query: {section: 'history'}}, React.createElement('li', {key: 'history'},	Octicon({icon: 'clock'}))),
+			Link({to: `game`, params: {gameId: this.getParams().gameId}, query: {section: 'info'}}, React.createElement('li', {key: 'info'},	Octicon({icon: 'gear'})))
 		)
 	},
 })

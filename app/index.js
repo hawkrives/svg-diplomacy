@@ -45,12 +45,7 @@ let routes = (
 			Route({handler: Auth, name: 'reset-password'}),
 			DefaultRoute({handler: Auth})),
 
-		Route({handler: Game, name: 'game', path:'game/:gameId'},
-			Route({handler: Game, name: 'board'}),
-			Route({handler: Game, name: 'chat'}),
-			Route({handler: Game, name: 'history'}),
-			Route({handler: Game, name: 'info'}),
-			DefaultRoute({handler: Game})),
+		Route({handler: Game, name: 'game', path:'game/:gameId'}),
 
 		Route({handler: Profile, name: 'profile'}),
 
