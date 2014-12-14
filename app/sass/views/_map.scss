@@ -30,7 +30,9 @@
 	}
 
 	.supply-center > .supply-symbol {
-		fill: black;
+		fill: white;
+		stroke-width: 4px;
+		stroke: black;
 	}
 
 	.accessible-territory:hover,  {
