@@ -9,13 +9,13 @@
 			"name": "St. Olaf",
 			"vacantColor": "#f96ac0",
 			"occupiedColor": "#f640ae",
-			"startSpaces": [20, 21, 22, 23, 24, 25]
+			"startSpaces": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 25, 27, 30, 31, 32, 34, 35, 36, 49, 75]
 		},
 		{
 			"name": "Carleton",
 			"vacantColor": "#36aedc",
 			"occupiedColor": "#0d9fd8",
-			"startSpaces": [26, 27, 28, 29, 30, 31]
+			"startSpaces": [20, 21, 26, 38, 39, 40, 41, 42, 44, 45, 50, 51, 52, 54, 55, 56, 57, 59, 60, 61, 63, 64, 65, 66, 67, 68, 71]
 		}
 	],
 	"spaces": [
@@ -87,8 +87,8 @@
 			"id": 5,
 			"name": "College Road",
 			"abbrev": "CLR",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [64, 4, 56, 37, 35, 34, 66]
@@ -103,8 +103,8 @@
 			"id": 6,
 			"name": "The Pause at St. Olaf",
 			"abbrev": "PSO",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [7, 65, 64, 66]
@@ -119,8 +119,8 @@
 			"id": 7,
 			"name": "St. Olaf College",
 			"abbrev": "SOC",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [21, 23, 25, 9, 66, 67, 8, 66, 6, 65, 2]
@@ -135,8 +135,8 @@
 			"id": 8,
 			"name": "St. Olaf Track",
 			"abbrev": "SOT",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [7, 67, 34, 66]
@@ -151,8 +151,8 @@
 			"id": 9,
 			"name": "East St. Olaf",
 			"abbrev": "ESO",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [7, 25, 24, 10, 11, 26, 27, 68]
@@ -167,8 +167,8 @@
 			"id": 10,
 			"name": "South St. Olaf",
 			"abbrev": "SSO",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [1, 11, 9, 24, 22]
@@ -183,8 +183,8 @@
 			"id": 11,
 			"name": "St. Olaf Rotary",
 			"abbrev": "OLR",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [1, 10, 9, 26, 30, 72, 69, 71, 73, 12]
@@ -199,8 +199,8 @@
 			"id": 12,
 			"name": "Highway 19 West",
 			"abbrev": "HNW",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [11, 71, 13, 14, 74, 73]
@@ -215,8 +215,8 @@
 			"id": 13,
 			"name": "Linden Street South",
 			"abbrev": "LNS",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [12, 71, 31, 38, 40, 14]
@@ -231,8 +231,8 @@
 			"id": 14,
 			"name": "Industrial Drive",
 			"abbrev": "IND",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [12, 13, 40, 41, 43, 15, 74]
@@ -247,7 +247,7 @@
 			"id": 15,
 			"name": "Armstrong Heath",
 			"abbrev": "ASH",
-			"type": "sea",
+			"type": "land",
 			"naval": true,
 			"moveTo": {
 				"land": [],
@@ -262,9 +262,9 @@
 		{
 			"id": 16,
 			"name": "Fifth Street West",
-			"abbrev": "",
-			"type": "sea",
-			"naval": true,
+			"abbrev": "FSW",
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [15, 42, 30, 47, 75]
@@ -279,8 +279,8 @@
 			"id": 17,
 			"name": "Armstrong Road",
 			"abbrev": "ASR",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [15, 76, 79, 50, 52, 18]
@@ -295,8 +295,8 @@
 			"id": 18,
 			"name": "Sechler Park",
 			"abbrev": "SL",
-			"type": "sea",
-			"naval": true,
+			"type": "land",
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [15, 17, 52, 54]
@@ -359,7 +359,7 @@
 			"id": 22,
 			"name": "Park River",
 			"abbrev": "PKR",
-			"type": "land",
+			"type": "sea",
 			"naval": true,
 			"moveTo": {
 				"land": [20, 21, 23, 24],
@@ -375,7 +375,7 @@
 			"id": 23,
 			"name": "Heath East Branch",
 			"abbrev": "HEB",
-			"type": "land",
+			"type": "sea",
 			"naval": true,
 			"moveTo": {
 				"land": [21, 22, 24, 25],
@@ -391,7 +391,7 @@
 			"id": 24,
 			"name": "Heath West Branch",
 			"abbrev": "HWB",
-			"type": "land",
+			"type": "sea",
 			"naval": true,
 			"moveTo": {
 				"land": [22, 23, 25],
@@ -440,7 +440,7 @@
 			"name": "Forest Avenue",
 			"abbrev": "FRA",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [26, 28, 29, 68],
 				"sea": [26, 9, 68]
@@ -488,7 +488,7 @@
 			"name": "Highway 43",
 			"abbrev": "HFT",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [26, 28, 29, 31, 70],
 				"sea": [26, 11, 72]
@@ -504,7 +504,7 @@
 			"name": "Oxford Street",
 			"abbrev": "OXS",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [70, 30, 29, 38],
 				"sea": [71, 13, 38]
@@ -552,7 +552,7 @@
 			"name": "First Street West",
 			"abbrev": "FIW",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [67, 32, 33, 35, 66],
 				"sea": [67, 8, 66, 5, 35]
@@ -568,13 +568,13 @@
 			"name": "Third Street West",
 			"abbrev": "THW",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [34, 33, 36, 37],
 				"sea": [34, 5, 37]
 			},
 			"territory": null,
-			"path": "m 417.08098,184.07485 1.40997,104.0271 108.8796,1.60235 63.10583,-105.72655 z",
+			"path": "m 527.37055,289.7043 63.10583,-105.72655 -173.3954,0.0971 -20.38805,104.27026 z",
 			"supply": null,
 			"drawUnit": null,
 			"label": ""
@@ -584,13 +584,13 @@
 			"name": "North Highway 3",
 			"abbrev": "NHT",
 			"type": "land",
-			"naval": false,
+			"naval": true,
 			"moveTo": {
 				"land": [33, 35, 37, 55, 49, 45],
 				"sea": []
 			},
 			"territory": null,
-			"path": "m 527.37055,289.7043 63.10583,-105.72655 -173.3954,0.0971 -20.38805,104.27026 z",
+			"path": "m 681.93128,0 -62.91165,0 -0.38835,7.9610464 -3.10674,7.9610426 0.97086,5.825154 -2.33007,33.009202 0.19418,29.708282 -12.03865,34.950923 -2.91258,50.09632 23.17939,0.58047 8.85896,-21.7452 14.89397,-0.29148 6.46492,-25.33919 4.66012,-46.212886 13.20368,-29.125766 6.60184,-17.47546 z",
 			"supply": null,
 			"drawUnit": null,
 			"label": ""
@@ -599,7 +599,7 @@
 			"id": 37,
 			"name": "Heath Creek North",
 			"abbrev": "HCN",
-			"type": "land",
+			"type": "sea",
 			"naval": true,
 			"moveTo": {
 				"land": [35, 36, 55, 56],
@@ -634,7 +634,7 @@
 			"name": "Carleton College",
 			"abbrev": "CAC",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [47, 44, 38, 40, 41, 42],
 				"sea": [47, 16, 42]
@@ -650,7 +650,7 @@
 			"name": "First Street East",
 			"abbrev": "FSE",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [38, 39, 41],
 				"sea": [38, 13, 14, 41]
@@ -666,7 +666,7 @@
 			"name": "Second Street East",
 			"abbrev": "SSE",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [40, 39, 42, 43],
 				"sea": [43, 14, 40]
@@ -700,7 +700,7 @@
 			"name": "Central Park",
 			"abbrev": "CEP",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [41, 42],
 				"sea": [41, 14, 15, 42]
@@ -718,7 +718,7 @@
 			"name": "Fifth Street East",
 			"abbrev": "FIS",
 			"type": "land",
-			"naval": false,
+			"naval": true,
 			"moveTo": {
 				"land": [38, 39, 47, 46, 45, 33],
 				"sea": []
@@ -734,7 +734,7 @@
 			"name": "Water Street South",
 			"abbrev": "WSS",
 			"type": "land",
-			"naval": false,
+			"naval": true,
 			"moveTo": {
 				"land": [33, 36, 49, 46, 44],
 				"sea": []
@@ -749,8 +749,8 @@
 			"id": 46,
 			"name": "Seventh Street River",
 			"abbrev": "SSR",
-			"type": "land",
-			"naval": false,
+			"type": "sea",
+			"naval": true,
 			"moveTo": {
 				"land": [44, 45, 49, 48, 47],
 				"sea": []
@@ -765,7 +765,7 @@
 			"id": 47,
 			"name": "Fourth Street River",
 			"abbrev": "FSR",
-			"type": "land",
+			"type": "sea",
 			"naval": true,
 			"moveTo": {
 				"land": [39, 44, 46, 48, 77, 75],
@@ -781,8 +781,8 @@
 			"id": 48,
 			"name": "Third Street River",
 			"abbrev": "TSR",
-			"type": "land",
-			"naval": false,
+			"type": "sea",
+			"naval": true,
 			"moveTo": {
 				"land": [47, 46, 49, 81, 77],
 				"sea": []
@@ -798,7 +798,7 @@
 			"name": "Three Nineteen Intersection",
 			"abbrev": "TNI",
 			"type": "land",
-			"naval": false,
+			"naval": true,
 			"moveTo": {
 				"land": [45, 46, 48, 81, 58, 55, 36],
 				"sea": []
@@ -832,7 +832,7 @@
 			"name": "Alina Clinic",
 			"abbrev": "ALC",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [50, 52, 53],
 				"sea": [50, 19, 53]
@@ -848,7 +848,7 @@
 			"name": "Jefferson Road",
 			"abbrev": "JFR",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [50, 51, 53, 54],
 				"sea": [50, 17, 18, 54]
@@ -866,7 +866,7 @@
 			"name": "Grant Park",
 			"abbrev": "GRP",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [59, 51, 52, 54],
 				"sea": [59, 19, 51]
@@ -882,7 +882,7 @@
 			"name": "Northfield High School",
 			"abbrev": "NHS",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [52, 53],
 				"sea": [18, 52]
@@ -914,7 +914,7 @@
 			"name": "Division Street South",
 			"abbrev": "DIV",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [61, 60, 55, 37],
 				"sea": [61, 4, 5, 37]
@@ -932,7 +932,7 @@
 			"name": "Washington Street",
 			"abbrev": "WAS",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [64, 65, 61],
 				"sea": [64, 4, 62]
@@ -964,7 +964,7 @@
 			"name": "Sumner Street East",
 			"abbrev": "SUM",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [53, 60, 58, 81],
 				"sea": [81, 19, 53]
@@ -1003,7 +1003,7 @@
 			},
 			"territory": [62, 63],
 			"path": [
-				"M 853.73253,469.47548 854.00713,633 953,633 l -8.35429,-9.32025 -15.92209,-9.70858 -18.83466,-19.80553 -1.16503,-8.15521 44.46533,1.94172 0,-119.60982 z"
+				"m 853.73253,469.47548 99.45673,-1.13315 -0.18926,119.7069 -44.17902,-2.0388 1.3592,8.54356 16.79586,18.44632 17.96089,10.19402 L 953,633 l -98.99287,0 z"
 			],
 			"supply": null,
 			"drawUnit": null,
@@ -1014,14 +1014,14 @@
 			"name": "Sibley Swale Park",
 			"abbrev": "SSP",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [],
-				"sea": [57, 4, 56]
+				"sea": []
 			},
 			"territory": [61, 63],
 			"path": [
-				"m 953.18926,587.95215 -44.46533,-1.94172 1.16503,8.15521 5.43681,5.24264 13.39785,14.56289 12.03865,7.5727 3.88344,2.13588 L 953,633 z"
+				"M 908.82098,586.01043 953,588.04923 953,633 l -8.06307,-9.80567 -17.96089,-10.19402 -16.79586,-18.44632 z"
 			],
 			"supply": null,
 			"drawUnit": null,
@@ -1032,7 +1032,7 @@
 			"name": "East Woodley Street",
 			"abbrev": "EWS",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [65, 3]
@@ -1050,7 +1050,7 @@
 			"name": "Fareway Drive",
 			"abbrev": "FWD",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [66, 65, 57],
 				"sea": [65, 6, 66, 5, 4, 57]
@@ -1068,7 +1068,7 @@
 			"name": "Nevada Street",
 			"abbrev": "NEV",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [64, 57, 61],
 				"sea": [63, 3, 2, 7, 6, 64]
@@ -1086,7 +1086,7 @@
 			"name": "Fourth Street East",
 			"abbrev": "FSE",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [64, 34],
 				"sea": [64, 5, 34, 8, 7, 6]
@@ -1139,7 +1139,7 @@
 			"id": 69,
 			"name": "Lyman Lake South",
 			"abbrev": "LLS",
-			"type": "land",
+			"type": "sea",
 			"naval": true,
 			"moveTo": {
 				"land": [70],
@@ -1157,8 +1157,8 @@
 			"id": 70,
 			"name": "Lyman Lake North",
 			"abbrev": "LLN",
-			"type": "land",
-			"naval": false,
+			"type": "sea",
+			"naval": true,
 			"moveTo": {
 				"land": [69, 30, 31],
 				"sea": []
@@ -1197,11 +1197,11 @@
 			"naval": true,
 			"moveTo": {
 				"land": [],
-				"sea": [31, 13, 12, 11, 69]
+				"sea": [31,]
 			},
 			"territory": [70, 72],
 			"path": [
-				"m 325.23773,447.76012 -3.88344,-0.38834 -1.55337,-11.06779 -2.91258,-12.42699 -3.30092,-6.99019 -0.58251,-3.49509 12.59689,-3.98052 18.47059,-4.75721 20.58221,-3.88344 3.88343,0.19418 0.19418,3.30092 -7.37853,6.40766 -8.34939,0.58252 -9.70859,9.90276 -9.70859,12.62117 z"
+				"m 313.00491,413.39172 12.91241,-3.98052 18.15507,-4.75721 20.58221,-3.88344 3.88343,0.19418 0.19418,3.30092 -7.37853,6.40766 -8.34939,0.58252 -9.70859,9.90276 -9.70859,12.62117 -8.34938,13.98036 -3.88344,-0.38834 -1.55337,-11.06779 -2.91258,-12.42699 -3.30092,-6.99019 z"
 			],
 			"supply": null,
 			"drawUnit": null,
@@ -1211,7 +1211,7 @@
 			"id": 73,
 			"name": "Park Road River",
 			"abbrev": "PRR",
-			"type": "land",
+			"type": "sea",
 			"naval": true,
 			"moveTo": {
 				"land": [],
@@ -1230,7 +1230,7 @@
 			"name": "Babcock Park",
 			"abbrev": "BCP",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [31, 13, 12, 11, 69]
@@ -1248,7 +1248,7 @@
 			"name": "Ole Ave",
 			"abbrev": "OLE",
 			"type": "land",
-			"naval": true,
+			"naval": false,
 			"moveTo": {
 				"land": [],
 				"sea": [31, 13, 12, 11, 69]
