@@ -17,6 +17,7 @@ let RenderedMap = React.createClass({
 					height: map.get('height'),
 					countries: map.get('countries'),
 					spaces: map.get('spaces'),
+					id: map.id,
 				}
 			})
 		}
@@ -42,7 +43,8 @@ let RenderedMap = React.createClass({
 		console.log(ev.target.attributes['data-id'].value);
 	},
 	render() {
-		console.log('RenderedMap.props', this.props)
+		console.log('RenderedMap.props', this.props, this.state.map)
+		let mapId = this.state.map.id
 		let spaces = React.createElement('defs', {id: 'all-spaces'},
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible
@@ -58,7 +60,7 @@ let RenderedMap = React.createClass({
 						'supply-center': Boolean(space.supply),
 						[`space-type-${space.type}`]: true,
 					}),
-					id: `space-${space.id}`,
+					id: `${mapId}-space-${space.id}`,
 					key: space.id,
 				}
 
@@ -102,7 +104,7 @@ let RenderedMap = React.createClass({
 		let patterns = React.createElement('defs', null,
 			React.createElement('pattern',
 				{
-					id: 'diagonalHatch',
+					id: `${mapId}-diagonalHatch`,
 					key: 'diagonalHatch',
 					patternUnits: 'userSpaceOnUse',
 					width: '32',
@@ -115,17 +117,17 @@ let RenderedMap = React.createClass({
 			React.createElement('g',
 				{
 					className: 'country',
-					id: country.name.toLowerCase(),
+					id: `${mapId}-${country.name.toLowerCase().replace(' ', '_')}`,
 					key: country.name,
 					fill: country.vacantColor,
 				},
 				_.map(country.startSpaces, (spaceId) => {
 					return React.createElement('g', {
 						key: `${country.name}-${spaceId}`,
-						id: `${country.name}-${spaceId}`,
+						id: `${mapId}-${country.name}-${spaceId}`,
 						onClick: this.onClickTerritory,
 						className: 'territory accessible-territory',
-						dangerouslySetInnerHTML: {__html: `<use data-id='${spaceId}' xlink:href="#space-${spaceId}" />`},
+						dangerouslySetInnerHTML: {__html: `<use data-id='${spaceId}' xlink:href="#${mapId}-space-${spaceId}" />`},
 					})
 				}))
 		)
@@ -152,11 +154,11 @@ let RenderedMap = React.createClass({
 			},
 			_.map(seaSpaceIds, (spaceId) => React.createElement('g',
 				{
-					id: `sea-${spaceId}`,
+					id: `${mapId}-sea-${spaceId}`,
 					key: `sea-${spaceId}`,
 					onClick: this.onClickTerritory,
 					className: 'territory accessible-territory sea-territory',
-					dangerouslySetInnerHTML: {__html: `<use data-id='${spaceId}' xlink:href="#space-${spaceId}" />`},
+					dangerouslySetInnerHTML: {__html: `<use data-id='${spaceId}' xlink:href="#${mapId}-space-${spaceId}" />`},
 				}))
 			)
 
@@ -176,7 +178,7 @@ let RenderedMap = React.createClass({
 
 				return React.createElement('g',
 					{
-						id: `empty-${space.id}`,
+						id: `${mapId}-empty-${space.id}`,
 						key: `empty-${space.id}`,
 						onClick: this.onClickTerritory,
 						className: cx({
@@ -185,8 +187,8 @@ let RenderedMap = React.createClass({
 							'inaccessible-territory': !isTraversable,
 							'sea-territory': (space.type === 'sea'),
 						}),
-						fill: isTraversable ? undefined : 'url(#diagonalHatch)',
-						dangerouslySetInnerHTML: {__html: `<use data-id='${space.id}' xlink:href="#space-${space.id}" />`},
+						fill: isTraversable ? undefined : `url(#${mapId}-diagonalHatch)`,
+						dangerouslySetInnerHTML: {__html: `<use data-id='${space.id}' xlink:href="#${mapId}-space-${space.id}" />`},
 					}
 				)
 			}))
