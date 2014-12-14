@@ -1,7 +1,7 @@
 import * as React from 'react'
-import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import mapActions from '../actions/mapActions'
+import DetailedListItem from '../components/detailed-list-item'
 
 let MapListItem = React.createClass({
 	destroyMap(ev) {
@@ -9,21 +9,7 @@ let MapListItem = React.createClass({
 		mapActions.destroyMap(this.props.map.id)
 	},
 	render() {
-		let components = _.map(this.props.map.attributes || this.props.map, (value, key) => {
-			let val = JSON.stringify(value, null, 2);
-			val = val ? val.substring(0, 50) : val;
-
-			if (key === 'id' || key === 'get')
-				return null
-
-			return React.createElement('div', {key: key}, key, ': ', val)
-		})
-
-		components.unshift(React.createElement('div', {key: 'id'}, 'id', ': ', this.props.map.id))
-
-		components.push(React.createElement('button', {onClick: this.destroyMap, key: 'deleteButton'}, 'Delete Map'))
-
-		return React.createElement('li', {className: 'one-map'}, components)
+		return React.createElement(DetailedListItem, {info: this.props.info, buttonClick: this.destroyMap})
 	},
 })
 
@@ -49,11 +35,11 @@ let CreateMap = React.createClass({
 		mapActions.createMap({name, players, width, height, countries, spaces})
 	},
 	render() {
-		let title = React.createElement('h1', {className: 'view-title'}, 'Create New Map')
+		let title = React.createElement('h1', {className: 'view-title'}, 'Create a Map')
 
 		let listOfMaps = React.createElement('ul',
-			{className: 'raw-map-list'},
-			_.map(this.props.maps, (map) => React.createElement(MapListItem, {key: map.id, map: map})))
+			{className: 'raw-list'},
+			_.map(this.props.maps, (map) => React.createElement(MapListItem, {key: map.id, info: map})))
 
 		let mapCreationForm = React.createElement('form', {className: 'map-creation-form', onSubmit: this.createMap},
 			React.createElement('label', null, 'Name: ', React.createElement('input', {type: 'text', ref: 'name', placeholder: 'Map Name'})),
@@ -65,7 +51,7 @@ let CreateMap = React.createClass({
 			React.createElement('input', {type: 'submit', value: 'Create new map'}))
 
 		return React.createElement('div',
-			{id: 'create'},
+			{id: 'create-game'},
 			title,
 			listOfMaps,
 			mapCreationForm)

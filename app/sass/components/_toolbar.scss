@@ -4,6 +4,7 @@
 	margin-top: 1em;
 
 	li {
+		@include block-link($border: true);
 		border-color: currentColor;
 	}
 

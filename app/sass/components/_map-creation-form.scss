@@ -8,7 +8,7 @@
 	}
 }
 
-.map-creation-form {
+.map-creation-form, .game-creation-form {
 	border: solid 1px;
 	padding: 0.25em 0.5em;
 
@@ -31,9 +31,12 @@
 	}
 }
 
-.raw-map-list {
+.raw-list {
 	.one-map {
 		margin-bottom: 1em;
+	}
+	div + div {
+		margin-top: 0.5em;
 	}
 	button {
 		margin-top: 0.5em;
