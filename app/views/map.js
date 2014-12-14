@@ -83,7 +83,7 @@ let RenderedMap = React.createClass({
 					supply = React.createElement('circle', {
 						className: 'supply-symbol',
 						id: `supply-${space.id}`,
-					 	cx: space.supply.x,
+						cx: space.supply.x,
 						cy: this.state.map.height - space.supply.y,
 						r: 5,
 					})
