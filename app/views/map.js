@@ -46,6 +46,13 @@ let RenderedMap = React.createClass({
 		console.log('RenderedMap.props', this.props, this.state.map)
 		let mapId = this.state.map.id
 		let spaces = React.createElement('defs', {id: 'all-spaces'},
+			// React.createElement('path', {
+			// 	id: `${mapId}-supply-center`,
+			// 	d: 'M43.2019567,43.2019567 L27.1709577,37.7656885 L13.604471,47.8897384 L13.8208179,30.9634528 L0,21.1894604 L16.1647088,16.1647088 L21.1894602,0 L30.9634528,13.8208181 L47.8897384,13.6044709 L37.7656885,27.1709579 L43.2019567,43.2019567 Z',
+			// 	stroke: '#000000',
+			// 	strokeWidth: '1.5',
+			// 	fill: '#FFE714',
+			// }),
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible
 				let vectorPath = space.path;
@@ -90,10 +97,13 @@ let RenderedMap = React.createClass({
 					// 	r: 5,
 					// })
 
+					let supplySize = 24
 					supply = React.createElement('g', {
 						key: 'supply',
 						dangerouslySetInnerHTML: {
-							__html: `<image width='16' height='16' x='${space.supply.x}' y='${space.supply.y}' xlink:href='images/supply.svg' />`
+							__html: `<image width='${supplySize}' height='${supplySize}' x='${space.supply.x - supplySize/2}' y='${this.state.map.height - supplySize/2 - space.supply.y}' xlink:href='images/supply.svg' />`
+							// __html: `<image width='16' height='16' x=0 y=0 style='transform:translateX(${space.supply.x}px) translateY(${space.supply.y}px)' xlink:href='images/supply.svg' />`
+							// __html: `<use x='${space.supply.x}' y='${space.supply.y}' xlink:href='#${mapId}-supply-center' />`
 						},
 					})
 				}
