@@ -1,3 +1,51 @@
 .game-title {
 	font-weight: 500;
 }
+
+#game-nav {
+	text-align: center;
+
+	padding: 0 $app-edge-padding;
+	margin-top: 0.35em;
+
+	@include list-inline;
+
+	color: $app-color;
+	border: solid 2px $app-color;
+	background-color: white;
+	border-radius: 3px;
+
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+
+	li {
+		flex: 1;
+		margin: 0;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+
+		display: block;
+		padding: 0.5em 0.5em;
+		transition: background-color 0.25s;
+
+		&:hover {
+			background-color: darken($app-color, 10%);
+		}
+	}
+
+	.octicon {
+		width: 16px;
+	}
+
+	.active {
+		background-color: $app-color;
+		color: white;
+		&:hover {
+			background-color: $app-color;
+		}
+	}
+}

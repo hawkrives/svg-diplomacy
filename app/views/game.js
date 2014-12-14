@@ -1,10 +1,26 @@
 import * as React from 'react'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
-import {State} from 'react-router'
+import {State, Link as LinkClass} from 'react-router'
+import {Octicon as OcticonClass} from '../components/octicon'
 import RenderedMap from './map'
 import gameActions from '../actions/gameActions'
 import ContentEditable from '../components/content-editable'
+
+let Link = React.createFactory(LinkClass);
+let Octicon = React.createFactory(OcticonClass);
+
+// Right Now this toolbar has separate links to the items, but it should be more like tabs than links in the future
+let GameNavbar = React.createClass({
+	render() {
+		return React.createElement('ul', {id: 'game-nav', className: 'menu'},
+			React.createElement('li', {key: 'board'},	Octicon({icon: 'globe'})),
+			React.createElement('li', {key: 'chat'},	Octicon({icon: 'comment-discussion'})),
+			React.createElement('li', {key: 'history'},	Octicon({icon: 'clock'})),
+			React.createElement('li', {key: 'info'},	Octicon({icon: 'gear'}))
+		)
+	},
+})
 
 let Game = React.createClass({
 	mixins: [State],
@@ -70,11 +86,14 @@ let Game = React.createClass({
 			{className: 'error'},
 			this.state.error)
 
+		let gameNavbar = React.createElement(GameNavbar);
+
 		return React.createElement('div',
 			{id: 'game'},
 			title,
 			errorView,
-			map)
+			map,
+			gameNavbar)
 	},
 })
 
