@@ -4,12 +4,21 @@
 	margin-top: 1em;
 
 	li {
-		@include block-link;
 		border-color: currentColor;
 	}
 
 	li + li {
 		margin-top: 0.5em;
+	}
+
+	.tool {
+		@include block-link;
+		margin-top: 0;
+		position: relative;
+		text-shadow: 0 0 15px #efefef;
+		color: $app-color;
+		font-weight: 500;
+		font-feature-settings: 'smcp';
 	}
 }
 
