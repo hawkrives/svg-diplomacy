@@ -16,7 +16,7 @@ let Game = React.createClass({
 			let mapId = game.get('mapId')
 			if (mapId) {
 				let map = _.find(nextProps.maps, (map) => map.id === mapId.id)
-				this.setState({game, map, loading: false, error: ''})
+				this.setState({game, map, loading: false, error: '', section: this.getQuery().section})
 			}
 			else {
 				this.setState({error: `couldn't find map ${mapId}`})
@@ -35,6 +35,7 @@ let Game = React.createClass({
 			map: null,
 			error: null,
 			loading: true,
+			section: '',
 		}
 	},
 	saveGame() {
@@ -71,7 +72,7 @@ let Game = React.createClass({
 			{className: 'error'},
 			this.state.error)
 
-		let gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), query: this.getQuery()});
+		let gameNavbar = React.createElement(GameNavbar, {params: this.getParams()});
 
 		return React.createElement('div',
 			{id: 'game'},

@@ -5,22 +5,6 @@ import {Link} from 'react-router'
 let Octicon = React.createFactory(OcticonClass);
 
 let GameNavbar = React.createClass({
-	activateNavBar(props) {
-		if(props.section) {
-			this.setState({section: props.section})
-		}
-	},
-	componentWillReveiveProps(nextProps) {
-		this.activateNavBar(nextProps)
-	},
-	componentWillMount() {
-		this.componentWillReveiveProps(this.props)
-	},
-	getInitialState() {
-		return {
-			section: '',
-		}
-	},
 	render() {
 		return React.createElement('ul', {id: 'game-nav', className: 'menu'},
 			React.createElement('li', {key: 'board'},
