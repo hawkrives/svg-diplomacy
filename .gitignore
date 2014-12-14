@@ -6,3 +6,5 @@ build/
 parse-api-key.json
 global.json
 *.log
+*.swp
+*~
