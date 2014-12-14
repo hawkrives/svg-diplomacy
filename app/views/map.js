@@ -91,7 +91,6 @@ let RenderedMap = React.createClass({
 					// This code is an attempt to load an svg image to render the supply center. It is currently not working
 					// supply = React.createElement('g')
 					// supply.dangerouslySetInnerHTML = {__html: `<image width=5 height=5 x=${space.supply.x} y=${space.supply.y} xlink:href="images/supply.svg" />`}
-					console.log(supply)
 				}
 
 				return React.createElement('g', args, cantUsePath ? null : [paths, supply]) // , hasSupply ? supply : null)
