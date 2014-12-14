@@ -71,7 +71,7 @@ let Game = React.createClass({
 			{className: 'error'},
 			this.state.error)
 
-		let gameNavbar = React.createElement(GameNavbar);
+		let gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), query: this.getQuery()});
 
 		return React.createElement('div',
 			{id: 'game'},
