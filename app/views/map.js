@@ -80,20 +80,23 @@ let RenderedMap = React.createClass({
 				if (space.supply) {
 					hasSupply = true;
 
-					supply = React.createElement('circle', {
-						className: 'supply-symbol',
-						id: `supply-${space.id}`,
-						cx: space.supply.x,
-						cy: this.state.map.height - space.supply.y,
-						r: 5,
-					})
+					// supply = React.createElement('circle', {
+					// 	className: 'supply-symbol',
+					// 	id: `supply-${space.id}`,
+					// 	cx: space.supply.x,
+					// 	cy: this.state.map.height - space.supply.y,
+					// 	r: 5,
+					// })
 
-					// This code is an attempt to load an svg image to render the supply center. It is currently not working
-					// supply = React.createElement('g')
-					// supply.dangerouslySetInnerHTML = {__html: `<image width=5 height=5 x=${space.supply.x} y=${space.supply.y} xlink:href="images/supply.svg" />`}
+					supply = React.createElement('g', {
+						key: 'supply',
+						dangerouslySetInnerHTML: {
+							__html: `<image width='16' height='16' x='${space.supply.x}' y='${space.supply.y}' xlink:href='images/supply.svg' />`
+						},
+					})
 				}
 
-				return React.createElement('g', args, cantUsePath ? null : [paths, supply]) // , hasSupply ? supply : null)
+				return React.createElement('g', args, (cantUsePath ? null : [paths, hasSupply ? supply : null]))
 			}))
 
 		let patterns = React.createElement('defs', null,
