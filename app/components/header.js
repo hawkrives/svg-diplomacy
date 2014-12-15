@@ -14,7 +14,7 @@ let Header = React.createClass({
 			React.createElement('li', {key: 'profile'}, Link({to: 'profile'}, Octicon({icon: 'person'}))),
 			React.createElement('li', {key: 'search'},  Link({to: 'search'},  Octicon({icon: 'search'}))),
 			React.createElement('li', {key: 'help'},    Link({to: 'help'},    Octicon({icon: 'question'}))),
-			React.createElement('li', {key: 'create'},  Link({to: 'create'},  Octicon({icon: 'plus'}))),
+			React.createElement('li', {key: 'create'},  Link({to: 'create'},  Octicon({icon: 'pencil'}))),
 		]
 
 		let loggedOutMenuItems = [

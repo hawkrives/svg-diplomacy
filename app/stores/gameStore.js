@@ -43,7 +43,6 @@ let gameStore = Reflux.createStore({
 		game.set('mapId', {__type: 'Pointer', className: 'Map', objectId: JSON.parse(options.mapId).objectId})
 		game.set('countriesToPlayers', options.countriesToPlayers)
 		game.set('status', options.status)
-		console.log("gameStore.createGame: saving data to Parse")
 		game.save()
 			.then(this._updateDataFromParse, (error) => {console.log(error)})
 	},

@@ -64,7 +64,7 @@ let Game = React.createClass({
 		let title = React.createElement('h1', {className: 'view-title'}, 'Active Game: ', gameTitleComponent)
 
 		let gameNavbar;
-		if(this.state.game)
+		if (this.state.game)
 			gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), status: this.state.game.get('status')});
 
 		let map;

@@ -8,7 +8,7 @@ let Link = React.createFactory(LinkClass)
 
 let GameNavbar = React.createClass({
 	render() {
-		let boardLink 	= React.createElement('li', {key: 'board'},		Link({to: 'game', params: {gameId: this.props.params.gameId}, query: {section: 'board'}},	Octicon({icon: 'globe'})))
+		let boardLink	= React.createElement('li', {key: 'board'},		Link({to: 'game', params: {gameId: this.props.params.gameId}, query: {section: 'board'}},	Octicon({icon: 'globe'})))
 		let chatLink	= React.createElement('li', {key: 'chat'},		Link({to: 'game', params: {gameId: this.props.params.gameId}, query: {section: 'chat'}},	Octicon({icon: 'comment-discussion'})))
 		let historyLink	= React.createElement('li', {key: 'history'},	Link({to: 'game', params: {gameId: this.props.params.gameId}, query: {section: 'history'}},	Octicon({icon: 'clock'})))
 		let infoLink	= React.createElement('li', {key: 'info'},		Link({to: 'game', params: {gameId: this.props.params.gameId}, query: {section: 'info'}},	Octicon({icon: 'gear'})))
