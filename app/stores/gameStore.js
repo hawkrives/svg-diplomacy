@@ -48,6 +48,12 @@ let gameStore = Reflux.createStore({
 			.then(this._updateDataFromParse, (error) => {console.log(error)})
 	},
 
+	destroyGame(gameId) {
+		let gameToDestroy = _.find(this.games, {id: gameId})
+		gameToDestroy.destroy()
+			.then(this._updateDataFromParse)
+	},
+
 	makeMove() {},
 
 	editGame(gameId, key, value) {
