@@ -8,6 +8,13 @@
 		Parse.User.id
 	],
 	"mapId": Parse.Object.Map.id,
+	"settings": Object({
+		turnLength: Number,		// time for each player to submit orders
+		supplyToWin: Number,		// ranges from 50% to 100% of map's supply centers
+		countries: String,		// "random", "choose"
+		preGameBuild: Boolean,		// true means players choose which units to build, false means use map DefaultUnits
+		fogOfWar: Boolean,
+	})
 	"countriesToPlayers": [
 		Object({
 			country: String,		// Matches country.name in the map
@@ -30,6 +37,7 @@
 		})
 	]
 	"turnPhases": {
+		"PreGame-Build": ["..."],
 		"Spring 1901-Order": [
 			{
 				player: Parse.User.id,
