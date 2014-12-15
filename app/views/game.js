@@ -63,8 +63,9 @@ let Game = React.createClass({
 
 		let title = React.createElement('h1', {className: 'view-title'}, 'Active Game: ', gameTitleComponent)
 
+		let gameNavbar;
 		if(this.state.game)
-			console.log('game.status', this.state.game.get('status'))
+			gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), status: this.state.game.get('status')});
 
 		let map;
 		if (this.state.map)
@@ -73,8 +74,6 @@ let Game = React.createClass({
 		let errorView = React.createElement('div',
 			{className: 'error'},
 			this.state.error)
-
-		let gameNavbar = React.createElement(GameNavbar, {params: this.getParams()});
 
 		return React.createElement('div',
 			{id: 'game'},
