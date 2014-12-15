@@ -24,7 +24,7 @@
 			armyId: Number,
 			player: Parse.User.id,
 			location: Number,
-			type: String,
+			type: String,		// "army", "navy"
 			created: String, 		// Representation of turn phase
 			destroyed: String || null,		// Representation of turn phase
 		})
