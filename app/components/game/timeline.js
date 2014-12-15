@@ -2,12 +2,15 @@ import * as React from 'react'
 
 let Timeline = React.createClass({
 	render() {
-		let slider = React.createElement('span', {className: 'timeline-slider'})
-
-		let timeline = React.createElement('div', {className: 'timeline-background'}, slider)
+		let timeline = React.createElement('input', {
+			className: 'timeline-range',
+			type: 'range',
+			min: 0,
+			max: 100,
+		})
 
 		return React.createElement('div', {id: 'game-timeline'}, timeline)
-	}
+	},
 })
 
 export default Timeline

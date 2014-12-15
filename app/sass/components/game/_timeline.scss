@@ -1,29 +1,45 @@
+@mixin input-range {
+	border: 1px solid $app-color;
+	height: 16px;
+	width: 16px;
+	border-radius: 4px;
+	background: $app-color;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px black, 0px 0px 1px #0d0d0d;
+}
+
 #game-timeline {
 	border-radius: 4px;
 
-	.timeline-background {
-		border: 1px solid $app-color;
+	input[type="range"] {
+		-webkit-appearance: none;
 		border-radius: inherit;
-		color: #222;
-		height: 0.8em;
-		position: relative;
-		text-align: left;
-		margin-left: 0.6em;
-		margin-right: 0.6em;
 	}
 
-	.timeline-slider {
-		border: 1px solid $app-color;
-		border-radius: inherit;
-		font-weight: normal;
-		color: #555;
-		background-color: $app-color;
-		top: -0.3em;
-		margin-left: -0.6em;
-		position: absolute;
-		z-index: 2;
-		width: 1.4em;
-		height: 1.4em;
-		cursor: default;
+	input[type="range"]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+
+		@include input-range;
+		margin-top: -4px;
+	}
+
+	input[type="range"]::-moz-range-thumb {
+		@include input-range;
+	}
+
+	input[type="range"]::-ms-thumb {
+		@include input-range;
+	}
+
+	input[type="range"]:focus {
+		outline: none;
+	}
+
+	input[type="range"]::-ms-track {
+		cursor: pointer;
+		background: transparent;
+		border-color: transparent;
+		color: transparent;
 	}
 }
+
