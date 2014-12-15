@@ -32,7 +32,7 @@ let GameView = React.createClass({
 	mixins: [State],
 	render() {
 		// All possible components for the game
-		let map = React.createElement(RenderedMap, {map: this.props.map})
+		let map = React.createElement(RenderedMap, {game: this.props.game, map: this.props.map})
 		let orders = React.createElement(Orders)
 		let chat;
 		let timeline = React.createElement(Timeline)
