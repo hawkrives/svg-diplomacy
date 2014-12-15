@@ -37,8 +37,8 @@
 		})
 	]
 	"turnPhases": {
-		"PreGame-Build": ["..."],
-		"Spring 1901-Order": [
+		"pregame-build": ["..."],
+		"spring 1901-order": [
 			{
 				player: Parse.User.id,
 				spaces: [Number],
@@ -58,10 +58,10 @@
 			{ player: Parse.User.id, spaces: [Number], orders: [...] },
 			"..."
 		],
-		"Spring 1901-Retreat": ["..."],
-		"Fall 1901-Order": ["..."],
-		"Fall 1901-Retreat": ["..."],
-		"Fall 1901-Build": ["..."],
+		"spring 1901-retreat": ["..."],
+		"fall 1901-order": ["..."],
+		"fall 1901-retreat": ["..."],
+		"fall 1901-build": ["..."],
 		"..."
 	}
 }
