@@ -212,12 +212,15 @@ let RenderedMap = React.createClass({
 				let armySize = 48
 				let imagePath;
 				let space = _.find(this.state.map.spaces, {id: army.location})
+				if (!space)
+					return
 				if (army.type === 'navy')
 					imagePath = 'images/navy.png'
 				else if (army.type === 'army')
 					imagePath = 'images/tank.gif'
 				return React.createElement('g', {
-					key: 'army-${army.id}',
+					id: `${mapId}-army-${army.armyId}`,
+					key: 'army-${army.armyId}',
 					dangerouslySetInnerHTML: {
 						__html: `<image width='${armySize}' height='${armySize}' x='${space.drawUnit.x - armySize/2}' y='${this.state.map.height - armySize/2 - space.drawUnit.y}' xlink:href=${imagePath} />`
 					},
