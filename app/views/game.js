@@ -2,10 +2,10 @@ import * as React from 'react'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import {State} from 'react-router'
-import GameNavbar from '../components/game-nav'
+import GameNavbar from '../components/game/game-nav'
 import RenderedMap from './map'
-import Orders from '../components/orders'
-import Timeline from '../components/timeline'
+import Orders from '../components/game/orders'
+import Timeline from '../components/game/timeline'
 import gameActions from '../actions/gameActions'
 import ContentEditable from '../components/content-editable'
 
@@ -123,6 +123,9 @@ let Game = React.createClass({
 			gameHeader = React.createElement(GameHeader, {title: this.state.game.get('title')})
 			gameView = React.createElement(GameView, {game: this.state.game, map: this.state.map})
 			gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), status: this.state.game.get('status')})
+		}
+		else {
+			gameView = React.createElement('p', {className: 'error'}, this.state.error)
 		}
 
 		return React.createElement('div',
