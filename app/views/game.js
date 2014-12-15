@@ -2,10 +2,77 @@ import * as React from 'react'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import {State} from 'react-router'
-import GameNavbar from '../components/game-nav'
+import GameNavbar from '../components/game/game-nav'
 import RenderedMap from './map'
+import Orders from '../components/game/orders'
+import Timeline from '../components/game/timeline'
 import gameActions from '../actions/gameActions'
 import ContentEditable from '../components/content-editable'
+
+let GameHeader = React.createClass({
+	render() {
+		let gameTitle = React.createElement('h1', {className: 'view-title'},
+			React.createElement(ContentEditable, {
+				className: 'game-title',
+				text: this.props.title,
+				onInput: this.updateGameTitle,
+				onEnter: this.saveGame,
+		}))
+
+		let playerCountry = React.createElement('div', {className: 'player-country'})
+
+		return React.createElement('div', {id: 'game-header'},
+			gameTitle,
+			playerCountry
+		)
+	},
+})
+
+let GameView = React.createClass({
+	mixins: [State],
+	render() {
+		// All possible components for the game (make sure these have keys)
+		let map = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map})
+		let orders = React.createElement(Orders, {key: 'orders'})
+		let chat;
+		let timeline = React.createElement(Timeline, {key: 'timeline'})
+		let settings;
+		let join;
+		let resign;
+
+		// Logic to render specific components
+		let views = []
+		let gameStatus = this.props.game.get('status')
+
+		if (this.getQuery().section === 'board') {
+			if (gameStatus === 'preGame') {
+				views = [map, join]
+			}
+			else if (gameStatus === 'active') {
+				views = [map, orders]
+			}
+		}
+		else if (this.getQuery().section === 'chat') {
+			views = [chat]
+		}
+		else if (this.getQuery().section === 'history') {
+			views = [map, timeline]
+		}
+		else if (this.getQuery().section === 'info') {
+			if (gameStatus === 'preGame') {
+				views = [settings, join]
+			}
+			else if (gameStatus === 'active') {
+				views = [settings, resign]
+			}
+			else if (gameStatus === 'completed') {
+				views = [settings]
+			}
+		}
+
+		return React.createElement('div', {id: 'game-view'}, views)
+	},
+})
 
 let Game = React.createClass({
 	mixins: [State],
@@ -16,7 +83,7 @@ let Game = React.createClass({
 			let mapId = game.get('mapId')
 			if (mapId) {
 				let map = _.find(nextProps.maps, (map) => map.id === mapId.id)
-				this.setState({game, map, loading: false, error: '', section: this.getQuery().section})
+				this.setState({game, map, loading: false, error: ''})
 			}
 			else {
 				this.setState({error: `couldn't find map ${mapId}`})
@@ -35,7 +102,6 @@ let Game = React.createClass({
 			map: null,
 			error: null,
 			loading: true,
-			section: '',
 		}
 	},
 	saveGame() {
@@ -49,36 +115,23 @@ let Game = React.createClass({
 		this.state.game.set('title', ev.target.textContent)
 	},
 	render() {
-		let gameTitle;
 		if (this.state.loading)
-			gameTitle = 'Loading...'
-		if (this.state.game)
-			gameTitle = this.state.game.get('title')
+			return React.createElement('h1', {className: 'view-title'}, 'Loading Game...')
 
-		let gameTitleComponent = React.createElement(ContentEditable, {
-			className: 'game-title',
-			text: gameTitle,
-			onInput: this.updateGameTitle,
-			onEnter: this.saveGame,
-		})
-
-		let title = React.createElement('h1', {className: 'view-title'}, 'Active Game: ', gameTitleComponent)
-
-		let map;
-		if (this.state.map)
-			map = React.createElement(RenderedMap, {map: this.state.map})
-
-		let errorView = React.createElement('div',
-			{className: 'error'},
-			this.state.error)
-
-		let gameNavbar = React.createElement(GameNavbar, {params: this.getParams()});
+		let gameHeader, gameView, gameNavbar;
+		if (this.state.game) {
+			gameHeader = React.createElement(GameHeader, {title: this.state.game.get('title')})
+			gameView = React.createElement(GameView, {game: this.state.game, map: this.state.map})
+			gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), status: this.state.game.get('status')})
+		}
+		else {
+			gameView = React.createElement('p', {className: 'error'}, this.state.error)
+		}
 
 		return React.createElement('div',
 			{id: 'game'},
-			title,
-			errorView,
-			map,
+			gameHeader,
+			gameView,
 			gameNavbar)
 	},
 })

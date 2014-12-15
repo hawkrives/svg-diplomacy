@@ -34,19 +34,30 @@ let gameStore = Reflux.createStore({
 		this._updateDataFromParse()
 	},
 
-	createGame(title, owner, players, mapId, countriesToPlayers) {
+	createGame(options) {
 		let game = new Game()
-		game.set('title', title || 'Untitled Game')
-		game.set('owner', owner)
-		game.set('players', players)
-		game.set('mapId', mapId)
-		game.set('countriesToPlayers', countriesToPlayers)
-
+		game.set('title', options.title || 'Untitled Game')
+		game.set('owner', {__type: 'Pointer', className: '_User', objectId: options.owner})
+		game.set('players', JSON.parse(options.players))
+		game.set('mapId', {__type: 'Pointer', className: 'Map', objectId: JSON.parse(options.mapId).objectId})
+		game.set('countriesToPlayers', options.countriesToPlayers)
+		game.set('status', options.status)
+		game.set('settings', options.settings)
 		game.save()
+			.then(this._updateDataFromParse, (error) => {console.log(error)})
+	},
+
+	destroyGame(gameId) {
+		let gameToDestroy = _.find(this.games, {id: gameId})
+		gameToDestroy.destroy()
 			.then(this._updateDataFromParse)
 	},
 
 	makeMove() {},
+
+	submitOrders() {
+		console.log('submitOrders')
+	},
 
 	editGame(gameId, key, value) {
 		let game = _.find(this.games, (g) => g.id === gameId)

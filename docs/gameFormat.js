@@ -8,6 +8,13 @@
 		Parse.User.id
 	],
 	"mapId": Parse.Object.Map.id,
+	"settings": Object({
+		turnLength: Number,		// time for each player to submit orders
+		supplyToWin: Number,		// ranges from 50% to 100% of map's supply centers
+		countries: String,		// "random", "choose"
+		preGameBuild: Boolean,		// true means players choose which units to build, false means use map DefaultUnits
+		fogOfWar: Boolean,
+	})
 	"countriesToPlayers": [
 		Object({
 			country: String,		// Matches country.name in the map
@@ -24,13 +31,14 @@
 			armyId: Number,
 			player: Parse.User.id,
 			location: Number,
-			type: String,
+			type: String,		// "army", "navy"
 			created: String, 		// Representation of turn phase
 			destroyed: String || null,		// Representation of turn phase
 		})
 	]
 	"turnPhases": {
-		"Spring 1901-Order": [
+		"pregame-build": ["..."],
+		"spring 1901-order": [
 			{
 				player: Parse.User.id,
 				spaces: [Number],
@@ -50,10 +58,10 @@
 			{ player: Parse.User.id, spaces: [Number], orders: [...] },
 			"..."
 		],
-		"Spring 1901-Retreat": ["..."],
-		"Fall 1901-Order": ["..."],
-		"Fall 1901-Retreat": ["..."],
-		"Fall 1901-Build": ["..."],
+		"spring 1901-retreat": ["..."],
+		"fall 1901-order": ["..."],
+		"fall 1901-retreat": ["..."],
+		"fall 1901-build": ["..."],
 		"..."
 	}
 }
