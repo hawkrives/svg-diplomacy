@@ -5,6 +5,7 @@ import {State} from 'react-router'
 import GameNavbar from '../components/game-nav'
 import RenderedMap from './map'
 import Orders from '../components/orders'
+import Timeline from '../components/timeline'
 import gameActions from '../actions/gameActions'
 import ContentEditable from '../components/content-editable'
 
@@ -34,7 +35,7 @@ let GameView = React.createClass({
 		let map = React.createElement(RenderedMap, {map: this.props.map})
 		let orders = React.createElement(Orders)
 		let chat;
-		let timeline;
+		let timeline = React.createElement(Timeline)
 		let settings;
 		let join;
 		let resign;
