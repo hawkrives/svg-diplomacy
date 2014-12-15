@@ -8,3 +8,4 @@ global.json
 *.log
 *.swp
 *~
+gulpp
