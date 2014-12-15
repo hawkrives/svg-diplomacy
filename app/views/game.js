@@ -48,9 +48,10 @@ let Game = React.createClass({
 		this.state.game.set('title', ev.target.textContent)
 	},
 	render() {
-		let gameTitle;
 		if (this.state.loading)
-			gameTitle = 'Loading...'
+			return React.createElement('h1', {className: 'view-title'}, 'Loading Game...')
+
+		let gameTitle
 		if (this.state.game)
 			gameTitle = this.state.game.get('title')
 
