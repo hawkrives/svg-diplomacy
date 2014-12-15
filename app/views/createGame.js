@@ -24,8 +24,9 @@ let CreateGame = React.createClass({
 		let owner = this.props.user.id
 		let players = this.refs.players.getDOMNode().value
 		let mapId = this.refs.mapId.getDOMNode().value
+		let status = 'preGame'
 
-		gameActions.createGame({title, owner, players, mapId})
+		gameActions.createGame({title, owner, players, mapId, status})
 	},
 	render() {
 		let title = React.createElement('h1', {className: 'view-title'}, 'Start a Game')

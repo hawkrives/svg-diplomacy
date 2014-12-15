@@ -15,6 +15,7 @@ let gameStore = Reflux.createStore({
 	},
 
 	_updateDataFromParse(user) {
+		console.log("gameStore._updateDataFromParse")
 		this.user = _.isUndefined(user) ? this.user : user;
 		let allGames = new Parse.Query(Game)
 		allGames.find()
@@ -34,16 +35,17 @@ let gameStore = Reflux.createStore({
 		this._updateDataFromParse()
 	},
 
-	createGame(title, owner, players, mapId, countriesToPlayers) {
+	createGame(options) {
 		let game = new Game()
-		game.set('title', title || 'Untitled Game')
-		game.set('owner', owner)
-		game.set('players', players)
-		game.set('mapId', mapId)
-		game.set('countriesToPlayers', countriesToPlayers)
-
+		game.set('title', options.title || 'Untitled Game')
+		game.set('owner', {__type: 'Pointer', className: '_User', objectId: options.owner})
+		game.set('players', JSON.parse(options.players))
+		game.set('mapId', {__type: 'Pointer', className: 'Map', objectId: JSON.parse(options.mapId).objectId})
+		game.set('countriesToPlayers', options.countriesToPlayers)
+		game.set('status', options.status)
+		console.log("gameStore.createGame: saving data to Parse")
 		game.save()
-			.then(this._updateDataFromParse)
+			.then(this._updateDataFromParse, (error) => {console.log(error)})
 	},
 
 	makeMove() {},
