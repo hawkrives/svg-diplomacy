@@ -31,11 +31,11 @@ let GameHeader = React.createClass({
 let GameView = React.createClass({
 	mixins: [State],
 	render() {
-		// All possible components for the game
-		let map = React.createElement(RenderedMap, {game: this.props.game, map: this.props.map})
-		let orders = React.createElement(Orders)
+		// All possible components for the game (make sure these have keys)
+		let map = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map})
+		let orders = React.createElement(Orders, {key: 'orders'})
 		let chat;
-		let timeline = React.createElement(Timeline)
+		let timeline = React.createElement(Timeline, {key: 'timeline'})
 		let settings;
 		let join;
 		let resign;
