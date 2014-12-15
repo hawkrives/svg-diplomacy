@@ -66,8 +66,6 @@ let RenderedMap = React.createClass({
 					className: cx({
 						space: true,
 						'supply-center': Boolean(space.supply),
-						'army': Boolean
-						(space.army),
 						[`space-type-${space.type}`]: true,
 					}),
 					id: `${mapId}-space-${space.id}`,
@@ -205,14 +203,15 @@ let RenderedMap = React.createClass({
 					}
 				)
 			}))
-
+		/*
 		let units = React.createElement('g',
 			{
 				className: 'units',
 			},
 			_.map(this.props.game.armies, (army) => {
 				let armySize = 24
-				let imagePath;	//This is set by Nick to be either army or navy
+				let imagePath;
+				let space = _.find(this.state.map.spaces, {id: army.location})
 				if (army.type === 'navy')
 					imagePath = 'images/navy.png'
 				else
@@ -223,8 +222,8 @@ let RenderedMap = React.createClass({
 						__html: `<image width='${armySize}' height='${armySize}' x='${space.drawUnit.x - armySize/2}' y='${this.state.map.height - armySize/2 - space.drawUnit.y}' xlink:href=${imagePath} />`
 					},
 				})
-		}))
-
+			}))
+		*/
 		return React.createElement('svg',
 			{
 				className: 'map ' + (this.props.className || ''),
