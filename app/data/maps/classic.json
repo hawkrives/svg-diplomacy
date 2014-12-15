@@ -1503,5 +1503,139 @@
 			"drawUnit": null,
 			"label": ""
 		}
+	],
+	"defaultUnits": [
+		{
+			"armyId": 1,
+			"country": "England",
+			"location": 25,
+			"type": "navy",
+		},
+		{
+			"armyId": 2,
+			"country": "England",
+			"location": 21,
+			"type": "navy",
+		},
+		{
+			"armyId": 3,
+			"country": "England",
+			"location": 22,
+			"type": "army",
+		},
+		{
+			"armyId": 4,
+			"country": "France",
+			"location": 28,
+			"type": "army",
+		},
+		{
+			"armyId": 5,
+			"country": "France",
+			"location": 31,
+			"type": "army",
+		},
+		{
+			"armyId": 6,
+			"country": "France",
+			"location": 26,
+			"type": "navy",
+		},
+		{
+			"armyId": 7,
+			"country": "Germany",
+			"location": 33,
+			"type": "army",
+		},
+		{
+			"armyId": 8,
+			"country": "Germany",
+			"location": 34,
+			"type": "navy",
+		},
+		{
+			"armyId": 9,
+			"country": "Germany",
+			"location": 35,
+			"type": "army",
+		},
+		{
+			"armyId": 10,
+			"country": "Italy",
+			"location": 39,
+			"type": "army",
+		},
+		{
+			"armyId": 11,
+			"country": "Italy",
+			"location": 41,
+			"type": "army",
+		},
+		{
+			"armyId": 12,
+			"country": "Italy",
+			"location": 43,
+			"type": "fleet",
+		},
+		{
+			"armyId": 13,
+			"country": "Austria",
+			"location": 46,
+			"type": "army",
+		},
+		{
+			"armyId": 14,
+			"country": "Austria",
+			"location": 48,
+			"type": "army",
+		},
+		{
+			"armyId": 15,
+			"country": "Austria",
+			"location": 47,
+			"type": "navy",
+		},
+		{
+			"armyId": 16,
+			"country": "Turkey",
+			"location": 51,
+			"type": "navy",
+		},
+		{
+			"armyId": 17,
+			"country": "Turkey",
+			"location": 50,
+			"type": "army",
+		},
+		{
+			"armyId": 18,
+			"country": "Turkey",
+			"location": 52,
+			"type": "army",
+		},
+		{
+			"armyId": 19,
+			"country": "Russia",
+			"location": 60,
+			"type": "army",
+		},
+		{
+			"armyId": 20,
+			"country": "Russia",
+			"location": 59,
+			"type": "navy",
+		},
+		{
+			"armyId": 21,
+			"country": "Russia",
+			"location": 55,
+			"type": "army",
+		},
+		{
+			"armyId": 22,
+			"country": "Russia",
+			"location": 62,
+			"type": "navy",
+		},
 	]
 }
