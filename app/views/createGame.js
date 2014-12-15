@@ -26,6 +26,10 @@ let CreateGame = React.createClass({
 		let mapId = this.refs.mapId.getDOMNode().value
 		let status = 'preGame'
 		let settings = {turnLength: 1, supplyToWin: 18, countries: 'random', preGameBuild: false, fogOfWar: false}
+		if (settings.preGameBuild === false) {
+			// Need to load the default builds from the map into the game
+			let turnPhases;
+		}
 
 		gameActions.createGame({title, owner, players, mapId, status, settings})
 	},
