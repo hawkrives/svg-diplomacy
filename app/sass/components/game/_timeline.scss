@@ -1,0 +1,29 @@
+#game-timeline {
+	border-radius: 4px;
+
+	.timeline-background {
+		border: 1px solid $app-color;
+		border-radius: inherit;
+		color: #222;
+		height: 0.8em;
+		position: relative;
+		text-align: left;
+		margin-left: 0.6em;
+		margin-right: 0.6em;
+	}
+
+	.timeline-slider {
+		border: 1px solid $app-color;
+		border-radius: inherit;
+		font-weight: normal;
+		color: #555;
+		background-color: $app-color;
+		top: -0.3em;
+		margin-left: -0.6em;
+		position: absolute;
+		z-index: 2;
+		width: 1.4em;
+		height: 1.4em;
+		cursor: default;
+	}
+}

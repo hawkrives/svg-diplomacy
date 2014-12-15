@@ -2,13 +2,16 @@ import * as React from 'react'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import {State} from 'react-router'
-import GameNavbar from '../components/game-nav'
+
 import RenderedMap from './map'
 import Orders from '../components/orders'
 import Settings from '../components/game-settings'
 import Timeline from '../components/timeline'
 import gameActions from '../actions/gameActions'
+import GameNavbar from '../components/game/game-nav'
 import ContentEditable from '../components/content-editable'
+
+import gameActions from '../actions/gameActions'
 
 let GameHeader = React.createClass({
 	render() {
@@ -32,9 +35,9 @@ let GameHeader = React.createClass({
 let GameView = React.createClass({
 	mixins: [State],
 	render() {
-		// All possible components for the game
-		let map = React.createElement(RenderedMap, {map: this.props.map})
-		let orders = React.createElement(Orders)
+		// All possible components for the game (make sure these have keys)
+		let map = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map})
+		let orders = React.createElement(Orders, {key: 'orders'})
 		let chat;
 		let timeline = React.createElement(Timeline)
 		let settings = React.createElement(Settings, {game: this.props.game})
@@ -124,6 +127,9 @@ let Game = React.createClass({
 			gameHeader = React.createElement(GameHeader, {title: this.state.game.get('title')})
 			gameView = React.createElement(GameView, {game: this.state.game, map: this.state.map})
 			gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), status: this.state.game.get('status')})
+		}
+		else {
+			gameView = React.createElement('p', {className: 'error'}, this.state.error)
 		}
 
 		return React.createElement('div',

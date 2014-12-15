@@ -16,7 +16,7 @@ let GameList = React.createClass({
 
 		let listOfGames = React.createElement('ul', null, _.map(this.props.games, (game) =>
 			React.createElement('li', {className: 'game-item', key: game.id},
-				React.createElement(RenderedMap, {className: 'game-background', mapId: game.get('mapId'), maps: this.props.maps}),
+				React.createElement(RenderedMap, {className: 'game-background', mapId: game.get('mapId'), maps: this.props.maps, game: game}),
 				React.createElement(Link, {to: 'game', params: {gameId: game.id}, query: {section: 'board'}, className: 'game-info'}, game.get('title')))))
 
 		let noGamesMessage = 'No games available.'

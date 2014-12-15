@@ -203,27 +203,32 @@ let RenderedMap = React.createClass({
 					}
 				)
 			}))
-		/*
+
 		let units = React.createElement('g',
 			{
 				className: 'units',
 			},
-			_.map(this.props.game.armies, (army) => {
-				let armySize = 24
+			_.map(this.props.game.get('armies'), (army) => {
+				let armySize = 48
 				let imagePath;
 				let space = _.find(this.state.map.spaces, {id: army.location})
+				if (!space)
+					return
 				if (army.type === 'navy')
 					imagePath = 'images/navy.png'
-				else
+				else if (army.type === 'army')
 					imagePath = 'images/tank.gif'
+				else
+					return
 				return React.createElement('g', {
-					key: 'army',
+					id: `${mapId}-army-${army.armyId}`,
+					key: `${this.props.game.get('objectId')}-army-${army.armyId}`,
 					dangerouslySetInnerHTML: {
 						__html: `<image width='${armySize}' height='${armySize}' x='${space.drawUnit.x - armySize/2}' y='${this.state.map.height - armySize/2 - space.drawUnit.y}' xlink:href=${imagePath} />`
 					},
 				})
 			}))
-		*/
+
 		return React.createElement('svg',
 			{
 				className: 'map ' + (this.props.className || ''),
@@ -237,7 +242,8 @@ let RenderedMap = React.createClass({
 				{className: 'countries'},
 				countries,
 				otherSpaces
-			))
+			),
+			units)
 	},
 })
 
