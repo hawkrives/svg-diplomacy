@@ -6,7 +6,14 @@
 	"players": 7,			// Number of Players
 	"countries": [],		// Array of Country data. See Country Format below
 	"spaces": [],			// Array of Space data. See Space Format below
-	"defaultUnits": [],		// Array of army objects that mirrors the armies in the game format
+	"defaultUnits": [		// Array of army objects that mirrors the armies in the game format
+		Object({
+			"armyId": Number,
+			"country": String,
+			"location": Number,
+			"type": String
+		})
+	],
 }
 
 // Specification of a Country Format, version 1.
