@@ -6,7 +6,7 @@ let Timeline = React.createClass({
 			className: 'timeline-range',
 			type: 'range',
 			min: 0,
-			max: 100,
+			max: this.props.length,
 		})
 
 		return React.createElement('div', {id: 'game-timeline'}, timeline)

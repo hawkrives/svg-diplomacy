@@ -39,8 +39,8 @@ let GameView = React.createClass({
 		let map = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map})
 		let orders = React.createElement(Orders, {key: 'orders'})
 		let chat;
-		let timeline = React.createElement(Timeline)
-		let settings = React.createElement(Settings, {game: this.props.game})
+		let timeline = React.createElement(Timeline, {key: 'timeline', length: this.props.game.get('turnPhases').length})
+		let settings = React.createElement(Settings, {key: 'settings', game: this.props.game})
 		let join;
 		let resign;
 
