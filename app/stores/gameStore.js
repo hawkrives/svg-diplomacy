@@ -15,7 +15,6 @@ let gameStore = Reflux.createStore({
 	},
 
 	_updateDataFromParse(user) {
-		console.log("gameStore._updateDataFromParse")
 		this.user = _.isUndefined(user) ? this.user : user;
 		let allGames = new Parse.Query(Game)
 		allGames.find()
