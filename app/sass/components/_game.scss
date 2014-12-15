@@ -33,7 +33,7 @@
 		transition: background-color 0.25s;
 
 		&:hover {
-			background-color: darken($app-color, 10%);
+			background-color: darken(white, 10%);
 		}
 	}
 
