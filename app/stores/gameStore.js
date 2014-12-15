@@ -54,6 +54,10 @@ let gameStore = Reflux.createStore({
 
 	makeMove() {},
 
+	submitOrders() {
+		console.log('submitOrders')
+	},
+
 	editGame(gameId, key, value) {
 		let game = _.find(this.games, (g) => g.id === gameId)
 		game.set(key, value)

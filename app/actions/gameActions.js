@@ -4,6 +4,7 @@ let gameActions = Reflux.createActions([
 	'updateGameList',
 	'createGame',
 	'makeMove',
+	'submitOrders',
 	'editGame',
 	'editGameOwner',
 	'editGameTitle',
