@@ -1,0 +1,47 @@
+@mixin progress-bar-value {
+	background-color: $app-color;
+}
+
+@mixin progress-bar-background {
+	background-color: #eee;
+	border-radius: 4px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+#game-join {
+
+	progress[value] {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+
+		border: none;
+
+		color: $app-color;
+	}
+
+	progress[value]::-webkit-progress-bar {
+		background-color: #eee;
+	}
+
+	progress[value]::-webkit-progress-value {
+		@include progress-bar-value
+	}
+
+	progress[value]::-moz-progress-bar {
+		@include progress-bar-value
+	}
+
+	.join-progress {
+		@include list-block;
+		width: 100%
+	}
+
+	.join-button {
+		@include button-filled;
+		width: 75%;
+		margin: 0 auto;
+		margin-top: 1.5em;
+	}
+
+}

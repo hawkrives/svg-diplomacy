@@ -1,0 +1,16 @@
+.order-button {
+	@include button-filled;
+	width: 75%;
+	margin: 0 auto;
+	margin-top: 1.5em;
+}
+
+#order-text {
+	@include list-block;
+	border: solid 1px;
+	padding: 0.35em;
+	margin: 0 0.6em;
+
+	display: flex;
+	flex-flow: row nowrap;
+}
