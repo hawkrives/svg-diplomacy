@@ -1,16 +1,19 @@
 Parse.Cloud.beforeSave('Game', function(request, response) {
 	if (request.object.get('status') === undefined) {
 		request.object.set('status', 'preGame');
+
 		response.success();
 		return;
 	}
 	else if (request.object.get('status') === 'preGame') {
-		var query = new Parse.Query("Map");
+		var Map = Parse.Object.extend('Map');
+		var query = new Parse.Query(Map);
 
-		query.get(request.object.id, {
+		query.get(request.object.get('mapId').id, {
 			success: function(result) {
-				if(request.object.get('players').length >= result.get('players'))
-					resquest.object.set('status', 'active')
+				if (request.object.get('players').length >= result.get('players')) {
+					request.object.set('status', 'active');
+				}
 
 				response.success();
 				return;
@@ -22,8 +25,6 @@ Parse.Cloud.beforeSave('Game', function(request, response) {
 		})
 	}
 	else if (request.object.get('status') === 'active') {
-
+		response.success();
 	}
-
-	response.success();
 });
