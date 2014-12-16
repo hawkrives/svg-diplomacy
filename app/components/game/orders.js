@@ -8,7 +8,7 @@ let Orders = React.createClass({
 	},
 	render() {
 		let orderDialogue = React.createElement('div', {id: 'order-text'}, 'Order Dialogue Here')
-		let submitOrders = React.createElement('button', {onClick: this.submitOrders}, 'Submit Orders')
+		let submitOrders = React.createElement('button', {className: 'order-button', onClick: this.submitOrders}, 'Submit Orders')
 
 		return React.createElement('div', {id: 'game-orders'}, orderDialogue, submitOrders)
 	},
