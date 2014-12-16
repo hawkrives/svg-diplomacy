@@ -11,6 +11,7 @@ import gameActions from '../actions/gameActions'
 import GameNavbar from '../components/game/game-nav'
 import ContentEditable from '../components/content-editable'
 import GameJoin from '../components/game/game-join'
+import GameChatlist from '../components/game/game-chatlist'
 
 import gameActions from '../actions/gameActions'
 
@@ -37,16 +38,17 @@ let GameView = React.createClass({
 	mixins: [State],
 	render() {
 		let turnPhasesLength = this.props.game.get('turnPhases') ? this.props.game.get('turnPhases').length : 1
-		let joinedPlayers = this.props.game.get('players') ? this.props.game.get('players').length : undefined
+		let joinedPlayers = this.props.game.get('players') ? this.props.game.get('players') : undefined
 		let maxPlayers = this.props.map ? this.props.map.players : 1
+		let gameId = this.props.game.id ? this.props.game.id : undefined
 
 		// All possible components for the game (make sure these have keys)
 		let map = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map})
 		let orders = React.createElement(Orders, {key: 'orders'})
-		let chat;
+		let chat = React.createElement(GameChatlist, {key: 'chat'});
 		let timeline = React.createElement(Timeline, {key: 'timeline', length: turnPhasesLength})
 		let settings = React.createElement(Settings, {key: 'settings', game: this.props.game})
-		let join = React.createElement(GameJoin, {key: 'join', maxPlayers: maxPlayers, joinedPlayers: joinedPlayers});
+		let join = React.createElement(GameJoin, {key: 'join', maxPlayers: maxPlayers, joinedPlayers: joinedPlayers, userId: this.props.user.id, gameId: gameId});
 		let resign;
 
 		// Logic to render specific components
@@ -129,9 +131,8 @@ let Game = React.createClass({
 
 		let gameHeader, gameView, gameNavbar;
 		if (this.state.game) {
-			console.log('game state', this.state.game.get)
 			gameHeader = React.createElement(GameHeader, {title: this.state.game.get('title')})
-			gameView = React.createElement(GameView, {game: this.state.game, map: this.state.map})
+			gameView = React.createElement(GameView, {game: this.state.game, map: this.state.map, user: this.props.user})
 			gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), status: this.state.game.get('status')})
 		}
 		else {
