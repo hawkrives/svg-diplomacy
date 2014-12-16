@@ -1,6 +1,6 @@
-
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("hello", function(request, response) {
-  response.success("Hello world!");
+Parse.Cloud.beforeSave('Game', function(request, response) {
+	if(request.object.get('status') === undefined) {
+		request.object.set('status', 'preGame');
+	}
+	response.success();
 });
