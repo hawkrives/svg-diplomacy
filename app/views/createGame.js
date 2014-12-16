@@ -22,11 +22,11 @@ let CreateGame = React.createClass({
 
 		let title = this.refs.title.getDOMNode().value
 		let owner = this.props.user.id
-		let players = this.refs.players.getDOMNode().value
+		let players = this.refs.players.getDOMNode().value || []
 		let mapId = this.refs.mapId.getDOMNode().value
 		let settings = {
 			countries: this.refs.random.getDOMNode().checked ? false : true,
-			fogOfWar: this.refs.fogOfWar.getDomNode().checked ? true : false,
+			fogOfWar: this.refs.fogOfWar.getDOMNode().checked ? true : false,
 			preGameBuild: this.refs.build.getDOMNode().checked ? false : true,
 			turnLength: 1,
 			supplyToWin: 50,
