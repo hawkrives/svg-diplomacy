@@ -44,7 +44,8 @@ let Game = React.createClass({
 
 		let gameHeader, gameView, gameNavbar;
 		if (this.state.game) {
-			gameHeader = React.createElement(GameHeader, {title: this.state.game.get('title'), gameId: this.state.game.id})
+			let playerCountry = _.find(this.state.game.get('countriesToPlayers'), {player: this.props.user.id})
+			gameHeader = React.createElement(GameHeader, {title: this.state.game.get('title'), gameId: this.state.game.id, playerCountry: playerCountry ? playerCountry.country : ''})
 			gameView = React.createElement(GameView, {game: this.state.game, map: this.state.map, user: this.props.user})
 			gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), status: this.state.game.get('status')})
 		}

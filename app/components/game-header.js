@@ -8,19 +8,18 @@ let GameHeader = React.createClass({
 		gameActions.editGameTitle(this.props.gameId, this.refs.title.getDOMNode().textContent)
 	},
 	render() {
-		let gameTitle = React.createElement('h1', {className: 'view-title'},
+		let gameTitle = React.createElement('h1', {className: 'game-title'},
 			React.createElement(ContentEditable, {
-				className: 'game-title',
 				text: this.props.title,
 				ref: 'title',
 				onEnter: this.saveGame,
 		}))
 
-		let playerCountry = React.createElement('div', {className: 'player-country'})
+		let playerCountry = React.createElement('div', {className: 'player-country'}, this.props.playerCountry)
 
-		return React.createElement('div', {id: 'game-header'},
+		return React.createElement('div', {className: 'game-header'},
 			gameTitle,
-			playerCountry
+			this.props.playerCountry ? playerCountry : null
 		)
 	},
 })
