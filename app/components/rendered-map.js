@@ -45,21 +45,20 @@ let RenderedMap = React.createClass({
 		}
 	},
 
-	findPossibleMoves(space) {
-		let moveTo = space.moveTo.sea.concat(space.moveTo.land)
+	findPossibleMoves(space, type) {
+		let moveTo = type === 'navy' ? space.moveTo.sea : space.moveTo.land
 		return moveTo
 	},
 
-	isValidSelection(thisEl, space, army, selectedSpaces) {
+	isValidSelection(thisEl, space, army, selectedSpaces, prevArmy) {
 		let validSelection = true
 		let parent = thisEl.parentNode
-
 		if (selectedSpaces.length) {
 			if (selectedSpaces[0].id === space.id)
 				return true;
 
 			let priorSpace = selectedSpaces[0]
-			let moveTo = priorSpace.moveTo.sea.concat(priorSpace.moveTo.land)
+			let moveTo = prevArmy.type === 'navy' ? priorSpace.moveTo.sea : priorSpace.moveTo.land
 			if (!_.contains(moveTo, space.id)) {
 				validSelection = false
 			}
@@ -94,10 +93,48 @@ let RenderedMap = React.createClass({
 		let selectedSpaces = this.retrieveSpacesFromDOMNodes(selectedEls)
 
 		if (selectedSpaces.length >= 1) {
+			let prevArmy = _.find(armies, {location: selectedSpaces[0].id, player: this.props.user.id})
 			_.each(selectedEls, (elt) => {elt.classList.remove('selected')})
 			_.each(previouslyPossibleEls, (elt) => {elt.classList.remove('possible')})
-			if (this.isValidSelection(thisEl, space, army, selectedSpaces)) {
-				let currentMove = {at: selectedSpaces[0].id, to: space.id, armyId: army.armyId}
+			if (this.isValidSelection(thisEl, space, army, selectedSpaces, prevArmy)) {
+				// Calculate the logic of the move type - this.props.pendingOrders
+				let moveType, orderTo, orderFrom;
+				let currentMove = {at: selectedSpaces[0].id, armyId: prevArmy.armyId}
+				if (selectedSpaces[0].id === space.id) {
+					currentMove.type = 'hold'
+				}
+				else if (_.contains(_.map(this.props.pendingOrders, (elt) => { return elt.to}), space.id)) {
+					let moveSupported = _.find(this.props.pendingOrders, {to: space.id})
+					currentMove.type = 'support-move'
+					currentMove.from = moveSupported.at
+					currentMove.to = moveSupported.to
+				}
+				else if (_.contains(_.map(this.props.pendingOrders, (elt) => { return elt.at}), space.id)) {
+					let moveSupported = _.find(this.props.pendingOrders, {at: space.id})
+					if (moveSupported.type === 'hold') {
+						currentMove.type = 'support-hold'
+						currentMove.to = moveSupported.at
+					}
+					else {
+						currentMove.type = 'move'
+						currentMove.to = space.id
+					}
+				}
+				else if (_.contains(_.map(armies, (elt) => { return elt.location}), space.id)) {
+					let occupiedArmy = _.find(armies, {location: space.id})
+					if (occupiedArmy.player === this.props.user.id) {
+						currentMove.type = 'support-hold'
+						currentMove.to = space.id
+					}
+					else {
+						currentMove.type = 'move'
+						currentMove.to = space.id
+					}
+				}
+				else {
+					currentMove.type = 'move'
+					currentMove.to = space.id
+				}
 				this.setState({currentMove})
 				this.props.onNewOrder(currentMove)
 				console.log(currentMove)
@@ -110,7 +147,7 @@ let RenderedMap = React.createClass({
 			parent.classList.toggle('possible');
 
 			if (selectedEls.length === 0) {
-				_.each(this.findPossibleMoves(space), (id) =>
+				_.each(this.findPossibleMoves(space, army.type), (id) =>
 					this.getDOMNode().getElementById(`${this.state.map.id}-space-${id}`).classList.add('possible'))
 			}
 		}

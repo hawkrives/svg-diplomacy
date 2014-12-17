@@ -12,14 +12,31 @@ import Timeline from './game-timeline'
 import GameJoin from './game-join'
 import GameChatlist from './game-chatlist'
 
+let turnPhaseOrderIndex = 0
+
 let GameView = React.createClass({
 	mixins: [State],
 
 	onNewOrder(move) {
-		let {at, to, armyId} = move
-		let type = 'move'
-		let order = {at, to, armyId, type}
-		this.setState({pendingOrders: this.state.pendingOrders.concat(order)})
+		move.id = turnPhaseOrderIndex++
+		let order = move
+		let prevOrder = _.find(this.state.pendingOrders, {armyId: order.armyId});
+		if (prevOrder === undefined) {
+			prevOrder = {at: order.at, to: order.at}
+		}
+		this.setState({pendingOrders: _(this.state.pendingOrders)
+			.reject({armyId: order.armyId})
+			.reject({to: prevOrder.at})
+			.reject({to: prevOrder.to})
+			.concat(order)
+			.value()
+		})
+	},
+
+	removeDependentMoves(pendingOrders, order) {
+		return _(pendingOrders)
+			.reject({to: order.at})
+			.reject({from: order.at})
 	},
 
 	getInitialState() {
@@ -35,8 +52,8 @@ let GameView = React.createClass({
 		let gameId = this.props.game.id
 
 		// All possible components for the game (make sure these have keys)
-		let map      = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map, user: this.props.user, onNewOrder: this.onNewOrder})
-		let orders   = React.createElement(Orders, {key: 'orders', pendingOrders: this.state.pendingOrders, gameId: this.props.game.id})
+		let map      = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map, user: this.props.user, onNewOrder: this.onNewOrder, pendingOrders: this.state.pendingOrders})
+		let orders   = React.createElement(Orders, {key: 'orders', pendingOrders: this.state.pendingOrders, gameId: this.props.game.id, map: this.props.map})
 		let chat     = React.createElement(GameChatlist, {key: 'chat'});
 		let timeline = React.createElement(Timeline, {key: 'timeline', length: turnPhasesLength})
 		let settings = React.createElement(Settings, {key: 'settings', game: this.props.game})
