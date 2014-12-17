@@ -27,8 +27,8 @@ let mapStore = Reflux.createStore({
 		allMaps.find()
 			.then(results => {
 				this.parseMaps = results;
-				this.maps = _.uniq(this.localMaps.concat(results), (map) => map.id)
-				console.log('maps', this.maps)
+				this.maps = _.uniq(this.localMaps.concat(this.parseMaps), (map) => map.id)
+				console.log('maps', this.maps, this.parseMaps)
 				this.trigger(this.maps)
 			})
 	},
