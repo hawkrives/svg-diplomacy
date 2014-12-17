@@ -33,7 +33,8 @@ let GameView = React.createClass({
 		let views = []
 		let gameStatus = this.props.game.get('status')
 
-		if (this.getQuery().section === 'board') {
+		let query = this.getQuery()
+		if (query.section === 'board') {
 			if (gameStatus === 'preGame') {
 				views = [map, join]
 			}
@@ -41,13 +42,13 @@ let GameView = React.createClass({
 				views = [map, orders]
 			}
 		}
-		else if (this.getQuery().section === 'chat') {
+		else if (query.section === 'chat') {
 			views = [chat]
 		}
-		else if (this.getQuery().section === 'history') {
+		else if (query.section === 'history') {
 			views = [map, timeline]
 		}
-		else if (this.getQuery().section === 'info') {
+		else if (query.section === 'info') {
 			if (gameStatus === 'preGame') {
 				views = [settings, join]
 			}
