@@ -36,32 +36,24 @@
 			destroyed: String || null,		// Representation of turn phase
 		})
 	]
-	"turnPhases": {
-		"pregame-build": ["..."],
-		"spring 1901-order": [
-			{
-				player: Parse.User.id,
-				spaces: [Number],
-				orders: [Object({
-					orderId: Number,		// Used to reference orders to provide more detailed feedback
-					armyId: Number,
-					type: String,		// "move", "supportMove", "hold", "supportHold", "convoy", "retreat", "build", "destroy"
-					at: Number,
-					from: Number,
-					to: Number,
-					result: Object({
-						code: String,		// "success", "blocked", with room for more codes in the future
-						blockedBy: [Number]		// Array of other orderIds that caused this order to fail
-					})
-				})],
-			},
-			{ player: Parse.User.id, spaces: [Number], orders: [...] },
-			"..."
-		],
-		"spring 1901-retreat": ["..."],
-		"fall 1901-order": ["..."],
-		"fall 1901-retreat": ["..."],
-		"fall 1901-build": ["..."],
+	"turnPhases": [
+		{
+			player: Parse.User.id,
+			phase: String,		// Representation of turn phase
+			spaces: [Number],
+			orders: [Object({
+				orderId: Number,		// Used to reference orders to provide more detailed feedback
+				armyId: Number,
+				type: String,		// "move", "supportMove", "hold", "supportHold", "convoy", "retreat", "build", "destroy"
+				at: Number,
+				from: Number,
+				to: Number,
+				result: Object({
+					code: String,		// "success", "blocked", with room for more codes in the future
+					blockedBy: [Number]		// Array of other orderIds that caused this order to fail
+				})
+			})],
+		},
 		"..."
-	}
+	]
 }
