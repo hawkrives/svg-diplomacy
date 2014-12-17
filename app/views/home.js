@@ -22,8 +22,7 @@ let Home = React.createClass({
 		if (this.state.loading)
 			return React.createElement('div', {id: 'home'}, 'Loading...')
 
-		let allGames = React.createElement(GameList, {title: 'All Games', games: this.props.games, maps: this.props.maps})
-
+		let allGames;
 		let myGames;
 		if (this.props.user) {
 			let myGameObjects = _.filter(this.props.games, (game) => _.contains(game.get('players'), this.props.user.id))
