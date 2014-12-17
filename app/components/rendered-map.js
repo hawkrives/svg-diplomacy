@@ -100,7 +100,11 @@ let RenderedMap = React.createClass({
 					// it's referencing another path, so we use a <use>.
 					cantUsePath = true;
 					let vectorString = `<use xlink:href="#space-${vectorPath}" />`
-					args.dangerouslySetInnerHTML = {__html: vectorPath + army ? armyImage : ''}
+					if (army)
+						vectorString += armyImage
+					args.dangerouslySetInnerHTML = {
+						__html: vectorString
+					}
 				}
 				else if (_.isArray(vectorPath)) {
 					// it has multiple paths; probably islands.
