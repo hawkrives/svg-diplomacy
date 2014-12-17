@@ -25,7 +25,8 @@ let CreateGame = React.createClass({
 		let players = this.refs.players.getDOMNode().value || []
 		let mapId = this.refs.mapId.getDOMNode().value
 		let settings = {
-			countries: this.refs.random.getDOMNode().checked ? false : true,
+			// countries: this.refs.random.getDOMNode().checked ? 'random' : 'choose',
+			countries: 'random',
 			fogOfWar: this.refs.fogOfWar.getDOMNode().checked ? true : false,
 			preGameBuild: this.refs.build.getDOMNode().checked ? false : true,
 			turnLength: 1,
