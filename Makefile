@@ -44,21 +44,25 @@ dist-csswring:
 	rm build/app.css.map
 
 tarball:
-	rm -rf tarball svg-diplomacy.tar svg-diplomacy.tar.gz
-	mkdir -p tarball
-	cp -r `ls | grep -v -e "tarball" -e "tarball-full" -e "node_modules" -e "build" -e ".tar"` tarball
-	rm -rf tarball/docs/locales tarball/docs/images tarball/docs/*.pdf
-	rm -rf tarball/cordova/platforms/ios/www tarball/cordova/platforms/ios/build tarball/cordova/platforms/ios/CordovaLib/build tarball/cordova/www
-	tar -cf svg-diplomacy.tar tarball
-	rm -rf tarball
+	rm -rf svg-diplomacy svg-diplomacy.tar svg-diplomacy.tar.gz
+	mkdir -p svg-diplomacy
+	cp -r `ls | grep -v -e "svg-diplomacy" -e "svg-diplomacy-full" -e "node_modules" -e "build" -e ".tar"` svg-diplomacy
+	cp .jscsrc .jshintrc svg-diplomacy
+	rm -rf svg-diplomacy/docs/locales svg-diplomacy/docs/images svg-diplomacy/docs/*.pdf
+	rm -rf svg-diplomacy/cordova/platforms/ios/www svg-diplomacy/cordova/platforms/ios/build svg-diplomacy/cordova/platforms/ios/CordovaLib/build svg-diplomacy/cordova/www
+	tar -cf svg-diplomacy.tar svg-diplomacy
+	rm -rf svg-diplomacy
 	which -s zopfli
 	zopfli svg-diplomacy.tar
+	rm svg-diplomacy.tar
 
 full-tarball:
-	rm -rf tarball svg-diplomacy.tar svg-diplomacy.tar.gz
-	mkdir -p tarball-full
-	cp -r `ls | grep -v -e "tarball" -e "tarball-full" -e "build" -e ".tar"` tarball-full
-	tar -cf svg-diplomacy.full.tar tarball-full
-	rm -rf tarball-full
+	rm -rf svg-diplomacy-full svg-diplomacy.full.tar svg-diplomacy.full.tar.gz
+	mkdir -p svg-diplomacy-full
+	cp -r `ls | grep -v -e "svg-diplomacy" -e "svg-diplomacy-full" -e "build" -e ".tar"` svg-diplomacy-full
+	cp .jscsrc .jshintrc svg-diplomacy-full
+	tar -cf svg-diplomacy.full.tar svg-diplomacy-full
+	rm -rf svg-diplomacy-full
 	which -s zopfli
 	zopfli svg-diplomacy.full.tar
+	rm svg-diplomacy.tar.gz
