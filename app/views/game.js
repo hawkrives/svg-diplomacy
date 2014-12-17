@@ -44,8 +44,12 @@ let Game = React.createClass({
 
 		let gameHeader, gameView, gameNavbar;
 		if (this.state.game) {
-			let playerCountry = _.find(this.state.game.get('countriesToPlayers'), {player: this.props.user.id})
-			gameHeader = React.createElement(GameHeader, {title: this.state.game.get('title'), gameId: this.state.game.id, playerCountry: playerCountry ? playerCountry.country : ''})
+			let playerCountryName = _.find(this.state.game.get('countriesToPlayers'), {player: this.props.user.id})
+			playerCountryName = playerCountryName ? playerCountryName.country : ''
+			let playerCountry = _.find(this.state.map ? this.state.map.countries : [], {name: playerCountryName})
+			let tintColor = playerCountry ? playerCountry.occupiedColor : 'black'
+			gameHeader = React.createElement(GameHeader,
+				{title: this.state.game.get('title'), gameId: this.state.game.id, playerCountry: playerCountryName, tint: tintColor})
 			gameView = React.createElement(GameView, {game: this.state.game, map: this.state.map, user: this.props.user})
 			gameNavbar = React.createElement(GameNavbar, {params: this.getParams(), status: this.state.game.get('status')})
 		}

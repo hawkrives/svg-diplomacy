@@ -15,7 +15,7 @@ let GameHeader = React.createClass({
 				onEnter: this.saveGame,
 		}))
 
-		let playerCountry = React.createElement('div', {className: 'player-country'}, this.props.playerCountry)
+		let playerCountry = React.createElement('div', {className: 'player-country', style: {backgroundColor: this.props.tint}}, this.props.playerCountry)
 
 		return React.createElement('div', {className: 'game-header'},
 			gameTitle,
