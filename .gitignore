@@ -9,3 +9,4 @@ global.json
 *.swp
 *~
 gulpp
+cordova/platforms/ios/www
