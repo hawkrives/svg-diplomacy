@@ -1,4 +1,4 @@
-## Order format
+## Order Format
 
 **This section should probably be done once we've finished the game play.**
 
@@ -25,7 +25,7 @@ An Army can be ordered to move into an adjacent inland or coastal province. They
 A Fleet can be ordered to move to an adjacent water or coastal province. Fleets cannot move into an inland province. A fleet can move to an adjacent coastal province only if it is adjacent along the coastline (as if the fleet was moving down to the coast).
 
 ### Restricted Movement
-If a location of the map does not have a name cannot be occupied.
+If a location of the map does not have a name it cannot be occupied.
 
 In the classic game, Switzerland, Siberia, and Ireland cannot be occupied. Additionally, all islands with the exception of England cannot be occupied.
 
@@ -42,14 +42,19 @@ The common border with Denmark does not separate the coast of Sweden into two co
 
 Denmark does not border Berlin.
 
-### Standoffs
-The situations and outcomes described below involve forces of equal strength attempting to occupy the same province at the same time. There a few exceptions to these rules, which are described later.
+## Standoffs
+The situations and outcomes described below involve forces of equal strength attempting to occupy the same province at the same time. There are a few exceptions to these rules, which are described later.
 
-- All the units remain in their original province.
+- Units of equal strength trying to occupy the same province cause all those units to remain in their original provinces.
 - A unit already in the province is not disloged.
 - One unit moving can stop a unit or series of units from moving.
 - Units cannot trade places without the use of a convoy.
 - Three or more units can rotate provinces during a turn, provided that none of them directly trade places.
+
+### Dislodgement in Standoffs
+
+A dislodged unit can still cause a standoff in a province different from the one that dislodged it.
+A dislodged unit, even if it has support, does not have an effect on the province that dislodged it.
 
 ## Support
 
@@ -57,7 +62,7 @@ All of the units in Diplomacy have equal strength, so the only way a unit can at
 
 An Army or Fleet can provide support to another Army or Fleet.
 
-There are two types of support.
+There are two types of support:
 - Offensive: supporting an attacking move order
 - Defensive: supporting a hold, support, or convoy order
 
@@ -72,10 +77,120 @@ If the attacking unit plus its support is stronger than the unit opposing it, th
 
 The support order must match the move the supported unit is trying to make.
 
+### Cutting Support
 
+Support is cut if the unit giving support is attacked from any province except the one where support is being given. The support is cut regardless of whether or not the attack is successful.
+Support can also be cut if the unit giving support is dislodged.
+A unit being dislodged by one province can still cut support in another.
 
+## Convoy Order
 
+A Fleet in a water province (not a coastal province) can convoy an Army from any coastal province adjacent to that water province to any other coastal province adjacent to that water province.
 
+### How to Write a Convoy Order
+**This section will be done when game play is finished.**
+
+### Support Cannot Be Convoyed
+
+Only Armies can be convoyed. Support cannot be transported from one Army to another via a convoy.
+
+### Convoying an Army Across Several Water Provinces
+
+If Fleets occupy adjacent water provinces, an Army can be convoyed through all these water provinces on one turn.
+
+### Disrupting a Convoy
+
+Dislodgment of a fleet in a convoy causes the convoy to fail.
+
+A convoy that causes the convoyed Army to standoff at its destination results in that army remaining in its original province.
+
+## Rare Cases and Other Tricky Situations
+
+### Self Dislodgment
+
+A country cannot dislodge or support the dislodgement of one its own units, even if that dislodgement is unexpected.
+
+### Self Standoff
+
+While a country cannot dislodge its own units, it can create standoffs by ordering two equally-supported attacks on the same province.
+
+### Cutting Support on Your Own Units
+
+An attack by a country on one of its own units does not cut support.
+
+### Exchanging Places via a Convoy
+
+Two units can exchange places if either or both are convoyed.
+
+** This is the only exception to the earlier rule that stated, "Units cannot trade places without the use of a convoy."**
+
+### Land and Convoy Routes
+
+There are some rare cases in which an Army can arrive at its destination either by land or convoy. When this happens, the following qualifiers apply:
+
+- If at least one of the convoying Fleets belongs to the player who controls the Army, then the convoy is used and the land route is disregarded.
+- If none of the convoying Fleets belong to the player who controls the army, then the land route is used. However, a player can use the convoy route if he/she wishes to.
+
+### More than One Convoy Route
+
+An Army convoyed using alternate convoy orders reaches its destination as long as at least one convoy route remains open.
+
+### A Convoyed Attack Does Not Cut Certain Supports
+
+A convoyed Army does not cut support of a unit supporting an attack against one of the Fleets necessary for the Army to convoy.
+
+### Another Tricky Situation
+
+An Army with at least one successful convoy route will cut the support given by a unit in the destination province that is trying to support an attack on a Fleet in an alternate route of that convoy.
+
+## Retreats and Disbandment
+
+A dislodged unit must retreat to an adjacent province that it could ordinarily move to if unopposed by other units. Sometimes a retreat is made deeper into enemy territory.
+
+A unit cannot retreat to:
+
+- a province which is occupied
+- the province from which the attacker came
+- a province that was left vacant by a standoff during the same turn
+
+If there is no available province for the unit to retreat to, the dislodged unit is disbanded and removed from the board.
+
+### Writing Retreats
+
+** This section will be completed after game-play is finished.**
+
+### Disbandment
+
+If two or more units are ordered to retreat to the same province, they all are disbanded. If a player does not order a retreat when necessary, the unit is disbanded. A unit can always voluntarily disband.
+
+## Controlling Supply Centers
+
+The number of supply centers a player controls is checked after every Fall turn. A player controls a supply center when one of its units occupies that supply center province after a Fall turn has been played and completed.
+
+Once a country controls a supply center, it can leave the center vacant and still keep control of it, as long as that center is not occupied by another country at the close of a Fall turn.
+
+## Adjusting Number of Units
+
+After each Fall turn, the number of units a player has is adjusted to match the number of supply centers he/she controls. The following situations can occur:
+
+- If a player has more units than supply centers, the excess units must be disbanded. The player can choose which units are disbanded.
+- If a player has more supply centers than units, the player can place new units in each unoccupied supply center of its home country that it still controls. Players cannot build units in supply centers outside their home country.
+
+### Additionally Building Rules
+
+- Armies can only be built on inland province supply centers.
+- When building a unit on a coastal province supply center, the player must specify whether to build a Fleet or an Army.
+- If a player's home supply centers are occupied by either that player or another player, then that player cannot build during the current Fall turn.
+- If a player does not have control of any of their supply centers, that player can still fight with the units remaining under their control. That player cannot build any more units until he/she recaptures a home supply center.
+- A player can decline to build a unit that he/she is entitled to.
+
+## Civil Disorder
+
+If a player leaves a game or does not submit orders for a given Spring or Fall turn, it is assumed that his/her government has collapsed. The player's units all hold in position, but do not support each other. If the player's units are dislodged, they are disbanded. No new units are built.
+
+If a country in civil disorder has to remove units, the units farthest from the country are removed first. If units are equally distant, then Fleets are removed before Armies and then units are removed alphabetically (by the name of the province in which they are located).
 
 Thanks for reading,
-- The mod/admin team
+- The mod/admin team of Elinor, Nick, and Hawken
+
+** It should be noted that these rules are based on the rules for the original Diplomacy board game.
