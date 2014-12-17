@@ -3,9 +3,7 @@
 To set up:
 
 - Clone with `git clone git@github.com:hawkrives/svg-diplomacy.git`
-- `npm install`
-- Create `app/data/parse-api-key.json`
-	- It should look like `{"app_id": "", "js_key": ""}`, where the values of `app_id` and `js_key` are the respective keys from Parse.
+- `make`
 - Create `backend/config/global.json`
 	- It should look like
 	```
