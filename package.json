@@ -1,6 +1,6 @@
 {
   "name": "svg-diplomacy",
-  "version": "0.0.1",
+  "version": "1.0.0beta1",
   "description": "SVG diplomacy",
   "main": "app/index.js",
   "private": true,
