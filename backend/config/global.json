@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "SVGDiplomacy": {
+            "applicationId": "1CIHGyTQhbWy6qISvaa63PobQbZBivKqjGqGTneZ", 
+            "masterKey": "W2WHFzcOuws1DZP1savKnK1VKg7DKHZcnqNJ9Pj3"
+        }, 
+        "_default": {
+            "link": "SVGDiplomacy"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.2"
+    }
+}
