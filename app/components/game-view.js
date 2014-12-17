@@ -14,6 +14,20 @@ import GameChatlist from './game-chatlist'
 
 let GameView = React.createClass({
 	mixins: [State],
+
+	onNewOrder(move) {
+		let {at, to, armyId} = move
+		let type = 'move'
+		let order = {at, to, armyId, type}
+		this.setState({pendingOrders: this.state.pendingOrders.concat(order)})
+	},
+
+	getInitialState() {
+		return {
+			pendingOrders: []
+		}
+	},
+
 	render() {
 		let turnPhasesLength = this.props.game.get('turnPhases') ? this.props.game.get('turnPhases').length : 1
 		let joinedPlayers = this.props.game.get('players')
@@ -22,11 +36,11 @@ let GameView = React.createClass({
 
 		// All possible components for the game (make sure these have keys)
 		let map      = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map, user: this.props.user, onNewOrder: this.onNewOrder})
-		let orders   = React.createElement(Orders, {key: 'orders'})
+		let orders   = React.createElement(Orders, {key: 'orders', pendingOrders: this.state.pendingOrders, gameId: this.props.game.id})
 		let chat     = React.createElement(GameChatlist, {key: 'chat'});
 		let timeline = React.createElement(Timeline, {key: 'timeline', length: turnPhasesLength})
 		let settings = React.createElement(Settings, {key: 'settings', game: this.props.game})
-		let join     = React.createElement(GameJoin, {key: 'join', maxPlayers: maxPlayers, joinedPlayers: joinedPlayers, userId: this.props.user.id, gameId: gameId});
+		let join     = React.createElement(GameJoin, {key: 'join', maxPlayers: maxPlayers, joinedPlayers: joinedPlayers, userId: this.props.user.id, gameId: gameId})
 		let resign;
 
 		// Logic to render specific components
