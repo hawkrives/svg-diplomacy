@@ -19,7 +19,7 @@
   "homepage": "https://github.com/hawkrives/svg-diplomacy",
   "dependencies": {
     "fastclick": "^1.0.3",
-    "fetch": "git://github.com/github/fetch",
+    "fetch": "https://github.com/github/fetch/archive/v0.3.2.tar.gz",
     "lodash": "^2.4.1",
     "marked": "^0.3.2",
     "react": "^0.12.1",
