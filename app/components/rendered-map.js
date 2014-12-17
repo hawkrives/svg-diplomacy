@@ -66,7 +66,7 @@ let RenderedMap = React.createClass({
 		}
 		else {
 			let armies = this.props.game.get('armies')
-			let hasArmy = _.find(armies, {location: space.id})
+			let hasArmy = _.find(armies, {location: space.id, player: this.props.user.id})
 			validSelection = hasArmy
 		}
 

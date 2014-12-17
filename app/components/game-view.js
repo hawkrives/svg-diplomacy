@@ -21,9 +21,9 @@ let GameView = React.createClass({
 		let gameId = this.props.game.id ? this.props.game.id : undefined
 
 		// All possible components for the game (make sure these have keys)
-		let map = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map})
 		let orders = React.createElement(Orders, {key: 'orders'})
 		let chat = React.createElement(GameChatlist, {key: 'chat'});
+		let map      = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map, user: this.props.user, onNewOrder: this.onNewOrder})
 		let timeline = React.createElement(Timeline, {key: 'timeline', length: turnPhasesLength})
 		let settings = React.createElement(Settings, {key: 'settings', game: this.props.game})
 		let join = React.createElement(GameJoin, {key: 'join', maxPlayers: maxPlayers, joinedPlayers: joinedPlayers, userId: this.props.user.id, gameId: gameId});
