@@ -74,9 +74,11 @@ let gameStore = Reflux.createStore({
 	},
 
 	editGameTitle(gameId, newTitle) {
+		console.log('editGameTitle', gameId, newTitle)
 		let game = _.find(this.games, (g) => g.id === gameId)
 		game.set('title', newTitle)
 		game.save()
+			.then(() => {console.log('updated game title')})
 			.then(this._updateDataFromParse)
 	},
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import gameActions from '../../actions/gameActions'
+import gameActions from '../actions/gameActions'
 
 let Orders = React.createClass({
 	submitOrders () {

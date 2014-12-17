@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {State} from 'react-router'
-import {Octicon as OcticonClass} from '../octicon'
+import {Octicon as OcticonClass} from './octicon'
 import {Link as LinkClass} from 'react-router'
 
 let Octicon = React.createFactory(OcticonClass)

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as _ from 'lodash'
 
-import gameActions from '../../actions/gameActions'
+import gameActions from '../actions/gameActions'
 
 let GameJoin = React.createClass({
 	addPlayerToGame() {

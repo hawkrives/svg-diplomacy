@@ -1,9 +1,27 @@
 import * as React from 'react/addons'
+import {DragDropMixin} from 'react-dnd'
 import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 let cx = React.addons.classSet
 
 let RenderedMap = React.createClass({
+	mixins: [DragDropMixin],
+
+	configureDragDrop(registerType) {
+		// Specify all supported types by calling registerType(type, { dragSource?, dropTarget? })
+		registerType('space', {
+			// dragSource, when specified, is { beginDrag(), canDrag()?, endDrag(dropEffect)? }
+			dragSource: {
+				// beginDrag should return { item, dragAnchors?, dragPreview?, dragEffect? }
+				beginDrag() {
+					return {
+						item: this.props.image
+					};
+				}
+			}
+		});
+	},
+
 	findMap(props) {
 		let map = props.map;
 		if (!map && props.mapId && props.maps) {
@@ -23,12 +41,15 @@ let RenderedMap = React.createClass({
 			})
 		}
 	},
+
 	componentWillReceiveProps(nextProps) {
 		this.findMap(nextProps)
 	},
+
 	componentWillMount() {
 		this.componentWillReceiveProps(this.props)
 	},
+
 	getInitialState() {
 		return {
 			maps: [],
@@ -40,9 +61,11 @@ let RenderedMap = React.createClass({
 			},
 		}
 	},
+
 	onClickTerritory(ev) {
 		console.log(ev.target.attributes['data-id'].value);
 	},
+
 	render() {
 		console.log('RenderedMap.props', this.props, this.state.map)
 		let mapId = this.state.map.id
