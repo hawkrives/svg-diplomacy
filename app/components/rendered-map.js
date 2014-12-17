@@ -105,9 +105,14 @@ let RenderedMap = React.createClass({
 				}
 				else if (_.contains(_.map(this.props.pendingOrders, (elt) => { return elt.to}), space.id)) {
 					let moveSupported = _.find(this.props.pendingOrders, {to: space.id})
-					currentMove.type = 'support-move'
-					currentMove.from = moveSupported.at
-					currentMove.to = moveSupported.to
+					if (moveSupported.armyId === prevArmy.armyId) {
+						currentMove = moveSupported
+					}
+					else {
+						currentMove.type = 'support-move'
+						currentMove.from = moveSupported.at
+						currentMove.to = moveSupported.to
+					}
 				}
 				else if (_.contains(_.map(this.props.pendingOrders, (elt) => { return elt.at}), space.id)) {
 					let moveSupported = _.find(this.props.pendingOrders, {at: space.id})
