@@ -47,13 +47,6 @@ let RenderedMap = React.createClass({
 		console.log('RenderedMap.props', this.props, this.state.map)
 		let mapId = this.state.map.id
 		let spaces = React.createElement('defs', {id: 'all-spaces'},
-			// React.createElement('path', {
-			// 	id: `${mapId}-supply-center`,
-			// 	d: 'M43.2019567,43.2019567 L27.1709577,37.7656885 L13.604471,47.8897384 L13.8208179,30.9634528 L0,21.1894604 L16.1647088,16.1647088 L21.1894602,0 L30.9634528,13.8208181 L47.8897384,13.6044709 L37.7656885,27.1709579 L43.2019567,43.2019567 Z',
-			// 	stroke: '#000000',
-			// 	strokeWidth: '1.5',
-			// 	fill: '#FFE714',
-			// }),
 			_.map(this.state.map.spaces, (space) => {
 				// todo: clean up this logic, if possible
 				let vectorPath = space.path;
@@ -88,15 +81,7 @@ let RenderedMap = React.createClass({
 				}
 
 				if (space.supply) {
-					hasSupply = true;
-
-					// supply = React.createElement('circle', {
-					// 	className: 'supply-symbol',
-					// 	id: `supply-${space.id}`,
-					// 	cx: space.supply.x,
-					// 	cy: this.state.map.height - space.supply.y,
-					// 	r: 5,
-					// })
+					hasSupply = true
 
 					let supplySize = 24
 					supply = React.createElement('g', {
@@ -219,7 +204,7 @@ let RenderedMap = React.createClass({
 				else if (army.type === 'army')
 					imagePath = 'images/tank.gif'
 				else
-					return
+					return;
 				return React.createElement('g', {
 					id: `${mapId}-army-${army.armyId}`,
 					key: `${this.props.game.get('objectId')}-army-${army.armyId}`,
