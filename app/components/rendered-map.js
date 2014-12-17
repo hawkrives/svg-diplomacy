@@ -50,7 +50,7 @@ let RenderedMap = React.createClass({
 		return moveTo
 	},
 
-	isValidSelection(thisEl, space, selectedSpaces) {
+	isValidSelection(thisEl, space, army, selectedSpaces) {
 		let validSelection = true
 		let parent = thisEl.parentNode
 
@@ -65,9 +65,7 @@ let RenderedMap = React.createClass({
 			}
 		}
 		else {
-			let armies = this.props.game.get('armies')
-			let hasArmy = _.find(armies, {location: space.id, player: this.props.user.id})
-			validSelection = hasArmy
+			validSelection = Boolean(army)
 		}
 
 		return validSelection
@@ -89,21 +87,25 @@ let RenderedMap = React.createClass({
 		let thisEl = ev.target
 		let id = parseInt(thisEl.attributes['data-id'].value, 10)
 		let space = _.find(this.state.map.spaces, {id})
+		let armies = this.props.game.get('armies')
+		let army = _.find(armies, {location: space.id, player: this.props.user.id})
+		console.log(space.id, army, armies)
 		let parent = thisEl.parentNode
 		let selectedSpaces = this.retrieveSpacesFromDOMNodes(selectedEls)
 
 		if (selectedSpaces.length >= 1) {
 			_.each(selectedEls, (elt) => {elt.classList.remove('selected')})
 			_.each(previouslyPossibleEls, (elt) => {elt.classList.remove('possible')})
-			if (this.isValidSelection(thisEl, space, selectedSpaces)) {
-				let currentMove = {from: selectedSpaces[0], to: space}
+			if (this.isValidSelection(thisEl, space, army, selectedSpaces)) {
+				let currentMove = {at: selectedSpaces[0].id, to: space.id, armyId: army.armyId}
 				this.setState({currentMove})
+				this.props.onNewOrder(currentMove)
 				console.log(currentMove)
 			}
 			return;
 		}
 
-		if (!parent.classList.contains('inaccessible-territory') && this.isValidSelection(thisEl, space, selectedSpaces)) {
+		if (!parent.classList.contains('inaccessible-territory') && this.isValidSelection(thisEl, space, army, selectedSpaces)) {
 			parent.classList.toggle('selected');
 			parent.classList.toggle('possible');
 
