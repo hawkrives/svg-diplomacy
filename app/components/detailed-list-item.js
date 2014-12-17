@@ -18,7 +18,13 @@ let DetailedListItem = React.createClass({
 		if (this.props.buttonClick)
 			components.push(React.createElement('button', {onClick: this.props.buttonClick, key: 'deleteButton'}, 'Delete'))
 
-		return React.createElement('li', {className: 'one-map'}, components)
+		return React.createElement('li',
+			{
+				id: this.props.id || '',
+				className: this.props.className || 'one-map',
+				onClick: this.props.onClick,
+			},
+			components)
 	},
 })
 

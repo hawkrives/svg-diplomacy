@@ -2,6 +2,7 @@ import * as Reflux from 'reflux'
 
 let mapActions = Reflux.createActions([
 	'createMap',
+	'updateMap',
 	'destroyMap',
 	'updateMapList',
 ])

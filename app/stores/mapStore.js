@@ -53,6 +53,21 @@ let mapStore = Reflux.createStore({
 			.then(this._updateDataFromParse)
 	},
 
+	updateMap(options) {
+		let map = _.find(this.maps, {id: options.mapId})
+
+		map.set('name', options.name || map.get('name'))
+		map.set('players', options.players || map.get('players'))
+		map.set('width', options.width || map.get('width'))
+		map.set('height', options.height || map.get('height'))
+		map.set('countries', options.countries || map.get('countries'))
+		map.set('spaces', options.spaces || map.get('spaces'))
+		console.log(options, map)
+
+		map.save()
+			.then(this._updateDataFromParse)
+	},
+
 	destroyMap(mapId) {
 		let mapToDestroy = _.find(this.maps, {id: mapId})
 		mapToDestroy.destroy()
