@@ -16,9 +16,9 @@ let GameView = React.createClass({
 	mixins: [State],
 	render() {
 		let turnPhasesLength = this.props.game.get('turnPhases') ? this.props.game.get('turnPhases').length : 1
-		let joinedPlayers = this.props.game.get('players') ? this.props.game.get('players') : undefined
+		let joinedPlayers = this.props.game.get('players')
 		let maxPlayers = this.props.map ? this.props.map.players : 1
-		let gameId = this.props.game.id ? this.props.game.id : undefined
+		let gameId = this.props.game.id
 
 		// All possible components for the game (make sure these have keys)
 		let map      = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map, user: this.props.user, onNewOrder: this.onNewOrder})
