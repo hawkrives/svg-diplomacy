@@ -8,3 +8,4 @@ build/
 *~
 gulpp
 cordova/platforms/ios/www
+*.tar*
