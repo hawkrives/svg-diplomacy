@@ -2,8 +2,11 @@
 	background-color: lightblue;
 	fill: white;
 
-	// transform: perspective(1500px) rotateX(45deg) scale(1.35);
 	border: solid;
+}
+
+.map.game-background {
+	border: 0;
 }
 
 .map pattern .stripes {
