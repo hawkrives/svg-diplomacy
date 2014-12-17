@@ -39,7 +39,8 @@ let GameView = React.createClass({
 				views = [map, join]
 			}
 			else if (gameStatus === 'active') {
-				views = [map, orders]
+				let isInGame = _.contains(this.props.game.get('players'), this.props.user.id)
+				views = [map, isInGame ? orders : null]
 			}
 		}
 		else if (query.section === 'chat') {
