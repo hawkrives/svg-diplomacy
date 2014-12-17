@@ -52,8 +52,7 @@ tarball:
 	rm -rf svg-diplomacy/cordova/platforms/ios/www svg-diplomacy/cordova/platforms/ios/build svg-diplomacy/cordova/platforms/ios/CordovaLib/build svg-diplomacy/cordova/www
 	tar -cf svg-diplomacy.tar svg-diplomacy
 	rm -rf svg-diplomacy
-	which -s zopfli
-	zopfli svg-diplomacy.tar
+	gzip svg-diplomacy.tar
 	rm svg-diplomacy.tar
 
 full-tarball:
@@ -63,6 +62,5 @@ full-tarball:
 	cp .jscsrc .jshintrc svg-diplomacy-full
 	tar -cf svg-diplomacy.full.tar svg-diplomacy-full
 	rm -rf svg-diplomacy-full
-	which -s zopfli
-	zopfli svg-diplomacy.full.tar
+	gzip svg-diplomacy.full.tar
 	rm svg-diplomacy.tar.gz
