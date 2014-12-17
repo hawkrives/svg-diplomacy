@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 Parse.Cloud.beforeSave('Game', function(request, response) {
 	if (request.object.get('status') === undefined) {
 		// The game was just created
@@ -12,11 +14,11 @@ Parse.Cloud.beforeSave('Game', function(request, response) {
 		var query = new Parse.Query(Map);
 
 		query.get(request.object.get('mapId').id, {
-			success: function(result) {
-				if (request.object.get('players').length == result.get('players')) {
+			success: function(map) {
+				if (request.object.get('players').length == map.get('players')) {
 					request.object.set('status', 'active');
 
-					buildGame(request, result);
+					buildGame(request, map);
 				}
 
 				response.success();
@@ -40,9 +42,10 @@ function buildGame(request, map) {
 	// First assign each player a country
 	var settings = request.object.get('settings');
 
+	var countriesToPlayers = [];
+
 	if (settings.countries === 'random') {
 		// Randomly assign countries to players
-		var countriesToPlayers = [];
 
 		var countries = map.get('countries').map(function (country) {
 			return country.name;
@@ -71,8 +74,33 @@ function buildGame(request, map) {
 	if (settings.preGameBuild) {
 		request.object.set('armies', []);
 		request.object.set('currentMovePhase', {year: null, season: null, phase: 'build'});
+		request.object.set('turnPhases', []);
 	}
 	else {
+		// Construct the armies array for the game from the map's defaultUnits
+		var armies = [];
+		var defaultUnits = map.get('defaultUnits');
 
+		defaultUnits.forEach(function(unit, index) {
+			var army = {
+				armyId: unit.armyId,
+				player: _.find(countriesToPlayers, function(assignment) {return assignment.country == unit.country;}).player,
+				location: unit.location,
+				type: unit.type,
+				created: 'pregame-build',
+				destroyed: null
+			};
+			armies.push(army);
+		});
+
+		request.object.set('armies', armies);
+		request.object.set('currentMovePhase', {year: 1901, season: 'spring', phase: 'order'});
+
+		// Also set the turnPhases pregame-build phase
+		var turnPhases = [];
+
+
+
+		request.object.set('turnPhases', turnPhases);
 	}
 }
