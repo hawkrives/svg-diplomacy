@@ -51,18 +51,21 @@ function buildGame(request, map) {
 			return country.name;
 		});
 
-		var players = request.object.get('players');
+		var players = request.object.get('players').map(function (player) {
+			return player;
+		});
 
 		if (players.length != countries.length) {
 			console.log('Error: Number of players (' + players.length + ') does not match number of countries (' + countries.length + ')');
 			return;
 		}
 
-		for (var i = 0; i < players.length; i++) {
+		var numMatches = players.length;
+		for (var i = 0; i < numMatches; i++) {
 			var player = players.splice(Math.floor(Math.random() * players.length), 1);
 			var country = countries.splice(Math.floor(Math.random() * countries.length), 1);
 
-			countriesToPlayers.push({country: country, player: player});
+			countriesToPlayers.push({country: country[0], player: player[0]});
 		}
 
 		request.object.set('countriesToPlayers', countriesToPlayers);
@@ -103,4 +106,5 @@ function buildGame(request, map) {
 
 		request.object.set('turnPhases', turnPhases);
 	}
+	return
 }
