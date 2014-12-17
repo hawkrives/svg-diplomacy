@@ -31,6 +31,22 @@ Parse.Cloud.beforeSave('Game', function(request, response) {
 		})
 	}
 	else if (request.object.get('status') === 'active') {
+		// Users are submitting orders
+
+		var turnPhases = request.object.get('turnPhases');
+		var newPhase = turnPhases.pop();
+		var curPhase = request.object.get('currentMovePhase');
+
+		newPhase.phase = curPhase.season + ' ' + curPhase.year + '-' + curPhase.phase;
+
+		var mergePhase = _.find(turnPhases, {phase: newPhase.phase, player: newPhase.player});
+		_.keys(mergePhase).forEach(function(key) {
+			newPhase[key] = mergePhase.key;
+		})
+
+		// replace mergePhase with newPhase
+		turnPhases.splice(_.indexOf(turnPhases, mergePhase), 1, newPhase);
+
 		response.success();
 	}
 	else if (request.object.get('status') === 'completed') {
@@ -82,6 +98,8 @@ function buildGame(request, map) {
 	else {
 		// Construct the armies array for the game from the map's defaultUnits
 		var armies = [];
+		// Also set the turnPhases pregame-build phase
+		var turnOrders = {};
 		var defaultUnits = map.get('defaultUnits');
 
 		defaultUnits.forEach(function(unit, index) {
@@ -94,14 +112,22 @@ function buildGame(request, map) {
 				destroyed: null
 			};
 			armies.push(army);
+			var order = {
+				armyId: unit.armyId,
+				type: 'build',
+				at: unit.location
+			};
+			turnOrders[army.player] = turnOrders[army.player] || [];
+			turnOrders[army.player].push(order);
 		});
+
+		console.log('turnOrders');
+		console.log(turnOrders);
+
+		var turnPhases = [];
 
 		request.object.set('armies', armies);
 		request.object.set('currentMovePhase', {year: 1901, season: 'spring', phase: 'order'});
-
-		// Also set the turnPhases pregame-build phase
-		var turnPhases = [];
-
 
 
 		request.object.set('turnPhases', turnPhases);

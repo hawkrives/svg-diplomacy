@@ -5,7 +5,7 @@ import gameActions from '../actions/gameActions'
 
 let Orders = React.createClass({
 	submitOrders () {
-		gameActions.submitOrders(this.props.gameId, this.props.pendingOrders)
+		gameActions.submitOrders(this.props.game.id, {player: this.props.userId, orders: this.props.pendingOrders})
 	},
 	render() {
 		let orderDialogue = React.createElement('div', {id: 'order-text'},

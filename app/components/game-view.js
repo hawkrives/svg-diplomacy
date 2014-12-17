@@ -53,7 +53,7 @@ let GameView = React.createClass({
 
 		// All possible components for the game (make sure these have keys)
 		let map      = React.createElement(RenderedMap, {key: 'map', game: this.props.game, map: this.props.map, user: this.props.user, onNewOrder: this.onNewOrder, pendingOrders: this.state.pendingOrders})
-		let orders   = React.createElement(Orders, {key: 'orders', pendingOrders: this.state.pendingOrders, gameId: this.props.game.id, map: this.props.map})
+		let orders   = React.createElement(Orders, {key: 'orders', pendingOrders: this.state.pendingOrders, game: this.props.game, map: this.props.map, userId: this.props.user.id})
 		let chat     = React.createElement(GameChatlist, {key: 'chat'});
 		let timeline = React.createElement(Timeline, {key: 'timeline', length: turnPhasesLength})
 		let settings = React.createElement(Settings, {key: 'settings', game: this.props.game})

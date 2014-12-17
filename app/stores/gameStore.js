@@ -56,16 +56,12 @@ let gameStore = Reflux.createStore({
 
 	makeMove() {},
 
-	submitOrders(gameId, orders) {
-		console.log('submitOrders', gameId, orders)
+	submitOrders(gameId, turnObject) {
+		console.log('submitOrders', gameId, turnObject)
 		let game = _.find(this.games, {id: gameId})
-		let turnPhase = {
-			player: this.user.id,
-			gameId: gameId,
-			orders: orders,
-		}
+
 		let previousPhases = game.get('turnPhases')
-		let phases = previousPhases.concat(turnPhase)
+		let phases = previousPhases.concat(turnObject)
 		game.set('turnPhases', phases)
 		game.save()
 			.then(this._updateDataFromParse)
