@@ -55,6 +55,7 @@ let mapStore = Reflux.createStore({
 
 	updateMap(options) {
 		let map = _.find(this.maps, {id: options.mapId})
+		console.log(map, options.mapId)
 
 		map.set('name', options.name || map.get('name'))
 		map.set('players', options.players || map.get('players'))
