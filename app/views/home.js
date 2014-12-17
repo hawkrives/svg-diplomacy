@@ -28,6 +28,8 @@ let Home = React.createClass({
 		if (this.props.user) {
 			let myGameObjects = _.filter(this.props.games, (game) => _.contains(game.get('players'), this.props.user.id))
 			myGames = React.createElement(GameList, {title: 'My Games', games: myGameObjects, maps: this.props.maps})
+			let allButMyGameObjects = _.reject(this.props.games, (game) => _.contains(game.get('players'), this.props.user.id))
+			allGames = React.createElement(GameList, {title: 'All Games', games: allButMyGameObjects, maps: this.props.maps})
 		}
 
 		return React.createElement('div', {id: 'home'},
