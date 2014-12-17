@@ -17,6 +17,15 @@
 	fill: bisque;
 }
 
+.selected {
+	stroke-width: 5px !important;
+	stroke: #000 !important;
+}
+
+.possible {
+	fill: rgba(black, 0.5) !important;
+}
+
 .map {
 	.empty-country {
 		fill: bisque;

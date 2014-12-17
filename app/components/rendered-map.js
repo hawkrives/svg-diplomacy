@@ -41,15 +41,74 @@ let RenderedMap = React.createClass({
 				width: 0,
 				height: 0,
 			},
+			currentMove: {},
 		}
 	},
 
+	findPossibleMoves(space) {
+		let moveTo = space.moveTo.sea.concat(space.moveTo.land)
+		return moveTo
+	},
+
+	isValidSelection(thisEl, space, selectedSpaces) {
+		let validSelection = true
+		let parent = thisEl.parentNode
+
+		if (selectedSpaces.length) {
+			if (selectedSpaces[0].id === space.id)
+				return true;
+
+			let priorSpace = selectedSpaces[0]
+			let moveTo = priorSpace.moveTo.sea.concat(priorSpace.moveTo.land)
+			if (!_.contains(moveTo, space.id)) {
+				validSelection = false
+			}
+		}
+
+		return validSelection
+	},
+
+	retrieveSpacesFromDOMNodes(nodes) {
+		return _(nodes)
+			.map((el) => _.first(el.children))
+			.map((el) => el.attributes['data-id'].value)
+			.map((id) => parseInt(id, 10))
+			.map((id) => _.find(this.state.map.spaces, {id}))
+			.value()
+	},
+
 	onClickTerritory(ev) {
-		console.log(ev.target.attributes['data-id'].value);
+		let selectedEls = Array.from(this.getDOMNode().getElementsByClassName('selected'))
+		let previouslyPossibleEls = Array.from(this.getDOMNode().getElementsByClassName('possible'))
+
+		let thisEl = ev.target
+		let id = parseInt(thisEl.attributes['data-id'].value, 10)
+		let space = _.find(this.state.map.spaces, {id})
+		let parent = thisEl.parentNode
+		let selectedSpaces = this.retrieveSpacesFromDOMNodes(selectedEls)
+
+		if (selectedSpaces.length >= 1) {
+			_.each(selectedEls, (elt) => {elt.classList.remove('selected')})
+			_.each(previouslyPossibleEls, (elt) => {elt.classList.remove('possible')})
+			let currentMove = {from: selectedSpaces[0], to: space}
+			this.setState({currentMove})
+			console.log(currentMove)
+			return;
+		}
+
+		if (!parent.classList.contains('inaccessible-territory') && this.isValidSelection(thisEl, space, selectedSpaces)) {
+			parent.classList.toggle('selected');
+			parent.classList.toggle('possible');
+		}
+
+		if (selectedEls.length === 0) {
+			_.each(this.findPossibleMoves(space), (id) =>
+				this.getDOMNode().querySelector(`#${this.state.map.id}-space-${id}`).classList.add('possible'))
+		}
 	},
 
 	render() {
-		console.log('RenderedMap.props', this.props, this.state.map)
+		console.log('RenderedMap.render')
 		let mapId = this.state.map.id
 		let spaces = React.createElement('defs', {id: 'all-spaces'},
 			_.map(this.state.map.spaces, (space) => {
