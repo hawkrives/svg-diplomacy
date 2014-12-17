@@ -13,6 +13,7 @@ let mapStore = Reflux.createStore({
 	init() {
 		this.maps = [];
 
+		this.parseMaps = [];
 		this.localMaps = [
 			new LocalMap(classicMap),
 			new LocalMap(northfieldMap),
@@ -25,6 +26,7 @@ let mapStore = Reflux.createStore({
 		let allMaps = new Parse.Query(PlayableMap)
 		allMaps.find()
 			.then(results => {
+				this.parseMaps = results;
 				this.maps = _.uniq(this.localMaps.concat(results), (map) => map.id)
 				console.log('maps', this.maps)
 				this.trigger(this.maps)
@@ -54,7 +56,7 @@ let mapStore = Reflux.createStore({
 	},
 
 	updateMap(options) {
-		let map = _.find(this.maps, {id: options.mapId})
+		let map = _.find(this.parseMaps, {id: options.mapId})
 		console.log(map, options.mapId)
 
 		map.set('name', options.name || map.get('name'))
