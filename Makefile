@@ -5,6 +5,7 @@ all: init watch
 clean:
 	rm -rf build
 	rm -rf cordova/platforms/ios/build
+	rm *.tar.gz
 
 deep-clean: clean
 	rm -rf node_modules
@@ -53,7 +54,6 @@ tarball:
 	tar -cf svg-diplomacy.tar svg-diplomacy
 	rm -rf svg-diplomacy
 	gzip svg-diplomacy.tar
-	rm svg-diplomacy.tar
 
 full-tarball:
 	rm -rf svg-diplomacy-full svg-diplomacy.full.tar svg-diplomacy.full.tar.gz
@@ -63,4 +63,3 @@ full-tarball:
 	tar -cf svg-diplomacy.full.tar svg-diplomacy-full
 	rm -rf svg-diplomacy-full
 	gzip svg-diplomacy.full.tar
-	rm svg-diplomacy.tar.gz
