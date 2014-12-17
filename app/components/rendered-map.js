@@ -64,6 +64,11 @@ let RenderedMap = React.createClass({
 				validSelection = false
 			}
 		}
+		else {
+			let armies = this.props.game.get('armies')
+			let hasArmy = _.find(armies, {location: space.id})
+			validSelection = hasArmy
+		}
 
 		return validSelection
 	},
@@ -90,20 +95,22 @@ let RenderedMap = React.createClass({
 		if (selectedSpaces.length >= 1) {
 			_.each(selectedEls, (elt) => {elt.classList.remove('selected')})
 			_.each(previouslyPossibleEls, (elt) => {elt.classList.remove('possible')})
-			let currentMove = {from: selectedSpaces[0], to: space}
-			this.setState({currentMove})
-			console.log(currentMove)
+			if (this.isValidSelection(thisEl, space, selectedSpaces)) {
+				let currentMove = {from: selectedSpaces[0], to: space}
+				this.setState({currentMove})
+				console.log(currentMove)
+			}
 			return;
 		}
 
 		if (!parent.classList.contains('inaccessible-territory') && this.isValidSelection(thisEl, space, selectedSpaces)) {
 			parent.classList.toggle('selected');
 			parent.classList.toggle('possible');
-		}
 
-		if (selectedEls.length === 0) {
-			_.each(this.findPossibleMoves(space), (id) =>
-				this.getDOMNode().querySelector(`#${this.state.map.id}-space-${id}`).classList.add('possible'))
+			if (selectedEls.length === 0) {
+				_.each(this.findPossibleMoves(space), (id) =>
+					this.getDOMNode().getElementById(`${this.state.map.id}-space-${id}`).classList.add('possible'))
+			}
 		}
 	},
 
