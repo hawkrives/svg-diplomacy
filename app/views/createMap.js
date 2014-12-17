@@ -29,15 +29,15 @@ let CreateMap = React.createClass({
 		let spaces = this.state.spaces
 
 		let pixelReplace = /(\d*?) *px$/;
-		width = width ? width.replace(pixelReplace, '$1') : width
-		height = height ? height.replace(pixelReplace, '$1') : height
+		width = width ? String(width).replace(pixelReplace, '$1') : width
+		height = height ? String(height).replace(pixelReplace, '$1') : height
 
 		width = parseInt(width, 10)
 		height = parseInt(height, 10)
 		players = parseInt(players, 10)
 
-		countries = countries ? JSON.parse(countries) : countries
-		spaces = spaces ? JSON.parse(spaces) : spaces
+		countries = _.isString(countries) ? JSON.parse(countries) : countries
+		spaces = _.isString(spaces) ? JSON.parse(spaces) : spaces
 
 		return {mapId, name, players, width, height, countries, spaces}
 	},
