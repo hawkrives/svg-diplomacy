@@ -141,8 +141,8 @@ let RenderedMap = React.createClass({
 				let armySize = 48
 				let imagePath = army ? `images/${army.type}.png` : ''
 				let armyDrawX = space.drawUnit ? space.drawUnit.x : 0
-				let armyDrawy = space.drawUnit ? space.drawUnit.y : 0
-				let armyImage = `<image width='${armySize}' height='${armySize}' x='${armyDrawX - armySize/2}' y='${this.state.map.height - armySize/2 - armyDrawy}' xlink:href=${imagePath} />`
+				let armyDrawY = space.drawUnit ? space.drawUnit.y : 0
+				let armyImage = `<image width='${armySize}' height='${armySize}' x='${armyDrawX - armySize/2}' y='${this.state.map.height - armySize/2 - armyDrawY}' xlink:href=${imagePath} />`
 
 				if (_.isNumber(vectorPath)) {
 					// it's referencing another path, so we use a <use>.
