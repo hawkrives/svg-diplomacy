@@ -138,7 +138,7 @@
 			"type": "land",
 			"naval": false,
 			"moveTo": {
-				"land": [5, 7, 9, 30, 31, 75],
+				"land": [5, 7, 30, 31, 75],
 				"sea": []
 			},
 			"territory": null,
@@ -442,7 +442,7 @@
 			"type": "land",
 			"naval": false,
 			"moveTo": {
-				"land": [9, 13, 30, 34, 35],
+				"land": [9, 13, 16, 30, 34, 35],
 				"sea": []
 			},
 			"territory": null,
