@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as _ from 'lodash'
 import {Link} from 'react-router'
-import RenderedMap from '../views/map'
+import RenderedMap from './rendered-map'
 import Subtitle from './subtitle'
 import Octicon from './octicon'
 

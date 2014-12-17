@@ -3,17 +3,16 @@ import * as Reflux from 'reflux'
 import * as _ from 'lodash'
 import {State} from 'react-router'
 
-import RenderedMap from './map'
+import gameActions from '../actions/gameActions'
+
+import RenderedMap from '../components/rendered-map'
 import Orders from '../components/game/orders'
 import Settings from '../components/game-settings'
 import Timeline from '../components/game/timeline'
-import gameActions from '../actions/gameActions'
 import GameNavbar from '../components/game/game-nav'
 import ContentEditable from '../components/content-editable'
 import GameJoin from '../components/game/game-join'
 import GameChatlist from '../components/game/game-chatlist'
-
-import gameActions from '../actions/gameActions'
 
 let GameHeader = React.createClass({
 	render() {
