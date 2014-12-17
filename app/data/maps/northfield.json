@@ -1214,8 +1214,8 @@
 			"type": "sea",
 			"naval": true,
 			"moveTo": {
-				"land": [4, 25, 26],
-				"sea": [23]
+				"land": [],
+				"sea": [23, 4, 25, 26]
 			},
 			"territory": null,
 			"path": [
@@ -1260,6 +1260,68 @@
 			"supply": null,
 			"drawUnit": null,
 			"label": ""
+		}
+	],
+	"defaultUnits": [
+		{
+			"armyId": 1,
+			"country": "St. Olaf",
+			"location": 12,
+			"type": "army",
+		},
+		{
+			"armyId": 2,
+			"country": "St. Olaf",
+			"location": 6,
+			"type": "army",
+		},
+		{
+			"armyId": 3,
+			"country": "St. Olaf",
+			"location": 7,
+			"type": "army",
+		},
+		{
+			"armyId": 4,
+			"country": "St. Olaf",
+			"location": 8,
+			"type": "army",
+		},
+		{
+			"armyId": 5,
+			"country": "St. Olaf",
+			"location": 73,
+			"type": "navy",
+		},
+		{
+			"armyId": 6,
+			"country": "Carleton",
+			"location": 39,
+			"type": "army",
+		},
+		{
+			"armyId": 7,
+			"country": "Carleton",
+			"location": 67,
+			"type": "army",
+		},
+		{
+			"armyId": 8,
+			"country": "Carleton",
+			"location": 68,
+			"type": "army",
+		},
+		{
+			"armyId": 9,
+			"country": "Carleton",
+			"location": 71,
+			"type": "army",
+		},
+		{
+			"armyId": 10,
+			"country": "Carleton",
+			"location": 37,
+			"type": "navy",
 		}
 	]
 }
