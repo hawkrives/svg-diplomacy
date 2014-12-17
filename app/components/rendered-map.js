@@ -88,10 +88,19 @@ let RenderedMap = React.createClass({
 					key: space.id,
 				}
 
+				let army = _.find(this.props.game.get('armies'), {location: space.id})
+
+				let armySize = 48
+				let imagePath = army ? `images/${army.type}.png` : ''
+				let armyDrawX = space.drawUnit ? space.drawUnit.x : 0
+				let armyDrawy = space.drawUnit ? space.drawUnit.y : 0
+				let armyImage = `<image width='${armySize}' height='${armySize}' x='${armyDrawX - armySize/2}' y='${this.state.map.height - armySize/2 - armyDrawy}' xlink:href=${imagePath} />`
+
 				if (_.isNumber(vectorPath)) {
 					// it's referencing another path, so we use a <use>.
 					cantUsePath = true;
-					args.dangerouslySetInnerHTML = {__html: `<use xlink:href="#space-${vectorPath}" />`}
+					let vectorString = `<use xlink:href="#space-${vectorPath}" />`
+					args.dangerouslySetInnerHTML = {__html: vectorPath + army ? armyImage : ''}
 				}
 				else if (_.isArray(vectorPath)) {
 					// it has multiple paths; probably islands.
@@ -102,6 +111,8 @@ let RenderedMap = React.createClass({
 					// it has only a single path
 					paths = [React.createElement('path', {d: vectorPath, key: 0})]
 				}
+				if (army)
+					paths.push(React.createElement('g', {className: `unit army-${army.type}`, dangerouslySetInnerHTML: {__html: armyImage}}))
 
 				if (space.supply) {
 					hasSupply = true
@@ -212,31 +223,6 @@ let RenderedMap = React.createClass({
 				)
 			}))
 
-		let units = React.createElement('g',
-			{
-				className: 'units',
-			},
-			_.map(this.props.game.get('armies'), (army) => {
-				let armySize = 48
-				let imagePath;
-				let space = _.find(this.state.map.spaces, {id: army.location})
-				if (!space)
-					return
-				if (army.type === 'navy')
-					imagePath = 'images/navy.png'
-				else if (army.type === 'army')
-					imagePath = 'images/tank.gif'
-				else
-					return;
-				return React.createElement('g', {
-					id: `${mapId}-army-${army.armyId}`,
-					key: `${this.props.game.get('objectId')}-army-${army.armyId}`,
-					dangerouslySetInnerHTML: {
-						__html: `<image width='${armySize}' height='${armySize}' x='${space.drawUnit.x - armySize/2}' y='${this.state.map.height - armySize/2 - space.drawUnit.y}' xlink:href=${imagePath} />`
-					},
-				})
-			}))
-
 		return React.createElement('svg',
 			{
 				className: 'map ' + (this.props.className || ''),
@@ -250,8 +236,7 @@ let RenderedMap = React.createClass({
 				{className: 'countries'},
 				countries,
 				otherSpaces
-			),
-			units)
+			))
 	},
 })
 
